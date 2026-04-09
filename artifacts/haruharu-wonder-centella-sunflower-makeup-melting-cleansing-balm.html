@@ -1,0 +1,125 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.art-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(200,144,112,0.12);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}
+.art-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,144,112,0.2);}
+.art-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}
+.art-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+.art-title{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.art-body{font-size:13px;line-height:1.7;color:#6B6B80;}.art-body strong{color:#2A2A3D;}
+.art-overview{background:linear-gradient(155deg,#E8C878 0%,#C89070 50%,#A87050 100%);color:#fff;}
+.art-overview .art-label{background:rgba(255,255,255,0.2);color:#fff;}.art-overview .art-body{color:rgba(255,255,255,0.85);}.art-overview .art-body strong{color:#fff;}
+.product-brand{font-size:12px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;}
+.product-name{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.25;}
+.product-type{display:inline-block;background:#FFF8EB;color:#A87050;font-size:11px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
+.hero-stat{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}.stat-box{flex:1;min-width:80px;background:rgba(255,255,255,0.14);border-radius:12px;padding:14px 10px;text-align:center;}
+.stat-num{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:#F0D898;}.stat-label{font-size:9px;color:rgba(255,255,255,0.7);margin-top:3px;}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;}.art-badge{font-size:9px;font-weight:600;padding:4px 10px;border-radius:16px;background:rgba(255,248,235,0.2);color:#FFF8EB;}.highlight-badge{background:#D2D25A;color:#2A2A3D;}
+.art-oils{background:#fff;border:2px solid #D4A040;}.art-oils .art-label{background:#D4A040;color:#fff;}
+.oil-list{margin-top:14px;display:flex;flex-direction:column;gap:6px;}.oil-item{display:flex;align-items:flex-start;gap:12px;padding:12px;border-radius:14px;}.oil-item:nth-child(odd){background:#FDF5E3;}.oil-item:nth-child(even){background:#FAF0E8;}
+.oil-pos{width:26px;height:26px;border-radius:50%;background:#D4A040;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.oil-name{font-size:12px;font-weight:700;}.oil-desc{font-size:9px;color:#6B6B80;line-height:1.5;margin-top:2px;}
+.oil-tag{display:inline-block;font-size:7px;font-weight:700;padding:2px 6px;border-radius:6px;margin-top:3px;margin-right:2px;text-transform:uppercase;}.tag-goodie{background:#C5D0F5;color:#5A72C0;}.tag-skin{background:#5BAD7A;color:#fff;}.tag-antox{background:#FF7D59;color:#fff;}
+.oil-note{margin-top:12px;padding:12px 14px;background:#FFF8EB;border-left:3px solid #D4A040;border-radius:0 12px 12px 0;font-size:11px;color:#6B6B80;line-height:1.6;}.oil-note strong{color:#2A2A3D;}
+.art-cleanse{background:#FAF0E8;border:2px solid #C89070;}.art-cleanse .art-label{background:#A87050;color:#fff;}
+.cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;}.cl-item{background:#fff;border-radius:12px;padding:14px 12px;text-align:center;}.cl-item.full-span{grid-column:1/-1;}
+.cl-emoji{font-size:20px;margin-bottom:4px;}.cl-name{font-size:11px;font-weight:700;margin-bottom:2px;}.cl-desc{font-size:9px;color:#6B6B80;line-height:1.4;}
+.cl-steps{margin-top:14px;padding:14px;background:#fff;border-radius:14px;border:1px dashed #E0B8A0;}
+.cl-steps-title{font-family:'Libre Baskerville',serif;font-size:12px;font-weight:700;color:#A87050;margin-bottom:8px;text-align:center;}
+.step-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:10px;color:#6B6B80;}.step-num{width:20px;height:20px;border-radius:50%;background:#C89070;color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.art-soothe{background:#fff;border:2px solid #5BAD7A;}.art-soothe .art-label{background:#5BAD7A;color:#fff;}
+.soo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;}.soo-item{border-radius:12px;padding:14px 12px;text-align:center;}.soo-green{background:#E4F4EA;}.soo-gold{background:#FDF5E3;}.soo-blue{background:#E4EAFC;}
+.soo-emoji{font-size:18px;margin-bottom:4px;}.soo-star{display:inline-block;font-size:7px;font-weight:700;padding:2px 7px;border-radius:6px;margin-bottom:3px;background:#C5D0F5;color:#5A72C0;text-transform:uppercase;}
+.soo-name{font-size:11px;font-weight:600;margin-bottom:1px;}.soo-desc{font-size:9px;color:#6B6B80;line-height:1.4;}
+.art-verdict{background:#2A2A3D;color:#fff;}.art-verdict .art-label{background:#D4A040;color:#fff;}.art-verdict .art-title{color:#F0D898;}
+.verdict-points{margin-top:14px;display:flex;flex-direction:column;gap:7px;}.verdict-row{display:flex;align-items:flex-start;gap:10px;}
+.verdict-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}.icon-pro{background:#D2D25A;color:#2A2A3D;}.icon-note{background:#FF7D59;color:#fff;}
+.verdict-text{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.verdict-text strong{color:#fff;}
+.suitable-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}.suit-tag{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(212,160,64,0.2);color:#F0D898;}
+@media(max-width:440px){.hero-stat{flex-direction:column;gap:8px;}.cl-grid,.soo-grid{grid-template-columns:1fr;}}
+</style>
+
+<div class="art-card art-overview">
+<div class="art-num">01</div>
+<span class="art-label">Product Overview</span>
+<div class="product-brand">haruharu WONDER</div>
+<div class="product-name">Centella Sunflower<br>Makeup-Melting Cleansing Balm</div>
+<span class="product-type">Sorbet-Textured Cleansing Balm</span>
+<p class="art-body">Cleansing balm ultra-minimalis dengan <strong>6 premium oils &amp; butters</strong> di posisi atas ingredient list. Diperkuat <strong>Centella + Calendula + Tea Tree</strong> soothing trio. Hanya <strong>18 bahan</strong>.</p>
+<div class="hero-stat">
+<div class="stat-box"><div class="stat-num">6</div><div class="stat-label">Premium Oils/Butters</div></div>
+<div class="stat-box"><div class="stat-num">18</div><div class="stat-label">Total Bahan</div></div>
+<div class="stat-box"><div class="stat-num">9</div><div class="stat-label">Goodies</div></div>
+</div>
+<div class="badge-row">
+<span class="art-badge highlight-badge">&#9733; Ultra-Minimalis</span>
+<span class="art-badge">&#10003; Alcohol-Free</span>
+<span class="art-badge">&#10003; Fragrance-Free</span>
+<span class="art-badge">&#10003; EO-Free</span>
+</div>
+</div>
+
+<div class="art-card art-oils">
+<div class="art-num">02</div>
+<span class="art-label">6 Premium Oils &amp; Butters</span>
+<div class="art-title">Luxury Oil Blend &mdash; Semua di Posisi Atas</div>
+<p class="art-body">6 dari 9 bahan pertama adalah minyak/butter premium. Ini <strong>nourishing treatment yang membersihkan</strong>.</p>
+<div class="oil-list">
+<div class="oil-item"><div class="oil-pos">#4</div><div><div class="oil-name">Sunflower Seed Oil Unsaponifiables</div><div class="oil-desc">Bukan sunflower oil biasa &mdash; <strong>unsaponifiable fraction</strong> kaya vitamin E, sterol &amp; linoleic acid.</div><span class="oil-tag tag-goodie">Goodie</span><span class="oil-tag tag-skin">Skin-Identical</span></div></div>
+<div class="oil-item"><div class="oil-pos">#5</div><div><div class="oil-name">Argan Oil</div><div class="oil-desc">80% unsaturated FA. Kaya vitamin E (2x olive oil), antioxidant phenols.</div><span class="oil-tag tag-goodie">Goodie</span><span class="oil-tag tag-antox">Antioxidant</span></div></div>
+<div class="oil-item"><div class="oil-pos">#6</div><div><div class="oil-name">Shea Butter</div><div class="oil-desc">Rich emollient + soothing + antioxidant (vitamin A, E, quercetin).</div><span class="oil-tag tag-goodie">Goodie</span></div></div>
+<div class="oil-item"><div class="oil-pos">#7</div><div><div class="oil-name">Jojoba Seed Oil</div><div class="oil-desc">Bukan "oil" tapi <strong>wax ester</strong> &mdash; paling mirip sebum manusia.</div><span class="oil-tag tag-goodie">Goodie</span><span class="oil-tag tag-skin">Sebum-Like</span></div></div>
+<div class="oil-item"><div class="oil-pos">#8</div><div><div class="oil-name">Squalane</div><div class="oil-desc">Skin-identical. Non-greasy, all skin types, fungal acne-safe.</div><span class="oil-tag tag-goodie">Goodie</span><span class="oil-tag tag-skin">Skin-Identical</span></div></div>
+<div class="oil-item"><div class="oil-pos">#9</div><div><div class="oil-name">Olive Fruit Oil</div><div class="oil-desc">Oleic-rich (55-83%). Antioxidant polyphenols + vitamin E.</div><span class="oil-tag tag-goodie">Goodie</span><span class="oil-tag tag-antox">Antioxidant</span></div></div>
+</div>
+<div class="oil-note"><strong>Semua 6 oils/butters rated Goodie.</strong> Smart mix covering semua jenis emollient action.</div>
+</div>
+
+<div class="art-card art-cleanse">
+<div class="art-num">03</div>
+<span class="art-label">Cleansing System</span>
+<div class="art-title">Bagaimana Balm Ini Membersihkan?</div>
+<div class="cl-grid">
+<div class="cl-item"><div class="cl-emoji">&#129524;</div><div class="cl-name">Cetyl Ethylhexanoate (#1)</div><div class="cl-desc">Emollient ester base. Velvety, silky.</div></div>
+<div class="cl-item"><div class="cl-emoji">&#128167;</div><div class="cl-name">PEG-20 Glyceryl Triisostearate (#2)</div><div class="cl-desc">KEY &mdash; emulsifier bikin balm bisa DIBILAS AIR.</div></div>
+<div class="cl-item full-span"><div class="cl-emoji">&#129523;</div><div class="cl-name">Synthetic Wax (#3)</div><div class="cl-desc">Bentuk "sorbet" solid &mdash; melt saat sentuh kulit.</div></div>
+</div>
+<div class="cl-steps">
+<div class="cl-steps-title">Cara Kerja</div>
+<div class="step-row"><div class="step-num">1</div><div><strong>Solid sorbet</strong> di jar</div></div>
+<div class="step-row"><div class="step-num">2</div><div><strong>Melt di kulit</strong></div></div>
+<div class="step-row"><div class="step-num">3</div><div><strong>Oils melarutkan</strong> makeup, sunscreen</div></div>
+<div class="step-row"><div class="step-num">4</div><div><strong>Tambah air</strong> &mdash; jadi milky</div></div>
+<div class="step-row"><div class="step-num">5</div><div><strong>Bilas bersih</strong></div></div>
+</div>
+</div>
+
+<div class="art-card art-soothe">
+<div class="art-num">04</div>
+<span class="art-label">Soothing &amp; Care</span>
+<div class="art-title">Centella + Calendula + Tea Tree + Panthenol</div>
+<div class="soo-grid">
+<div class="soo-item soo-green"><div class="soo-emoji">&#127807;</div><span class="soo-star">Goodie</span><div class="soo-name">Centella Asiatica</div><div class="soo-desc">Soothing, antioxidant, wound healing.</div></div>
+<div class="soo-item soo-gold"><div class="soo-emoji">&#127803;</div><span class="soo-star">Goodie</span><div class="soo-name">Calendula Extract</div><div class="soo-desc">Wound healing legendaris.</div></div>
+<div class="soo-item soo-green"><div class="soo-emoji">&#127793;</div><div class="soo-name">Tea Tree Extract</div><div class="soo-desc">Antimikrobial alami.</div></div>
+<div class="soo-item soo-blue"><div class="soo-emoji">&#128170;</div><span class="soo-star">Goodie</span><div class="soo-name">Panthenol</div><div class="soo-desc">Pro-Vit B5. Barrier booster.</div></div>
+</div>
+</div>
+
+<div class="art-card art-verdict">
+<div class="art-num">05</div>
+<span class="art-label">Verdict</span>
+<div class="art-title">Kesimpulan Ingredients</div>
+<div class="verdict-points">
+<div class="verdict-row"><div class="verdict-icon icon-pro">&#10003;</div><div class="verdict-text"><strong>6 premium oils/butters &mdash; semua Goodie.</strong> Luxury oil blend.</div></div>
+<div class="verdict-row"><div class="verdict-icon icon-pro">&#10003;</div><div class="verdict-text"><strong>Ultra-minimalis (18 bahan)</strong> &mdash; 50% Goodie ratio.</div></div>
+<div class="verdict-row"><div class="verdict-icon icon-pro">&#10003;</div><div class="verdict-text"><strong>Water-rinsable</strong> &mdash; microemulsion technology.</div></div>
+<div class="verdict-row"><div class="verdict-icon icon-pro">&#10003;</div><div class="verdict-text"><strong>Soothing trio</strong> + Triple-free + transparan (ppm).</div></div>
+<div class="verdict-row"><div class="verdict-icon icon-note">!</div><div class="verdict-text"><strong>Centella hanya 0.01 ppm</strong> &mdash; nama produk sedikit misleading.</div></div>
+<div class="verdict-row"><div class="verdict-icon icon-note">!</div><div class="verdict-text"><strong>Oleic-rich oils dominan</strong> &mdash; kurang ideal untuk acne-prone.</div></div>
+<div class="verdict-row"><div class="verdict-icon icon-note">!</div><div class="verdict-text"><strong>Mengandung PEG</strong> &mdash; concern bagi yang menghindari PEG.</div></div>
+</div>
+<div class="suitable-tags">
+<span class="suit-tag">First Cleanser</span><span class="suit-tag">Makeup Remover</span><span class="suit-tag">Sunscreen Removal</span><span class="suit-tag">Dry Skin</span><span class="suit-tag">Normal Skin</span><span class="suit-tag">Nourishing Cleanse</span>
+</div>
+</div>
+</div>

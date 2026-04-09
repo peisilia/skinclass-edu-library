@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bedah Produk | SkinClassForYou</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #9CAEF0; --blue-dark: #7B91D9; --cream: #FFF8EB;
+            --coral: #FF7D59; --dark: #2D2D2D; --gray: #6B7280;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); min-height: 100vh; }
+
+        header {
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            padding: 3rem 1.5rem 2rem; text-align: center; color: white;
+        }
+        header h1 { font-family: 'Libre Baskerville', serif; font-size: 2rem; margin-bottom: 0.5rem; }
+        header p { font-size: 0.95rem; opacity: 0.9; max-width: 500px; margin: 0 auto; }
+        .brand-tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; margin-top: 1rem; letter-spacing: 1px; }
+        .nav-links { margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+        .nav-link { display: inline-block; background: white; color: var(--blue-dark); padding: 0.5rem 1.2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.8rem; transition: transform 0.2s; }
+        .nav-link:hover { transform: scale(1.05); }
+
+        .search-section { padding: 1.5rem; max-width: 600px; margin: -1.5rem auto 0; position: relative; z-index: 1; }
+        .search-box { width: 100%; padding: 1rem 1.5rem; border: 2px solid var(--blue); border-radius: 50px; font-size: 1rem; font-family: 'Poppins', sans-serif; background: white; outline: none; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+
+        .container { max-width: 750px; margin: 0 auto; padding: 1rem 1.5rem; }
+        .product-count { font-size: 0.85rem; color: var(--gray); margin-bottom: 1rem; }
+
+        /* PRODUCT ACCORDION */
+        .product-item { margin-bottom: 0.8rem; }
+        .product-header {
+            background: white; border-radius: 16px; padding: 1.2rem 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.2s; border-left: 4px solid var(--blue);
+        }
+        .product-header:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+        .product-header.open { border-radius: 16px 16px 0 0; border-left-color: var(--coral); }
+        .product-info { flex: 1; }
+        .product-brand-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--coral); margin-bottom: 0.2rem; }
+        .product-name { font-family: 'Libre Baskerville', serif; font-size: 1rem; font-weight: 700; }
+        .product-meta { font-size: 0.75rem; color: var(--gray); margin-top: 0.3rem; }
+        .product-meta .highlight-pill { display: inline-block; font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 8px; background: #F0F4FF; color: var(--blue-dark); margin-right: 0.2rem; }
+        .product-arrow { font-size: 1.2rem; color: var(--gray); transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+        .product-header.open .product-arrow { transform: rotate(180deg); color: var(--coral); }
+
+        .product-body {
+            display: none; background: white; border-radius: 0 0 16px 16px;
+            padding: 0 1.5rem 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-top: 1px solid #F1F5F9;
+        }
+        .product-body.open { display: block; }
+
+        /* ARTIFACT CONTENT WRAPPER */
+        .artifact-wrapper { padding-top: 1rem; }
+        .no-artifact { text-align: center; padding: 2rem; color: var(--gray); font-size: 0.85rem; }
+        .no-artifact-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+        /* BASIC PRODUCT INFO (when no artifact) */
+        .basic-info { padding: 1rem 0; }
+        .info-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #F1F5F9; font-size: 0.85rem; }
+        .info-label { color: var(--gray); font-weight: 500; }
+        .info-value { text-align: right; max-width: 60%; }
+        .key-ingredients { margin-top: 0.8rem; }
+        .key-ingredients h3 { font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .ki-tag { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.75rem; background: #DCFCE7; color: #166534; margin: 0.15rem; }
+
+        .loading { text-align: center; padding: 3rem; color: var(--gray); }
+
+        footer { text-align: center; padding: 2rem 1.5rem; color: var(--gray); font-size: 0.8rem; }
+        footer a { color: var(--coral); text-decoration: none; }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.5rem; }
+            .product-name { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bedah Produk</h1>
+    <p>Klik nama produk untuk melihat analisa ingredient lengkap</p>
+    <span class="brand-tag">SKINCLASSFORYOU</span>
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">&larr; Edu Library</a>
+        <a href="evaluate.html" class="nav-link">Evaluasi Kulit</a>
+    </div>
+</header>
+
+<div class="search-section">
+    <input type="text" class="search-box" id="search" placeholder="Cari produk... (nama atau brand)">
+</div>
+
+<div class="container">
+    <div class="product-count" id="productCount"></div>
+    <div id="productList">
+        <div class="loading">Memuat data produk...</div>
+    </div>
+</div>
+
+<footer>
+    <p>SkinClassForYou Edu Library &copy; 2026 | by <a href="https://lynk.id/peisilia" target="_blank">Ci Pei</a></p>
+    <p style="margin-top:0.5rem">@sharing.ingredientsskincare</p>
+</footer>
+
+<script>
+let products = [];
+const artifactCache = {};
+
+// Known artifacts (filename must match product slug)
+const ARTIFACTS_DIR = 'artifacts/';
+
+fetch('data/products.json')
+    .then(r => r.json())
+    .then(data => {
+        products = data;
+        renderProducts(products);
+    })
+    .catch(() => {
+        document.getElementById('productList').innerHTML = '<div class="loading" style="color:var(--coral)">Gagal memuat data produk.</div>';
+    });
+
+function renderProducts(list) {
+    const container = document.getElementById('productList');
+    document.getElementById('productCount').textContent = list.length + ' produk';
+
+    if (list.length === 0) {
+        container.innerHTML = '<div class="loading">Produk tidak ditemukan.</div>';
+        return;
+    }
+
+    container.innerHTML = list.map(p => {
+        const highlights = (p.highlights || []).map(h => '<span class="highlight-pill">' + h + '</span>').join('');
+        const meta = [
+            p.ingredientCount ? p.ingredientCount + ' ingredients' : '',
+            highlights
+        ].filter(Boolean).join(' &middot; ');
+
+        return `
+        <div class="product-item" data-slug="${p.slug}">
+            <div class="product-header" onclick="toggleProduct('${p.slug}')">
+                <div class="product-info">
+                    <div class="product-brand-label">${p.brand || ''}</div>
+                    <div class="product-name">${p.name}</div>
+                    ${meta ? '<div class="product-meta">' + meta + '</div>' : ''}
+                </div>
+                <div class="product-arrow">&#9660;</div>
+            </div>
+            <div class="product-body" id="body-${p.slug}">
+                <div class="artifact-wrapper" id="artifact-${p.slug}">
+                    <div class="loading" style="padding:1rem">Memuat analisa...</div>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+async function toggleProduct(slug) {
+    const header = document.querySelector(`[data-slug="${slug}"] .product-header`);
+    const body = document.getElementById('body-' + slug);
+    const isOpen = header.classList.contains('open');
+
+    // Close all others
+    document.querySelectorAll('.product-header.open').forEach(h => {
+        h.classList.remove('open');
+        h.closest('.product-item').querySelector('.product-body').classList.remove('open');
+    });
+
+    if (isOpen) return; // Was open, now closed
+
+    header.classList.add('open');
+    body.classList.add('open');
+
+    // Load artifact
+    const artifactEl = document.getElementById('artifact-' + slug);
+    if (artifactCache[slug] !== undefined) {
+        artifactEl.innerHTML = artifactCache[slug];
+        return;
+    }
+
+    // Try to load artifact HTML file
+    try {
+        const res = await fetch(ARTIFACTS_DIR + slug + '.html');
+        if (res.ok) {
+            const html = await res.text();
+            artifactCache[slug] = html;
+            artifactEl.innerHTML = html;
+        } else {
+            // No artifact — show basic product info
+            const product = products.find(p => p.slug === slug);
+            artifactCache[slug] = renderBasicInfo(product);
+            artifactEl.innerHTML = artifactCache[slug];
+        }
+    } catch {
+        const product = products.find(p => p.slug === slug);
+        artifactCache[slug] = renderBasicInfo(product);
+        artifactEl.innerHTML = artifactCache[slug];
+    }
+}
+
+function renderBasicInfo(p) {
+    if (!p) return '<div class="no-artifact"><div class="no-artifact-icon">&#128203;</div>Data tidak tersedia.</div>';
+
+    let html = '<div class="basic-info">';
+    if (p.description) html += '<p style="font-size:0.85rem;color:var(--gray);margin-bottom:1rem;line-height:1.6">' + p.description + '</p>';
+
+    const rows = [
+        { label: 'Brand', val: p.brand },
+        { label: 'Jumlah Ingredient', val: p.ingredientCount },
+    ].filter(r => r.val);
+
+    rows.forEach(r => {
+        html += '<div class="info-row"><span class="info-label">' + r.label + '</span><span class="info-value">' + r.val + '</span></div>';
+    });
+
+    if (p.highlights && p.highlights.length) {
+        html += '<div style="margin-top:0.8rem"><strong style="font-size:0.85rem">Highlights:</strong><br>';
+        p.highlights.forEach(h => html += '<span class="ki-tag" style="background:#F0F4FF;color:var(--blue-dark)">' + h + '</span>');
+        html += '</div>';
+    }
+
+    if (p.keyIngredients) {
+        html += '<div class="key-ingredients"><h3>Key Ingredients</h3>';
+        p.keyIngredients.split(',').forEach(k => html += '<span class="ki-tag">' + k.trim() + '</span>');
+        html += '</div>';
+    }
+
+    if (p.url) {
+        html += '<div style="margin-top:1rem"><a href="' + p.url + '" target="_blank" style="color:var(--blue-dark);font-size:0.85rem">Lihat di INCIDecoder &rarr;</a></div>';
+    }
+
+    html += '<div class="no-artifact" style="margin-top:1rem;padding:1rem"><div class="no-artifact-icon">&#127793;</div>Analisa flash cards belum tersedia untuk produk ini.<br>Hubungi <a href="https://lynk.id/peisilia" target="_blank" style="color:var(--coral)">Ci Pei</a> untuk request bedah ingredient.</div>';
+    html += '</div>';
+    return html;
+}
+
+// Search
+document.getElementById('search').addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    const filtered = products.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        (p.brand || '').toLowerCase().includes(q) ||
+        (p.keyIngredients || '').toLowerCase().includes(q)
+    );
+    renderProducts(filtered);
+});
+</script>
+</body>
+</html>

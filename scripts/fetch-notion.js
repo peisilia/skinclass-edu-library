@@ -141,6 +141,27 @@ async function fetchSkinParams() {
   })).filter(p => p.parameter);
 }
 
+const PRODUCTS_DB_ID = "a27f5d993fea4486a1b198474c5efaa9";
+
+async function fetchProducts() {
+  console.log("Fetching products from Notion...");
+  const pages = await fetchAllPages(PRODUCTS_DB_ID);
+  return pages.map((page) => {
+    const name = getTextProp(page, "Product Name");
+    if (!name) return null;
+    return {
+      slug: slugify(name),
+      name,
+      brand: getSelectProp(page, "Brand"),
+      description: getTextProp(page, "Description"),
+      highlights: getMultiSelectProp(page, "Highlights"),
+      ingredientCount: getNumberProp(page, "Ingredient Count"),
+      keyIngredients: getTextProp(page, "Key Ingredients"),
+      url: getUrlProp(page, "userDefined:URL"),
+    };
+  }).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
+}
+
 async function main() {
   console.log("Fetching ingredients from Notion...");
 
@@ -193,6 +214,10 @@ async function main() {
   const skinParams = await fetchSkinParams();
   console.log(`Found ${skinParams.length} skin parameters`);
 
+  // Fetch products
+  const products = await fetchProducts();
+  console.log(`Found ${products.length} products`);
+
   // Ensure data directory exists
   const dataDir = path.join(__dirname, "..", "data");
   if (!fs.existsSync(dataDir)) {
@@ -204,6 +229,9 @@ async function main() {
 
   fs.writeFileSync(path.join(dataDir, "skin-params.json"), JSON.stringify(skinParams, null, 2));
   console.log(`Wrote ${skinParams.length} skin parameters`);
+
+  fs.writeFileSync(path.join(dataDir, "products.json"), JSON.stringify(products, null, 2));
+  console.log(`Wrote ${products.length} products`);
 }
 
 main().catch((err) => {

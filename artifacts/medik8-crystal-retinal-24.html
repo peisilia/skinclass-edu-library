@@ -1,0 +1,166 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.m8-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(40,40,72,0.1);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}
+.m8-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(40,40,72,0.18);}
+.m8-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}
+.m8-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+.m8-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.m8-body{font-size:13px;line-height:1.7;color:#6B6B80;}.m8-body strong{color:#2A2A3D;}
+
+.m8-overview{background:linear-gradient(155deg,#6060B0 0%,#282848 40%,#101020 100%);color:#fff;}
+.m8-overview .m8-label{background:#C06030;color:#fff;}
+.m8-overview .m8-body{color:rgba(255,255,255,0.85);}.m8-overview .m8-body strong{color:#fff;}
+.m8-brand{font-size:11px;font-weight:600;color:#9898D8;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
+.m8-pname{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.2;}
+.m8-type{display:inline-block;background:#C06030;color:#fff;font-size:10px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
+.m8-ladder{display:flex;align-items:center;gap:4px;margin-top:16px;padding:12px;background:rgba(255,255,255,0.06);border-radius:12px;border:1px solid rgba(255,255,255,0.08);}
+.m8-lad{text-align:center;flex:1;padding:4px 0;border-radius:6px;font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);}
+.m8-lad.active{background:#C06030;color:#fff;font-size:12px;box-shadow:0 2px 8px rgba(192,96,48,0.4);}
+.m8-arrow{color:rgba(255,255,255,0.2);font-size:10px;}
+.m8-ladlabel{font-size:7px;color:rgba(255,255,255,0.3);text-align:center;margin-top:4px;}
+.m8-stat{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.m8-sbox{flex:1;min-width:70px;background:rgba(255,255,255,0.08);border-radius:12px;padding:12px 6px;text-align:center;border:1px solid rgba(255,255,255,0.06);}
+.m8-snum{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#9898D8;}.m8-slabel{font-size:7.5px;color:rgba(255,255,255,0.5);margin-top:3px;}
+.m8-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:14px;}
+.m8-badge{font-size:7px;font-weight:600;padding:3px 7px;border-radius:16px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);}
+.m8-hl{background:#D2D25A;color:#2A2A3D;font-weight:700;}
+.m8-ret{background:#C06030;color:#fff;font-weight:800;}
+.m8-warn{background:#FF7D59;color:#fff;}
+
+.m8-stab{background:#fff;border:2px solid #3888A0;}
+.m8-stab .m8-label{background:#3888A0;color:#fff;}
+.ret-hero{margin-top:14px;padding:18px;border-radius:16px;background:#FCF0E8;border:2.5px solid #C06030;}
+.rh-row{display:flex;gap:12px;align-items:flex-start;}
+.rh-emoji{font-size:32px;flex-shrink:0;}
+.rh-tag{display:inline-block;font-size:8px;font-weight:800;padding:3px 10px;border-radius:12px;background:#D2D25A;color:#2A2A3D;margin-bottom:4px;}
+.rh-name{font-size:14px;font-weight:700;line-height:1.2;}
+.rh-desc{font-size:10px;color:#6B6B80;line-height:1.6;margin-top:4px;}.rh-desc strong{color:#2A2A3D;}
+.stab-title{font-size:11px;font-weight:700;color:#3888A0;margin-top:18px;margin-bottom:8px;}
+.stab-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.sg-item{border-radius:12px;padding:10px 8px;text-align:center;background:#E0F0F8;border:1px solid rgba(56,136,160,0.1);transition:transform 0.2s;}.sg-item:hover{transform:scale(1.02);}
+.sg-emoji{font-size:18px;margin-bottom:2px;}.sg-name{font-size:7.5px;font-weight:700;line-height:1.2;}.sg-desc{font-size:6px;color:#6B6B80;line-height:1.3;}
+.vc-box{margin-top:14px;padding:12px;background:#ECECF8;border-left:3px solid #6060B0;border-radius:0 12px 12px 0;}
+.vc-title{font-size:10px;font-weight:700;color:#6060B0;margin-bottom:4px;}.vc-desc{font-size:9px;color:#6B6B80;line-height:1.5;}.vc-desc strong{color:#2A2A3D;}
+.sp-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:10px;}
+.sp{font-size:6.5px;padding:3px 6px;border-radius:6px;background:#ECECF8;color:#282848;border:1px solid rgba(40,40,72,0.05);}
+
+.m8-verdict{background:#2A2A3D;color:#fff;}
+.m8-verdict .m8-label{background:#6060B0;color:#fff;}
+.m8-verdict .m8-title{color:#9898D8;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}
+.vr{display:flex;align-items:flex-start;gap:10px;}
+.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.vi-pro{background:#D2D25A;color:#2A2A3D;}.vi-note{background:#FF7D59;color:#fff;}
+.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.st{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(152,152,216,0.15);color:#9898D8;}
+.vs-box{margin-top:16px;padding:14px;background:rgba(255,255,255,0.06);border-radius:14px;border:1px solid rgba(255,255,255,0.1);}
+.vs-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9898D8;margin-bottom:4px;text-align:center;}
+.vs-sub{font-size:7px;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:8px;}
+.hr{display:flex;flex-direction:column;gap:4px;}
+.hri{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);}
+.hrs{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#fff;flex-shrink:0;}
+.s-k{background:#FF7D59;}.s-p{background:#C06030;}.s-g{background:#6060B0;}.s-pl{background:#6A8848;}
+.hrn{font-size:8px;font-weight:700;color:#fff;}.hrd{font-size:6px;color:rgba(255,255,255,0.5);}.hrp{font-size:6px;color:#9898D8;font-weight:600;margin-top:1px;}
+@media(max-width:440px){.stab-grid{grid-template-columns:1fr;}.m8-ladder{flex-wrap:wrap;}}
+</style>
+
+<!-- CARD 01: OVERVIEW -->
+<div class="m8-card m8-overview">
+<div class="m8-num">01</div>
+<span class="m8-label">Product Overview</span>
+<div class="m8-brand">Medik8 (UK)</div>
+<div class="m8-pname">Crystal Retinal 24</div>
+<span class="m8-type">Retinaldehyde &middot; 1 Step from Tretinoin &middot; Strongest Level</span>
+<p class="m8-body"><strong>Medik8</strong> = UK clinical skincare brand, <strong>PIONEER retinaldehyde di skincare</strong>. "24" = <strong>LEVEL TERTINGGI</strong>. Formula <strong>46 bahan</strong> yang sangat ENGINEERED: <strong>Retinal #29</strong> (Superstar!) + Cyclodextrin encapsulation + TiO2 light shield + time-release. <strong>Dual Vitamin C</strong> (THDA + EAC). <strong>2 Superstars, 10+ Goodies</strong>.</p>
+<div class="m8-ladder">
+<div class="m8-lad">1</div><span class="m8-arrow">&#8250;</span>
+<div class="m8-lad">3</div><span class="m8-arrow">&#8250;</span>
+<div class="m8-lad">6</div><span class="m8-arrow">&#8250;</span>
+<div class="m8-lad">10</div><span class="m8-arrow">&#8250;</span>
+<div class="m8-lad">20</div><span class="m8-arrow">&#8250;</span>
+<div class="m8-lad active">24</div>
+</div>
+<div class="m8-ladlabel">Medik8 Crystal Retinal Ladder System &mdash; Level 24 = MAXIMUM</div>
+<div class="m8-stat">
+<div class="m8-sbox"><div class="m8-snum">1</div><div class="m8-slabel">Step from<br>Tretinoin</div></div>
+<div class="m8-sbox"><div class="m8-snum">2</div><div class="m8-slabel">Vit C<br>Forms</div></div>
+<div class="m8-sbox"><div class="m8-snum">10+</div><div class="m8-slabel">Goodies</div></div>
+<div class="m8-sbox"><div class="m8-snum">46</div><div class="m8-slabel">Total<br>Bahan</div></div>
+</div>
+<div class="m8-badges">
+<span class="m8-badge m8-ret">&#128081; Retinaldehyde</span>
+<span class="m8-badge m8-hl">Level 24 = Maximum!</span>
+<span class="m8-badge m8-hl">Cyclodextrin Encapsulation</span>
+<span class="m8-badge m8-hl">Dual Vit C</span>
+<span class="m8-badge">Olivem 1000</span>
+<span class="m8-badge m8-warn">Coumarin (Icky)</span>
+</div>
+</div>
+
+<!-- CARD 02: RETINAL + STABILIZATION -->
+<div class="m8-card m8-stab">
+<div class="m8-num">02</div>
+<span class="m8-label">Retinaldehyde + Stabilization</span>
+<div class="m8-title">The Hero + The System That Keeps It Alive</div>
+<div class="ret-hero">
+<div class="rh-row">
+<div class="rh-emoji">&#128081;</div>
+<div style="flex:1">
+<span class="rh-tag">Superstar</span>
+<div class="rh-name">Retinal / Retinaldehyde #29</div>
+<div class="rh-desc"><strong>"Prince William" &mdash; LANGSUNG di bawah King Tretinoin.</strong> Hanya butuh <strong>1 konversi</strong> untuk menjadi retinoic acid. Studi 125 pasien: <strong>0.05% Retinal = COMPARABLE dengan 0.05% Retinoic Acid untuk wrinkle reduction</strong> &mdash; TANPA harshness! Anti-aging + anti-acne (study 1,709 pasien). Level 24 = tertinggi di Medik8.</div>
+</div>
+</div>
+</div>
+<div class="stab-title">&#128300; Stabilization Engineering &mdash; Kenapa Medik8 "Crystal"</div>
+<div class="stab-grid">
+<div class="sg-item"><div class="sg-emoji">&#128142;</div><div class="sg-name">Cyclodextrin #13</div><div class="sg-desc"><strong>ENCAPSULATION!</strong> Sugar cage yang membungkus retinal. Release saat kontak kulit. Ini yang membuat "Crystal".</div></div>
+<div class="sg-item"><div class="sg-emoji">&#9728;</div><div class="sg-name">Titanium Dioxide #11</div><div class="sg-desc"><strong>LIGHT SHIELD.</strong> Physical barrier melindungi retinal dari photodegradation.</div></div>
+<div class="sg-item"><div class="sg-emoji">&#9200;</div><div class="sg-name">PPG-12/SMDI Copolymer #8</div><div class="sg-desc"><strong>TIME-RELEASE.</strong> Melepaskan retinal GRADUAL = less irritation.</div></div>
+<div class="sg-item"><div class="sg-emoji">&#127793;</div><div class="sg-name">Eclipta Prostrata #12</div><div class="sg-desc"><strong>Ayurvedic herb.</strong> Retinal stabilizer botanical. Traditional Indian medicine.</div></div>
+</div>
+<div class="vc-box">
+<div class="vc-title">&#127819; Dual Vitamin C &mdash; Retinal's Antioxidant Bodyguards</div>
+<div class="vc-desc"><strong>THDA #20</strong> (oil-soluble, penetrasi 3x, Goodie) + <strong>3-O-Ethyl Ascorbic Acid #38</strong> (water+oil soluble, 86.4% AA content, Goodie). Dual Vit C = <strong>antioxidant protection + brightening + collagen synergy</strong>.</div>
+</div>
+<div class="sp-row">
+<span class="sp">&#9733; Glycerin #3 &mdash; Superstar. Barrier</span>
+<span class="sp">&#10003; Olivem 1000 #5+#9 &mdash; Biomimetic. Goodie</span>
+<span class="sp">&#10003; Squalane #14 &mdash; Skin-identical. Goodie</span>
+<span class="sp">&#10003; Sodium HA #19 &mdash; Hydration. Goodie</span>
+<span class="sp">&#10003; Cloudberry Seed Oil #21 &mdash; Nordic antioxidant</span>
+<span class="sp">&#10003; Moringa Oil #30 &mdash; Stable, oleic-rich. Goodie</span>
+<span class="sp">&#9888; Coumarin #46 &mdash; EU-26 allergen. Icky</span>
+</div>
+</div>
+
+<!-- CARD 03: VERDICT -->
+<div class="m8-card m8-verdict">
+<div class="m8-num">03</div>
+<span class="m8-label">Verdict</span>
+<div class="m8-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-pro">&#10003;</div><div class="vt"><strong>Retinaldehyde = retinoid paling POTENT tanpa resep.</strong> 1 step dari tretinoin. Comparable wrinkle reduction. Level 24 = experienced users only.</div></div>
+<div class="vr"><div class="vi vi-pro">&#10003;</div><div class="vt"><strong>4-layer stabilization = WHY IT'S WORTH IT.</strong> Cyclodextrin encapsulation + TiO2 light shield + time-release + botanical stabilizer.</div></div>
+<div class="vr"><div class="vi vi-pro">&#10003;</div><div class="vt"><strong>Dual Vitamin C + Retinal = anti-aging POWERHOUSE.</strong> Dual collagen stimulation dari 2 jalur berbeda.</div></div>
+<div class="vr"><div class="vi vi-pro">&#10003;</div><div class="vt"><strong>Ladder system 1&#8594;24 = built-in tolerance training.</strong> Dermatologist-grade approach: titrate up.</div></div>
+<div class="vr"><div class="vi vi-note">!</div><div class="vt"><strong>Coumarin (Icky!) = EU-26 allergen.</strong> Dari Tonka Bean + Vanilla. Konsentrasi kecil (#46) tapi potential sensitizer.</div></div>
+<div class="vr"><div class="vi vi-note">!</div><div class="vt"><strong>46 bahan = formula COMPLEX.</strong> Tapi retinaldehyde BUTUH engineering ini. Complexity = necessity.</div></div>
+<div class="vr"><div class="vi vi-note">!</div><div class="vt"><strong>Harga PREMIUM (~Rp 1.2-1.4jt/30ml).</strong> Justified oleh 4-layer stabilization engineering.</div></div>
+</div>
+<div class="st">
+<span class="stg">Anti-Aging Serious</span><span class="stg">Retinoid Veterans</span><span class="stg">Wrinkles</span><span class="stg">Acne (Proven!)</span><span class="stg">Night Use Only</span><span class="stg">NOT for Beginners!</span>
+</div>
+<div class="vs-box">
+<div class="vs-title">&#128081; Retinoid Hierarchy</div>
+<div class="vs-sub">Products Analyzed &mdash; Ranked by Potency</div>
+<div class="hr">
+<div class="hri"><div class="hrs s-k">K</div><div style="flex:1"><div class="hrn">Tretinoin (Retinoic Acid) &mdash; THE KING</div><div class="hrd">Prescription only. 0 steps. Most potent + most irritating.</div></div></div>
+<div class="hri" style="border:1px solid rgba(192,96,48,0.3);background:rgba(192,96,48,0.06);"><div class="hrs s-p">1</div><div style="flex:1"><div class="hrn">Retinaldehyde &mdash; 1 Step &#128081;</div><div class="hrd">Most potent OTC. Comparable to tretinoin.</div><div class="hrp">&#9733; Medik8 Crystal Retinal 24 (this!)</div></div></div>
+<div class="hri"><div class="hrs s-g">2</div><div style="flex:1"><div class="hrn">Retinol &mdash; 2 Steps</div><div class="hrd">Most common OTC. Well-proven. Moderate potency.</div></div></div>
+<div class="hri"><div class="hrs s-pl">P</div><div style="flex:1"><div class="hrn">Bakuchiol &mdash; Plant Alternative</div><div class="hrd">NOT retinoid. Comparable results. No irritation. Pregnancy-safe.</div></div></div>
+</div>
+</div>
+</div>
+</div>
