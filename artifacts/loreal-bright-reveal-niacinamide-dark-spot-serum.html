@@ -1,0 +1,133 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.lr-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(26,26,26,0.08);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}
+.lr-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(26,26,26,0.15);}
+.lr-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}
+.lr-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+.lr-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.lr-body{font-size:13px;line-height:1.7;color:#6B6B80;}.lr-body strong{color:#2A2A3D;}
+
+.lr-overview{background:linear-gradient(155deg,#484848 0%,#1A1A1A 50%,#080808 100%);color:#fff;}
+.lr-overview .lr-label{background:#C8A050;color:#1A1A1A;}
+.lr-overview .lr-body{color:rgba(255,255,255,0.8);}.lr-overview .lr-body strong{color:#fff;}
+.lr-brand{font-size:11px;font-weight:600;color:#C8A050;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
+.lr-pname{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.2;}
+.lr-type{display:inline-block;background:#C8A050;color:#1A1A1A;font-size:10px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
+.lr-sib{display:inline-block;background:#1878B8;color:#fff;font-size:9px;font-weight:700;padding:4px 12px;border-radius:20px;margin-left:6px;margin-bottom:16px;}
+.lr-stat{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.lr-sbox{flex:1;min-width:65px;background:rgba(255,255,255,0.08);border-radius:12px;padding:14px 8px;text-align:center;border:1px solid rgba(200,160,80,0.15);}
+.lr-snum{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:#E8C878;}.lr-slabel{font-size:8px;color:rgba(255,255,255,0.5);margin-top:3px;}
+.lr-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:14px;}
+.lr-badge{font-size:8px;font-weight:600;padding:4px 8px;border-radius:16px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.lr-hl{background:#C8A050;color:#1A1A1A;font-weight:700;}.lr-warn{background:#FF7D59;color:#fff;}
+
+.lr-shared{background:#fff;border:2px solid #A868C0;}
+.lr-shared .lr-label{background:#A868C0;color:#fff;}
+.shared-box{margin-top:14px;padding:16px;background:linear-gradient(135deg,#F0E8F8,#FDF8F0);border-radius:14px;border:2px solid #A868C0;text-align:center;}
+.sb-title{font-family:'Libre Baskerville',serif;font-size:14px;font-weight:700;color:#A868C0;margin-bottom:6px;}
+.sb-desc{font-size:10px;color:#6B6B80;line-height:1.6;text-align:left;}.sb-desc strong{color:#2A2A3D;}
+.shared-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:14px;}
+.sg-item{border-radius:12px;padding:10px 6px;text-align:center;transition:transform 0.2s;}.sg-item:hover{transform:scale(1.02);}
+.sg-shared{background:#F0E8F8;border:1.5px solid rgba(168,104,192,0.15);}
+.sg-unique{background:#FCF0E8;border:2px solid #D06848;}
+.sg-tag{display:inline-block;font-size:5px;font-weight:700;padding:2px 4px;border-radius:3px;text-transform:uppercase;margin-bottom:2px;}
+.tg-shared{background:#A868C0;color:#fff;}.tg-unique{background:#D06848;color:#fff;}.tg-super{background:#D2D25A;color:#2A2A3D;}.tg-goodie{background:#C5D0F5;color:#5A72C0;}
+.sg-name{font-size:8px;font-weight:700;line-height:1.2;}.sg-desc{font-size:6px;color:#6B6B80;line-height:1.2;}
+.concern-note{margin-top:14px;padding:12px;background:#FFF5F0;border-left:3px solid #FF7D59;border-radius:0 12px 12px 0;font-size:10px;color:#6B6B80;line-height:1.6;}.concern-note strong{color:#2A2A3D;}
+
+.lr-verdict{background:#2A2A3D;color:#fff;}
+.lr-verdict .lr-label{background:#C8A050;color:#1A1A1A;}
+.lr-verdict .lr-title{color:#E8C878;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}
+.vr{display:flex;align-items:flex-start;gap:10px;}
+.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.vi-p{background:#D2D25A;color:#2A2A3D;}.vi-n{background:#FF7D59;color:#fff;}
+.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.st{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(232,200,120,0.15);color:#E8C878;}
+.vs-box{margin-top:16px;padding:16px;background:rgba(255,255,255,0.06);border-radius:14px;border:1px solid rgba(255,255,255,0.1);}
+.vs-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E8C878;margin-bottom:10px;text-align:center;}
+.vs-sub{font-size:8px;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:10px;}
+.vs-row{display:flex;gap:8px;}.vs-item{flex:1;border-radius:10px;padding:12px 8px;text-align:center;border:1px solid rgba(255,255,255,0.08);}
+.vs-lor{background:rgba(200,160,80,0.08);}.vs-lrp{background:rgba(24,120,184,0.08);}
+.vs-lbl{font-size:9px;font-weight:700;margin-bottom:4px;}.vs-l1{color:#E8C878;}.vs-l2{color:#90C8E8;}
+.vs-desc{font-size:7.5px;color:rgba(255,255,255,0.55);line-height:1.4;}
+.vs-price{margin-top:6px;font-size:8px;font-weight:700;padding:3px 8px;border-radius:6px;display:inline-block;}
+.pr-low{background:#D2D25A;color:#2A2A3D;}.pr-hi{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);}
+@media(max-width:440px){.lr-stat{gap:6px;}.shared-grid{grid-template-columns:1fr 1fr;}.vs-row{flex-direction:column;gap:6px;}}
+</style>
+
+<!-- CARD 01 -->
+<div class="lr-card lr-overview">
+<div class="lr-num">01</div>
+<span class="lr-label">Product Overview</span>
+<div class="lr-brand">L'Or&eacute;al Paris</div>
+<div class="lr-pname">Bright Reveal Niacinamide<br>Dark Spot Serum</div>
+<span class="lr-type">10% Niacinamide + MELASYL&trade; + Dual AHA/BHA</span>
+<span class="lr-sib">&#128257; Sibling: LRP Mela B3</span>
+<p class="lr-body"><strong>PLOT TWIST:</strong> L'Or&eacute;al Paris dan La Roche-Posay = <strong>SATU parent company</strong>. Serum ini mengandung <strong>MELASYL&trade; (#17)</strong> yang SAMA PERSIS dengan LRP Mela B3. Plus <strong>10% Niacinamide #3 + LHA #9 + Glycolic Acid #10</strong> (yang Mela B3 TIDAK punya!). Tapi ada <strong>Alcohol Denat #4 + Fragrance = 2 Icky</strong>. <strong>29 bahan. 3 Superstars, 5 Goodies</strong>.</p>
+<div class="lr-stat">
+<div class="lr-sbox"><div class="lr-snum">10%</div><div class="lr-slabel">Niacinamide</div></div>
+<div class="lr-sbox"><div class="lr-snum">3</div><div class="lr-slabel">Superstars</div></div>
+<div class="lr-sbox"><div class="lr-snum">5</div><div class="lr-slabel">Goodies</div></div>
+<div class="lr-sbox"><div class="lr-snum">2</div><div class="lr-slabel">Ickies</div></div>
+</div>
+<div class="lr-badges">
+<span class="lr-badge lr-hl">MELASYL&trade; (Same as Mela B3!)</span>
+<span class="lr-badge lr-hl">10% Niacinamide</span>
+<span class="lr-badge lr-hl">LHA + Glycolic Acid</span>
+<span class="lr-badge lr-warn">Alcohol Denat #4</span>
+<span class="lr-badge lr-warn">Fragrance</span>
+</div>
+</div>
+
+<!-- CARD 02 -->
+<div class="lr-card lr-shared">
+<div class="lr-num">02</div>
+<span class="lr-label">Shared L'Or&eacute;al DNA + Unique Extras</span>
+<div class="lr-title">Same R&amp;D Lab, Same Patented Molecules</div>
+<div class="shared-box">
+<div class="sb-title">&#128257; L'Or&eacute;al Group "Shared DNA" &mdash; 3 Molecules Identik</div>
+<div class="sb-desc"><strong>MELASYL&trade;</strong> = patented "melanin trapper" SAMA di LRP Mela B3 dan di sini. <strong>LHA</strong> = L'Or&eacute;al proprietary BHA. <strong>10% Niacinamide</strong> = same concentration. Tiga molecule = <strong>shared R&amp;D asset</strong> didistribusikan ke brand berbeda untuk market segment berbeda.</div>
+</div>
+<div class="shared-grid">
+<div class="sg-item sg-shared"><span class="sg-tag tg-super">Superstar</span><div class="sg-name">Niacinamide #3</div><div class="sg-desc">10% confirmed. Shared.</div></div>
+<div class="sg-item sg-shared"><span class="sg-tag tg-shared">MELASYL&trade;</span><div class="sg-name">2-Mercaptonicotinoyl Glycine #17</div><div class="sg-desc">Melanin trapper. Shared.</div></div>
+<div class="sg-item sg-shared"><span class="sg-tag tg-goodie">LHA</span><div class="sg-name">Capryloyl Salicylic Acid #9</div><div class="sg-desc">Gentle BHA. Shared.</div></div>
+<div class="sg-item sg-unique"><span class="sg-tag tg-unique">UNIQUE!</span><div class="sg-name">Glycolic Acid #10</div><div class="sg-desc">AHA Superstar! TIDAK ada di Mela B3!</div></div>
+<div class="sg-item sg-shared"><span class="sg-tag tg-goodie">Goodie</span><div class="sg-name">Caffeine #8</div><div class="sg-desc">Antioxidant. Dark circles.</div></div>
+<div class="sg-item sg-shared"><span class="sg-tag tg-super">Superstar</span><div class="sg-name">Glycerin #6</div><div class="sg-desc">Natural moisturizer.</div></div>
+<div class="sg-item sg-shared"><span class="sg-tag tg-goodie">Goodie</span><div class="sg-name">Sodium HA #14</div><div class="sg-desc">Hydration.</div></div>
+<div class="sg-item sg-shared"><span class="sg-tag tg-goodie">Goodie</span><div class="sg-name">Biosaccharide Gum-1 #20</div><div class="sg-desc">SMART sugar. Soothing.</div></div>
+<div class="sg-item sg-shared"><span class="sg-tag tg-goodie">Goodie</span><div class="sg-name">Tocopherol #22</div><div class="sg-desc">Vit E. Antioxidant.</div></div>
+</div>
+<div class="concern-note"><strong>2 Icky yang Mela B3 TIDAK punya:</strong> (1) <strong>Alcohol Denat #4</strong> = posisi tinggi, drying, bisa merusak barrier. (2) <strong>Fragrance #29</strong> = #1 cause contact allergy. Plus <strong>Menthoxypropanediol #12</strong> = cooling agent (irritating untuk sensitif). Ini semua "mass market compromises" yang La Roche-Posay HINDARI.</div>
+</div>
+
+<!-- CARD 03: VERDICT -->
+<div class="lr-card lr-verdict">
+<div class="lr-num">03</div>
+<span class="lr-label">Verdict</span>
+<div class="lr-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>MELASYL&trade; + 10% Niacinamide + LHA = SAMA PERSIS dengan LRP Mela B3.</strong> Konsumen bayar L'Or&eacute;al price (~Rp 250-350rb) untuk teknologi yang sama (~Rp 500-700rb). VALUE PROPOSITION menarik.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Glycolic Acid #10 = BONUS yang Mela B3 tidak punya!</strong> Dual exfoliant (AHA+BHA) = turnover lebih cepat. Lebih aggressive brightening.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Caffeine #8 = bonus antioxidant + microcirculation.</strong> Berguna untuk dark circles.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Alcohol Denat #4 = PERBEDAAN TERBESAR.</strong> Posisi tinggi (5-15%). Mela B3 alcohol-free. Bisa kontraproduktif untuk kulit bermasalah.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Fragrance #29 (Icky).</strong> Mela B3 fragrance-free. #1 cause contact allergy pada serum daily use.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>MELASYL di posisi #17 (vs #10 di Mela B3) = konsentrasi lebih rendah.</strong> Mass market version mungkin less dari patented molecule.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Formula LEBIH AGGRESSIVE.</strong> AHA + BHA + Alcohol + Cooling = untuk normal/oily OK, sensitif/dry = pilih Mela B3.</div></div>
+</div>
+<div class="st">
+<span class="stg">Dark Spots</span><span class="stg">Normal-Oily Skin</span><span class="stg">Budget-Friendly</span><span class="stg">NOT for Sensitive</span><span class="stg">NOT for Dry Skin</span><span class="stg">Drugstore</span>
+</div>
+<div class="vs-box">
+<div class="vs-title">&#128257; Same Lab, Different Price Tag</div>
+<div class="vs-sub">L'Or&eacute;al Paris vs La Roche-Posay &mdash; Both L'Or&eacute;al Group R&amp;D</div>
+<div class="vs-row">
+<div class="vs-item vs-lor"><div class="vs-lbl vs-l1">L'Or&eacute;al Bright Reveal</div><div class="vs-desc">29 bahan. <strong>MELASYL #17 + 10% Niacinamide + LHA + Glycolic Acid!</strong> 3 Superstars, 5 Goodies. <strong>2 Icky.</strong> More aggressive.</div><span class="vs-price pr-low">~Rp 250-350rb</span></div>
+<div class="vs-item vs-lrp"><div class="vs-lbl vs-l2">LRP Mela B3</div><div class="vs-desc">30 bahan. <strong>MELASYL #10 + 10% Niacinamide + LHA.</strong> 2 Superstars, 5 Goodies. <strong>0 Icky!</strong> Gentler formula.</div><span class="vs-price pr-hi">~Rp 500-700rb</span></div>
+</div>
+</div>
+</div>
+</div>
