@@ -106,7 +106,7 @@ function categoryColor(cat) {
   return map[cat] || "#6B7280";
 }
 
-const SKIN_PARAMS_DB_ID = "48877954-537a-4dc2-a5ae-c8a107a9fe1f";
+const SKIN_PARAMS_DB_ID = "2e3a32e11163472f9e21f73aa8dfe898";
 
 async function fetchAllPages(dbId) {
   const pages = [];
