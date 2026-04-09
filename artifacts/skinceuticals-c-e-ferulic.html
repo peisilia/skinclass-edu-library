@@ -1,0 +1,121 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.sc-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(208,112,32,0.1);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}.sc-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(208,112,32,0.18);}
+.sc-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}.sc-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}.sc-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}.sc-body{font-size:12px;line-height:1.7;color:#6B6B80;}.sc-body strong{color:#2A2A3D;}
+
+.sc-overview{background:linear-gradient(155deg,#D07020 0%,#804010 40%,#1A1A2E 80%,#080810 100%);color:#fff;}
+.sc-overview .sc-label{background:#C8A040;color:#1A1A2E;}.sc-overview .sc-body{color:rgba(255,255,255,0.85);}.sc-overview .sc-body strong{color:#fff;}
+.sc-brand{font-size:10px;font-weight:600;color:#F0D070;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
+.sc-pname{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.1;}
+.sc-type{display:inline-block;background:#FFF8EB;color:#1A1A2E;font-size:9px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
+.trio-hero{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}.th{flex:1;min-width:100px;padding:16px 6px;border-radius:14px;background:rgba(255,255,255,0.06);text-align:center;border:1px dashed rgba(255,255,255,0.15);}
+.th-pct{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;color:#F0D070;line-height:0.9;}.th-name{font-size:8px;color:rgba(255,255,255,0.5);margin-top:4px;line-height:1.1;}
+.th-tag{display:inline-block;font-size:5px;font-weight:700;padding:2px 5px;border-radius:4px;margin-top:3px;}.tg-s{background:#D2D25A;color:#2A2A3D;}.tg-g{background:#C5D0F5;color:#5A72C0;}
+.sc-stat{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap;}.sc-sbox{flex:1;min-width:60px;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 5px;text-align:center;}.sc-snum{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#F0D070;}.sc-slabel{font-size:7px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.sc-badges{display:flex;gap:3px;flex-wrap:wrap;margin-top:12px;}.sc-badge{font-size:7px;font-weight:600;padding:3px 6px;border-radius:14px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}.sc-hl{background:#D2D25A;color:#2A2A3D;font-weight:700;}
+
+.sc-deep{background:#fff;border:2px solid #D07020;}.sc-deep .sc-label{background:#D07020;color:#fff;}
+.origin-box{margin-top:12px;padding:14px;border-radius:14px;background:#F0E8FF;border:2px solid #7B68EE;}.ob-title{font-size:11px;font-weight:700;color:#5A48CE;margin-bottom:4px;}.ob-desc{font-size:9px;color:#6B6B80;line-height:1.6;}.ob-desc strong{color:#2A2A3D;}
+.synergy-box{margin-top:12px;padding:14px;border-radius:14px;background:#FFF5EC;border:2.5px solid #D07020;}.syb-title{font-size:11px;font-weight:700;color:#D07020;margin-bottom:6px;}
+.sg-grid{display:flex;flex-direction:column;gap:5px;}.sg-item{display:flex;gap:8px;align-items:flex-start;padding:7px;background:#fff;border-radius:8px;}.sg-pos{font-size:8px;font-weight:800;color:#D07020;min-width:20px;}.sg-name{font-size:8px;font-weight:700;line-height:1.1;}.sg-desc{font-size:6.5px;color:#6B6B80;line-height:1.4;}.sg-desc strong{color:#2A2A3D;}
+.lean-box{margin-top:12px;padding:10px;border-radius:10px;background:#E4EAFC;border:1.5px solid #5A72C0;}.lean-title{font-size:9px;font-weight:700;color:#5A72C0;margin-bottom:3px;}.lean-desc{font-size:7px;color:#6B6B80;line-height:1.5;}.lean-desc strong{color:#2A2A3D;}
+
+.sc-verdict{background:#2A2A3D;color:#fff;}.sc-verdict .sc-label{background:#C8A040;color:#1A1A2E;}.sc-verdict .sc-title{color:#F0D070;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}.vr{display:flex;align-items:flex-start;gap:10px;}.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}.vi-p{background:#D2D25A;color:#2A2A3D;}.vi-n{background:#FF7D59;color:#fff;}.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.stt{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(240,208,112,0.15);color:#F0D070;}
+.vs-box{margin-top:16px;padding:14px;background:rgba(200,160,64,0.08);border-radius:14px;border:1px solid rgba(240,208,112,0.2);}.vs-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F0D070;margin-bottom:6px;text-align:center;}
+.vs-row{display:flex;gap:6px;}.vs-item{flex:1;background:rgba(255,255,255,0.05);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid rgba(255,255,255,0.06);}.vs-lbl{font-size:7px;font-weight:700;margin-bottom:2px;}.vl-sc{color:#F0D070;}.vl-nb{color:#D090D0;}.vs-desc{font-size:6px;color:rgba(255,255,255,0.45);line-height:1.3;}
+.sc-duo{margin-top:10px;padding:10px;background:rgba(255,255,255,0.04);border-radius:10px;border:1px solid rgba(255,255,255,0.08);text-align:center;}.sc-duo-t{font-size:8px;font-weight:700;color:#F0D070;margin-bottom:4px;}.sc-duo-d{font-size:6px;color:rgba(255,255,255,0.4);line-height:1.3;}
+@media(max-width:440px){.trio-hero{flex-direction:column;}.vs-row{flex-direction:column;gap:6px;}}
+</style>
+
+<!-- CARD 01 -->
+<div class="sc-card sc-overview">
+<div class="sc-num">01</div>
+<span class="sc-label">Product Overview</span>
+<div class="sc-brand">SkinCeuticals &middot; L'Or&eacute;al</div>
+<div class="sc-pname">C E Ferulic</div>
+<span class="sc-type">Antioxidant Serum &middot; 15% Vit C &middot; 1% Vit E &middot; 0.5% Ferulic &middot; LEGENDARY</span>
+<div class="trio-hero">
+<div class="th"><div class="th-pct">15%</div><div class="th-name">L-Ascorbic Acid<br>(Pure Vit C)</div><span class="th-tag tg-s">Superstar</span></div>
+<div class="th"><div class="th-pct">1%</div><div class="th-name">Alpha Tocopherol<br>(Pure Vit E)</div><span class="th-tag tg-g">Goodie</span></div>
+<div class="th"><div class="th-pct">0.5%</div><div class="th-name">Ferulic Acid<br>(Stabilizer+Booster)</div><span class="th-tag tg-g">Goodie</span></div>
+</div>
+<p class="sc-body" style="margin-top:14px;"><strong>THE serum that DEFINED Vit C + E + Ferulic synergy.</strong> Dari penelitian <strong>Dr. Sheldon Pinnell, Duke University</strong>. <strong>12 BAHAN SAJA</strong> = ultra-lean. ALL concentrations CONFIRMED. <strong>0 ICKY! ~Rp 2.5jt+. 2 Superstars, 4 Goodies.</strong></p>
+<div class="sc-stat">
+<div class="sc-sbox"><div class="sc-snum">12</div><div class="sc-slabel">Total Bahan<br>(Ultra-Lean!)</div></div>
+<div class="sc-sbox"><div class="sc-snum">2</div><div class="sc-slabel">Super-<br>stars</div></div>
+<div class="sc-sbox"><div class="sc-snum">4</div><div class="sc-slabel">Goodies</div></div>
+<div class="sc-sbox"><div class="sc-snum">0</div><div class="sc-slabel">Ickies!</div></div>
+</div>
+<div class="sc-badges">
+<span class="sc-badge sc-hl">&#127942; 15% Pure Vit C!</span>
+<span class="sc-badge sc-hl">1% Vit E!</span>
+<span class="sc-badge sc-hl">0.5% Ferulic!</span>
+<span class="sc-badge sc-hl">12 Bahan Only!</span>
+<span class="sc-badge">Dr. Pinnell Research</span>
+<span class="sc-badge">&#10003; 0 Icky!</span>
+</div>
+</div>
+
+<!-- CARD 02 -->
+<div class="sc-card sc-deep">
+<div class="sc-num">02</div>
+<span class="sc-label">The C + E + Ferulic Synergy</span>
+<div class="sc-title">12 Ingredients. Every One Has a Purpose.</div>
+<div class="origin-box">
+<div class="ob-title">&#127891; Born from Published Academic Research</div>
+<div class="ob-desc"><strong>Dr. Sheldon Pinnell, Duke University</strong> &mdash; <strong>15% C + 1% E = 2x photoprotection</strong> vs C alone. <strong>+ 0.5% Ferulic = 4x total!</strong> + stabilizes Vit C. Formula dari <strong>university lab, peer-reviewed journal</strong>. CE Ferulic = the product that STARTED the Vit C serum revolution.</div>
+</div>
+<div class="synergy-box">
+<div class="syb-title">&#128300; All 12 Ingredients &mdash; Zero Waste</div>
+<div class="sg-grid">
+<div class="sg-item"><div class="sg-pos">#1</div><div><div class="sg-name">Water</div><div class="sg-desc">Solvent. Vit C needs water (pH &lt;3.5).</div></div></div>
+<div class="sg-item"><div class="sg-pos">#2</div><div><div class="sg-name">Ethoxydiglycol</div><div class="sg-desc"><strong>Vit C SOLUBILIZER.</strong> 15% AA tidak larut tanpa ini.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#3</div><div><div class="sg-name">&#9733; L-Ascorbic Acid 15% &mdash; SUPERSTAR</div><div class="sg-desc"><strong>THE STAR.</strong> Collagen + brightening + UV booster.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#4</div><div><div class="sg-name">Propylene Glycol</div><div class="sg-desc">Humectant + penetration enhancer.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#5</div><div><div class="sg-name">&#9733; Glycerin &mdash; SUPERSTAR</div><div class="sg-desc">Anti-irritation buffer for 15% Vit C at low pH.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#6</div><div><div class="sg-name">Laureth 23</div><div class="sg-desc">Emulsifier &mdash; bridges water Vit C + oil Vit E.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#7</div><div><div class="sg-name">&#10003; Alpha Tocopherol 1% &mdash; GOODIE</div><div class="sg-desc"><strong>Pure Vit E.</strong> DOUBLES photoprotection with Vit C.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#8</div><div><div class="sg-name">Phenoxyethanol</div><div class="sg-desc">Preservative. Safe, gentle.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#9</div><div><div class="sg-name">Triethanolamine</div><div class="sg-desc">pH adjuster. Critical pH &lt;3.5.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#10</div><div><div class="sg-name">&#10003; Ferulic Acid 0.5% &mdash; GOODIE</div><div class="sg-desc"><strong>GAME CHANGER.</strong> DOUBLES C+E again (4x total!). STABILIZES Vit C.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#11</div><div><div class="sg-name">&#10003; Panthenol &mdash; GOODIE</div><div class="sg-desc">Pro-B5. Balances irritation from potent acid.</div></div></div>
+<div class="sg-item"><div class="sg-pos">#12</div><div><div class="sg-name">&#10003; Sodium Hyaluronate &mdash; GOODIE</div><div class="sg-desc">HA salt. Final touch of moisture.</div></div></div>
+</div>
+</div>
+<div class="lean-box">
+<div class="lean-title">&#128161; Philosophy of Subtraction vs Addition</div>
+<div class="lean-desc"><strong>numbuzin No.5 = 48 bahan, 7 pathways.</strong> SkinCeuticals = 12 bahan, 1 proven synergy. HANYA research-backed C+E+Ferulic. <strong>"Do ONE thing perfectly."</strong></div>
+</div>
+</div>
+
+<!-- CARD 03: VERDICT -->
+<div class="sc-card sc-verdict">
+<div class="sc-num">03</div>
+<span class="sc-label">Verdict</span>
+<div class="sc-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>PUBLISHED ACADEMIC RESEARCH = peer-reviewed science.</strong> Dr. Pinnell: 15% C + 1% E = 2x. + 0.5% Ferulic = 4x. EXACT formula dari university lab.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>12 BAHAN = setiap ingredient JUSTIFIED, zero filler.</strong> 12/12 with PURPOSE. Tidak ada botanical filler.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>0 ICKY = STARK CONTRAST dengan Triple Lipid (5 Icky!).</strong> Same brand, opposite approach. CE Ferulic = science leads.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>~Rp 2.5jt+ untuk 12 bahan.</strong> Banyak "dupe" (Timeless, Geek &amp; Gorgeous) di 1/10 harga. Kamu bayar research IP + brand prestige.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Pure L-Ascorbic Acid = EXTREMELY UNSTABLE.</strong> Clear &rarr; yellow &rarr; brown = OXIDIZED = BUANG. Shelf life 3-6 bulan MAX.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>15% Vit C di pH &lt;3.5 = POTENT, bisa TINGLING.</strong> Kulit sensitif/rosacea = mungkin terlalu strong.</div></div>
+</div>
+<div class="stt">
+<span class="stg">Anti-Aging</span><span class="stg">Photoprotection</span><span class="stg">Brightening</span><span class="stg">Normal-Oily Skin</span><span class="stg">Morning (Under SPF!)</span><span class="stg">NOT for Sensitive!</span>
+</div>
+<div class="vs-box">
+<div class="vs-title">&#9878; Focused vs Everything</div>
+<div class="vs-row">
+<div class="vs-item"><div class="vs-lbl vl-sc">SkinCeuticals C E Ferulic</div><div class="vs-desc"><strong>12 bahan. 1 synergy. ALL confirmed %.</strong> Published research. 0 Icky. ~Rp 2.5jt+. <strong>"Do ONE thing perfectly."</strong></div></div>
+<div class="vs-item"><div class="vs-lbl vl-nb">numbuzin No.5</div><div class="vs-desc"><strong>48 bahan. 7 brightening pathways.</strong> Bifida. Glutathione. 0 Icky. ~Rp 200rb. <strong>"Everything at the problem."</strong></div></div>
+</div>
+</div>
+<div class="sc-duo">
+<div class="sc-duo-t">&#128300; SkinCeuticals DUO: 2 Faces</div>
+<div class="sc-duo-d"><strong>C E Ferulic</strong> = 12 bahan. 0 Icky. "Science-led."<br><strong>Triple Lipid</strong> = 36 bahan. 5 Icky. "Science + questionable fragrance."<br><strong>BACA INCI LIST, bukan brand name.</strong></div>
+</div>
+</div>
+</div>
