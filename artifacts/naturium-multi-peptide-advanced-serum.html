@@ -1,0 +1,159 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.np-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(72,120,92,0.12);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}
+.np-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(72,120,92,0.2);}
+.np-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}
+.np-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+.np-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.np-body{font-size:13px;line-height:1.7;color:#6B6B80;}.np-body strong{color:#2A2A3D;}
+
+.np-overview{background:linear-gradient(155deg,#78A888 0%,#48785C 35%,#184028 70%,#0C2818 100%);color:#fff;}
+.np-overview .np-label{background:rgba(255,255,255,0.2);color:#fff;}
+.np-overview .np-body{color:rgba(255,255,255,0.85);}.np-overview .np-body strong{color:#fff;}
+.np-brand{font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.np-pname{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.2;}
+.np-type{display:inline-block;background:#FFF8EB;color:#184028;font-size:10px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
+.np-stat{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px;}
+.np-sbox{flex:1;min-width:55px;background:rgba(255,255,255,0.12);border-radius:12px;padding:12px 6px;text-align:center;}
+.np-snum{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#A8D0B8;}.np-slabel{font-size:7.5px;color:rgba(255,255,255,0.6);margin-top:3px;}
+.np-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:14px;}
+.np-badge{font-size:8px;font-weight:600;padding:4px 8px;border-radius:16px;background:rgba(255,255,255,0.15);color:#FFF8EB;}
+.np-hl{background:#D2D25A;color:#2A2A3D;font-weight:700;}
+
+.np-pep{background:#fff;border:2px solid #8058A0;}
+.np-pep .np-label{background:#604080;color:#fff;}
+.pep-list{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
+.pep-item{border-radius:16px;padding:16px;transition:transform 0.2s;}.pep-item:hover{transform:scale(1.01);}
+.p-argi{background:#F0E8F8;border:1.5px solid rgba(128,88,160,0.25);}
+.p-cop{background:#FDF5E8;border:2px solid #C08848;box-shadow:0 4px 16px rgba(192,136,72,0.12);}
+.p-hyal{background:#E4EAFC;border:1.5px solid rgba(156,174,240,0.25);}
+.pep-hdr{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.pep-ico{font-size:22px;}.pep-nm{font-size:12px;font-weight:700;line-height:1.2;}
+.pep-aka{font-size:8px;font-weight:600;color:#604080;margin-top:1px;}
+.pep-desc{font-size:9.5px;color:#6B6B80;line-height:1.6;}.pep-desc strong{color:#2A2A3D;}
+.pep-tag{display:inline-block;font-size:7px;font-weight:700;padding:2px 7px;border-radius:6px;margin-top:4px;text-transform:uppercase;}
+.ptg{background:#C5D0F5;color:#5A72C0;}.ptd{background:#604080;color:#fff;}.ptc{background:#C08848;color:#fff;}
+.drone-box{margin-top:10px;padding:12px;background:rgba(192,136,72,0.08);border-radius:12px;border:1px dashed #C08848;}
+.drone-title{font-size:9px;font-weight:700;color:#C08848;margin-bottom:4px;}
+.drone-desc{font-size:8px;color:#6B6B80;line-height:1.5;}.drone-desc strong{color:#2A2A3D;}
+.pep-note{margin-top:14px;padding:12px 14px;background:#E8F4EC;border-left:3px solid #48785C;border-radius:0 12px 12px 0;font-size:10px;color:#6B6B80;line-height:1.6;}.pep-note strong{color:#2A2A3D;}
+
+.np-support{background:#E8F4EC;border:2px solid #48785C;}
+.np-support .np-label{background:#305840;color:#fff;}
+.sup-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:14px;}
+.sup-item{background:#fff;border-radius:10px;padding:10px 6px;text-align:center;border:1px solid rgba(72,120,92,0.08);transition:transform 0.2s;}.sup-item:hover{transform:scale(1.03);}
+.sup-star{display:inline-block;font-size:6px;font-weight:700;padding:2px 5px;border-radius:4px;margin-bottom:2px;text-transform:uppercase;}
+.ss-g{background:#C5D0F5;color:#5A72C0;}.ss-s{background:#D2D25A;color:#2A2A3D;}
+.sup-nm{font-size:7.5px;font-weight:700;line-height:1.2;margin-bottom:1px;}.sup-desc{font-size:6.5px;color:#6B6B80;line-height:1.3;}
+.count-box{margin-top:14px;padding:12px;background:#fff;border-radius:12px;text-align:center;}
+.count-title{font-size:10px;font-weight:700;color:#184028;margin-bottom:4px;}
+.count-desc{font-size:9px;color:#6B6B80;line-height:1.5;}.count-desc strong{color:#2A2A3D;}
+
+.np-verdict{background:#2A2A3D;color:#fff;}
+.np-verdict .np-label{background:#48785C;color:#fff;}
+.np-verdict .np-title{color:#A8D0B8;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}
+.vr{display:flex;align-items:flex-start;gap:10px;}
+.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.vi-p{background:#D2D25A;color:#2A2A3D;}.vi-n{background:#FF7D59;color:#fff;}
+.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.st{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(168,208,184,0.2);color:#A8D0B8;}
+@media(max-width:440px){.np-stat{gap:5px;}.sup-grid{grid-template-columns:1fr 1fr;}}
+</style>
+
+<!-- CARD 01 -->
+<div class="np-card np-overview">
+<div class="np-num">01</div>
+<span class="np-label">Product Overview</span>
+<div class="np-brand">Naturium (E.l.f. Beauty)</div>
+<div class="np-pname">Multi-Peptide<br>Advanced Serum</div>
+<span class="np-type">Anti-Aging Peptide Serum &middot; Cosmetic Drone Tech &middot; Clean Formula</span>
+<p class="np-body">Serum peptide dari brand <strong>Susan Yara</strong>. <strong>3 advanced peptides</strong> termasuk <strong>"Cosmetic Drone"</strong> &mdash; encapsulated copper peptide yang dinavigasi ke sel fibroblast. Plus <strong>Argireline Amplified</strong>, <strong>X50 Hyalufiller</strong>, Ferulic Acid, Squalane. <strong>1 Superstar, 14 Goodies, ZERO Icky</strong>. <strong>47 bahan</strong>.</p>
+<div class="np-stat">
+<div class="np-sbox"><div class="np-snum">3</div><div class="np-slabel">Advanced<br>Peptides</div></div>
+<div class="np-sbox"><div class="np-snum">14</div><div class="np-slabel">Goodies</div></div>
+<div class="np-sbox"><div class="np-snum">0</div><div class="np-slabel">Ickies</div></div>
+<div class="np-sbox"><div class="np-snum">47</div><div class="np-slabel">Total<br>Bahan</div></div>
+</div>
+<div class="np-badges">
+<span class="np-badge np-hl">&#128300; Cosmetic Drone</span>
+<span class="np-badge np-hl">&#129522; 3 Peptides</span>
+<span class="np-badge np-hl">14 Goodies!</span>
+<span class="np-badge">&#10003; Fragrance-Free</span>
+<span class="np-badge">&#10003; 0 Icky</span>
+</div>
+</div>
+
+<!-- CARD 02: PEPTIDES -->
+<div class="np-card np-pep">
+<div class="np-num">02</div>
+<span class="np-label">3 Advanced Peptides</span>
+<div class="np-title">Argireline + Copper Drone + Hyalufiller</div>
+<p class="np-body">Tiga peptide dengan <strong>mekanisme berbeda</strong> dan <strong>teknologi delivery sangat advanced</strong>.</p>
+<div class="pep-list">
+<div class="pep-item p-argi">
+<div class="pep-hdr"><div class="pep-ico">&#128137;</div><div><div class="pep-nm">Acetyl Hexapeptide-8 (#17)</div><div class="pep-aka">aka Argireline &mdash; "Botox in a Jar"</div></div></div>
+<div class="pep-desc">Targets wrinkles dari <strong>facial muscle movement</strong>. Studi: <strong>5% Argireline 28 hari = -16.26% wrinkle depth</strong>.</div>
+<span class="pep-tag ptg">Goodie</span>
+</div>
+<div class="pep-item p-cop">
+<div class="pep-hdr"><div class="pep-ico">&#128640;</div><div><div class="pep-nm">Copper Palmitoyl Heptapeptide-14 (#18)</div><div class="pep-aka">aka X50 Antiaging &mdash; THE "Cosmetic Drone"</div></div></div>
+<div class="pep-desc"><strong>Teknologi PALING advanced yang pernah kita bedah.</strong> Copper peptide di-encapsulate dengan <strong>targeting peptide yang MENGARAHKAN ke sel fibroblast</strong>. Studi: <strong>-33% wrinkle, +19% elasticity dalam 28 hari</strong>.</div>
+<div class="drone-box">
+<div class="drone-title">&#128640; How "Cosmetic Drone" Works:</div>
+<div class="drone-desc"><strong>1.</strong> Copper peptide dibungkus dalam kapsul polymer.<br><strong>2.</strong> Targeting peptide (Heptapeptide-15) = "GPS" ke reseptor fibroblast.<br><strong>3.</strong> Kapsul release copper peptide &rarr; <strong>stimulasi gen kolagen + elastin.</strong><br><strong>4.</strong> Efektif di konsentrasi <strong>0.001%</strong>!</div>
+</div>
+<span class="pep-tag ptg">Goodie</span><span class="pep-tag ptd">Cosmetic Drone</span><span class="pep-tag ptc">Encapsulated</span>
+</div>
+<div class="pep-item p-hyal">
+<div class="pep-hdr"><div class="pep-ico">&#128167;</div><div><div class="pep-nm">Palmitoyl sh-Hexapeptide-13 (#19)</div><div class="pep-aka">aka X50 Hyalufiller</div></div></div>
+<div class="pep-desc"><strong>Stimulasi produksi HA natural oleh kulit</strong> &mdash; bukan HA dari luar, tapi kulit memproduksi HA sendiri. Long-term approach.</div>
+<span class="pep-tag ptg">Goodie</span>
+</div>
+</div>
+<div class="pep-note"><strong>Triple peptide strategy:</strong> Argireline (quick fix muscle wrinkles) + Copper Drone (long-term collagen di fibroblast) + Hyalufiller (endogenous HA). <strong>3 mekanisme + 3 timeline berbeda</strong>.</div>
+</div>
+
+<!-- CARD 03: SUPPORT -->
+<div class="np-card np-support">
+<div class="np-num">03</div>
+<span class="np-label">Support System &mdash; 14 Goodies</span>
+<div class="np-title">Emollients + Antioxidants + Instant Tightening</div>
+<div class="sup-grid">
+<div class="sup-item"><span class="sup-star ss-g">Goodie</span><div class="sup-nm">Squalane #6</div><div class="sup-desc">Skin-identical. Non-greasy.</div></div>
+<div class="sup-item"><span class="sup-star ss-g">Goodie</span><div class="sup-nm">Shea Butter #9</div><div class="sup-desc">Rich emollient. Antioxidant.</div></div>
+<div class="sup-item"><span class="sup-star ss-g">Goodie</span><div class="sup-nm">Sunflower #11</div><div class="sup-desc">Anti-inflammatory. Polyphenols.</div></div>
+<div class="sup-item"><span class="sup-star ss-g">Goodie</span><div class="sup-nm">Ferulic Acid #15</div><div class="sup-desc">Antioxidant. UV protect.</div></div>
+<div class="sup-item"><span class="sup-star ss-g">Goodie</span><div class="sup-nm">Arginine #16</div><div class="sup-desc">NMF amino acid. Collagen block.</div></div>
+<div class="sup-item"><span class="sup-star ss-g">Goodie</span><div class="sup-nm">Collagen #20</div><div class="sup-desc">Hydrolyzed. Water-binding.</div></div>
+<div class="sup-item"><span class="sup-star ss-g">Goodie</span><div class="sup-nm">Rosemary #21</div><div class="sup-desc">Rosmarinic acid. Soothing.</div></div>
+<div class="sup-item"><span class="sup-star ss-s">&#9733; Superstar</span><div class="sup-nm">Glycerin #23</div><div class="sup-desc">Barrier. 50+ years proven.</div></div>
+<div class="sup-item"><span class="sup-star ss-g">Goodie</span><div class="sup-nm">Tocopherol #24</div><div class="sup-desc">Vitamin E. Antioxidant.</div></div>
+</div>
+<div class="count-box">
+<div class="count-title">&#10024; Pullulan #25 &mdash; Instant Tightening</div>
+<div class="count-desc"><strong>Polysaccharide thin elastic film</strong> = instant tightening + smoothing. Short-term glow (Pullulan) + long-term repair (3 peptides).</div>
+</div>
+</div>
+
+<!-- CARD 04: VERDICT -->
+<div class="np-card np-verdict">
+<div class="np-num">04</div>
+<span class="np-label">Verdict</span>
+<div class="np-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>"Cosmetic Drone" X50 &mdash; teknologi peptide delivery PALING advanced.</strong> Encapsulated copper peptide dengan GPS targeting ke fibroblast. -33% wrinkle, +19% elasticity.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Triple peptide strategy &mdash; 3 mekanisme, 3 timeline.</strong> Argireline (instant) + Copper Drone (long-term collagen) + Hyalufiller (endogenous HA).</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>14 Goodies + 1 Superstar + ZERO Icky.</strong> Fragrance-free. Clean formula backed by E.l.f. Beauty.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Pullulan instant tightening + peptide long-term = smart dual timeline.</strong> Hasil segera + repair berminggu-minggu.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>3 peptides di posisi #17-19 &mdash; konsentrasi kecil.</strong> Tapi peptides efektif di konsentrasi kecil. Copper Drone works at 0.001%.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Glycerin di posisi #23/47 &mdash; rendah. Tidak ada HA.</strong> Fokus anti-aging, bukan moisture.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>47 bahan = formula complex.</strong> Risiko irritation untuk kulit sensitif.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Argireline = quick fix, bukan structural repair.</strong> Efek berhenti saat stop pakai.</div></div>
+</div>
+<div class="st">
+<span class="stg">Anti-Aging</span><span class="stg">Fine Lines</span><span class="stg">Wrinkles</span><span class="stg">Collagen Support</span><span class="stg">All Skin Types</span><span class="stg">AM &amp; PM</span><span class="stg">Peptide Lovers</span><span class="stg">Clean Formula</span>
+</div>
+</div>
+</div>
