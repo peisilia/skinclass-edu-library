@@ -1,0 +1,72 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.ar-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(200,160,80,0.1);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}.ar-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,160,80,0.18);}
+.ar-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}.ar-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}.ar-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}.ar-body{font-size:12px;line-height:1.7;color:#6B6B80;}.ar-body strong{color:#2A2A3D;}
+.ar-overview{background:linear-gradient(155deg,#E0C070 0%,#C8A050 40%,#886020 70%,#302010 100%);color:#fff;}.ar-overview .ar-label{background:rgba(255,255,255,0.2);color:#fff;}.ar-overview .ar-body{color:rgba(255,255,255,0.85);}.ar-overview .ar-body strong{color:#fff;}
+.ar-brand{font-size:11px;font-weight:700;color:#F0D890;letter-spacing:3px;text-transform:lowercase;margin-bottom:4px;}.ar-pname{font-family:'Libre Baskerville',serif;font-size:19px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.2;}.ar-type{display:inline-block;background:#FFF8EB;color:#886020;font-size:9px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
+.ar-stat{display:flex;gap:5px;flex-wrap:wrap;margin-top:14px;}.ar-sbox{flex:1;min-width:50px;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 5px;text-align:center;}.ar-snum{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#F0D890;}.ar-slabel{font-size:6.5px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.ar-badges{display:flex;gap:3px;flex-wrap:wrap;margin-top:12px;}.ar-badge{font-size:6.5px;font-weight:600;padding:3px 6px;border-radius:14px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}.ar-hl{background:#D2D25A;color:#2A2A3D;font-weight:700;}
+.ar-deep{background:#fff;border:2px solid #C8A050;}.ar-deep .ar-label{background:#C8A050;color:#fff;}
+.rice-box{margin-top:12px;padding:14px;border-radius:14px;background:#FDF8EC;border:2.5px solid #C8A050;}.rb-title{font-size:11px;font-weight:700;color:#886020;margin-bottom:6px;}.rb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}.rg{border-radius:8px;padding:6px 3px;text-align:center;background:#fff;transition:transform 0.2s;}.rg:hover{transform:scale(1.03);}.rgn{font-size:7px;font-weight:700;line-height:1.1;}.rgd{font-size:5px;color:#6B6B80;line-height:1.2;}
+.bright-box{margin-top:12px;padding:12px;border-radius:12px;background:#F5ECF8;border:1.5px solid #9060A0;}.bb-title{font-size:10px;font-weight:700;color:#9060A0;margin-bottom:4px;}.bb-row{display:flex;gap:4px;}.bi{flex:1;background:#fff;border-radius:8px;padding:6px 4px;text-align:center;}.bin{font-size:7px;font-weight:700;line-height:1.1;}.bid{font-size:5px;color:#6B6B80;line-height:1.2;}.bt{display:inline-block;font-size:4px;font-weight:700;padding:1px 3px;border-radius:2px;}.bt-s{background:#D2D25A;color:#2A2A3D;}.bt-g{background:#C5D0F5;color:#5A72C0;}
+.cer-box{margin-top:12px;padding:10px;border-radius:10px;background:#E8F0FF;border:1.5px solid rgba(80,120,180,0.15);}.cb-title{font-size:9px;font-weight:700;color:#5A72C0;margin-bottom:4px;}.cb-desc{font-size:7px;color:#6B6B80;line-height:1.4;}.cb-desc strong{color:#2A2A3D;}
+.ar-verdict{background:#2A2A3D;color:#fff;}.ar-verdict .ar-label{background:#C8A050;color:#fff;}.ar-verdict .ar-title{color:#F0D890;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}.vr{display:flex;align-items:flex-start;gap:10px;}.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}.vi-p{background:#D2D25A;color:#2A2A3D;}.vi-n{background:#FF7D59;color:#fff;}.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.stt{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(240,216,144,0.15);color:#F0D890;}
+.trio-box{margin-top:16px;padding:14px;background:rgba(200,160,80,0.08);border-radius:14px;border:1px solid rgba(240,216,144,0.2);}.trio-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F0D890;margin-bottom:8px;text-align:center;}.trio-row{display:flex;gap:4px;}.tri{flex:1;border-radius:10px;padding:8px 4px;text-align:center;border:1px solid rgba(255,255,255,0.08);}.tri-lbl{font-size:7px;font-weight:700;margin-bottom:2px;}.tl-h{color:#90D88A;}.tl-p{color:#60D8C8;}.tl-r{color:#F0D890;}.tri-desc{font-size:5.5px;color:rgba(255,255,255,0.45);line-height:1.3;}
+@media(max-width:440px){.rb-grid{grid-template-columns:repeat(2,1fr);}.bb-row{flex-direction:column;}.trio-row{flex-direction:column;gap:4px;}}
+</style>
+
+<div class="ar-card ar-overview">
+<div class="ar-num">01</div><span class="ar-label">Product Overview</span>
+<div class="ar-brand">anua (Korea)</div>
+<div class="ar-pname">Rice 70 Glow<br>Milky Toner</div>
+<span class="ar-type">Brightening Toner &middot; 70% Rice Bran Water &middot; 4 Rice Forms &middot; Barrier Complex</span>
+<p class="ar-body"><strong>BRIGHTENING line Anua!</strong> <strong>70% Rice Bran Water #1</strong> = Korean/Japanese beauty tradition. <strong>4 rice forms</strong>. <strong>3 SUPERSTARS</strong> (Glycerin + Niacinamide + Pure Vit C!). <strong>BARRIER COMPLEX di toner!</strong> (Ceramide + Phytosphingosine + Cholesterol). <strong>38 bahan. 0 ICKY!</strong></p>
+<div class="ar-stat">
+<div class="ar-sbox"><div class="ar-snum">70%</div><div class="ar-slabel">Rice Bran<br>Water</div></div>
+<div class="ar-sbox"><div class="ar-snum">4</div><div class="ar-slabel">Rice<br>Forms</div></div>
+<div class="ar-sbox"><div class="ar-snum">3</div><div class="ar-slabel">Super-<br>stars!</div></div>
+<div class="ar-sbox"><div class="ar-snum">38</div><div class="ar-slabel">Total<br>Bahan</div></div>
+<div class="ar-sbox"><div class="ar-snum">0</div><div class="ar-slabel">Ickies!</div></div>
+</div>
+<div class="ar-badges">
+<span class="ar-badge ar-hl">&#127806; 70% Rice Bran Water!</span><span class="ar-badge ar-hl">4 Rice Forms!</span><span class="ar-badge ar-hl">3 Superstars!</span><span class="ar-badge ar-hl">Barrier Complex!</span><span class="ar-badge">Arbutin</span><span class="ar-badge">&#10003; 0 Icky!</span>
+</div></div>
+
+<div class="ar-card ar-deep">
+<div class="ar-num">02</div><span class="ar-label">4 Rice Forms + Brightening + Barrier</span>
+<div class="ar-title">70% Rice = Korean Beauty Tradition</div>
+<div class="rice-box"><div class="rb-title">&#127806; 4 Rice Forms</div><div class="rb-grid">
+<div class="rg"><div class="rgn">Rice Bran Water #1</div><div class="rgd"><strong>70%!</strong> Ferulic acid, phytic acid, vit B+E</div></div>
+<div class="rg"><div class="rgn">Rice Extract #3</div><div class="rgd">Concentrated. Mattifying. Posisi #3</div></div>
+<div class="rg"><div class="rgn">Hydrolyzed Rice Protein #10</div><div class="rgd">Moisture film. Smooth texture</div></div>
+<div class="rg"><div class="rgn">Rice Seed Protein #11</div><div class="rgd">Antioxidant protein. Peptide-like</div></div>
+</div></div>
+<div class="bright-box"><div class="bb-title">&#10024; 3 Brightening Agents</div><div class="bb-row">
+<div class="bi"><span class="bt bt-s">&#9733;</span><div class="bin">Niacinamide #7</div><div class="bid">SUPERSTAR! Melanosome transfer inhibitor. Posisi #7 = meaningful</div></div>
+<div class="bi"><span class="bt bt-s">&#9733;</span><div class="bin">Ascorbic Acid #37</div><div class="bid">SUPERSTAR! Pure Vit C. Micro-dose at bottom</div></div>
+<div class="bi"><span class="bt bt-g">G</span><div class="bin">Arbutin #38</div><div class="bid">GOODIE! Tyrosinase inhibitor. Japanese brightener</div></div>
+</div></div>
+<div class="cer-box"><div class="cb-title">&#128737; BARRIER COMPLEX di Toner!</div><div class="cb-desc"><strong>2x Ceramide + Ceramide EOP + Phytosphingosine + Cholesterol</strong> = CeraVe-level barrier lipids di TONER. Plus Hydrogenated Lecithin (liposome delivery). Milky texture = emulsion yang BISA carry ceramides.</div></div>
+</div>
+
+<div class="ar-card ar-verdict">
+<div class="ar-num">03</div><span class="ar-label">Verdict</span>
+<div class="ar-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>4 RICE FORMS = paling comprehensive rice formula.</strong> 70% Rice Bran Water = ferulic acid + phytic acid. Centuries of Asian tradition.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>BARRIER COMPLEX di TONER = CeraVe philosophy di Korean format.</strong> Milky = intentional for ceramide delivery.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>3 SUPERSTARS = PALING BANYAK di toner series.</strong> Triple brightening: Niacinamide + Vit C + Arbutin.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Vit C #37 + Arbutin #38 = MICRO-DOSES.</strong> Niacinamide #7 = the REAL brightening workhorse.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>70% Rice Bran Water ≠ 70% pure actives.</strong> Botanical water = mostly water + dissolved actives.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Ceramides at bottom of INCI = trace amounts.</strong> Better than nothing tapi not CeraVe-level.</div></div>
+</div>
+<div class="stt"><span class="stg">Dull Skin</span><span class="stg">Brightening</span><span class="stg">All Skin Types</span><span class="stg">Hydration Prep</span><span class="stg">K-Beauty Glow</span><span class="stg">Daily Use</span></div>
+<div class="trio-box"><div class="trio-title">&#128302; Anua TRIO</div><div class="trio-row">
+<div class="tri"><div class="tri-lbl tl-h">&#127811; Heartleaf Toner</div><div class="tri-desc"><strong>SOOTHE.</strong> 77% Heartleaf. 7x HA.</div></div>
+<div class="tri"><div class="tri-lbl tl-p">&#129516; PDRN Cream</div><div class="tri-desc"><strong>REGENERATE.</strong> PDRN. 10x HA.</div></div>
+<div class="tri"><div class="tri-lbl tl-r">&#127806; Rice Toner</div><div class="tri-desc"><strong>BRIGHTEN.</strong> 70% Rice. 3 Superstars.</div></div>
+</div></div>
+</div>
+</div>

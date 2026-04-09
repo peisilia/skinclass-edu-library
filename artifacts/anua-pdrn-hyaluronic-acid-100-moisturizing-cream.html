@@ -1,0 +1,102 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.ap-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(0,107,90,0.1);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}.ap-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,107,90,0.18);}
+.ap-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}.ap-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}.ap-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}.ap-body{font-size:12px;line-height:1.7;color:#6B6B80;}.ap-body strong{color:#2A2A3D;}
+.ap-overview{background:linear-gradient(155deg,#20A090 0%,#006B5A 40%,#003830 70%,#001810 100%);color:#fff;}.ap-overview .ap-label{background:#6040A0;color:#fff;}.ap-overview .ap-body{color:rgba(255,255,255,0.85);}.ap-overview .ap-body strong{color:#fff;}
+.ap-brand{font-size:11px;font-weight:700;color:#60D8C8;letter-spacing:3px;text-transform:lowercase;margin-bottom:4px;}.ap-pname{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.2;}.ap-type{display:inline-block;background:#FFF8EB;color:#003830;font-size:8px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
+.ap-stat{display:flex;gap:5px;flex-wrap:wrap;margin-top:14px;}.ap-sbox{flex:1;min-width:50px;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 5px;text-align:center;}.ap-snum{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#60D8C8;}.ap-slabel{font-size:6.5px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.ap-badges{display:flex;gap:3px;flex-wrap:wrap;margin-top:12px;}.ap-badge{font-size:6.5px;font-weight:600;padding:3px 6px;border-radius:14px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}.ap-hl{background:#D2D25A;color:#2A2A3D;font-weight:700;}.ap-pdrn{background:#6040A0;color:#fff;font-weight:800;}.ap-rec{background:#fff;color:#003830;font-weight:800;}
+.ap-deep{background:#fff;border:2px solid #006B5A;}.ap-deep .ap-label{background:#006B5A;color:#fff;}
+.pdrn-box{margin-top:12px;padding:16px;border-radius:16px;background:#F0E8F8;border:2.5px solid #6040A0;}.pb-row{display:flex;gap:10px;align-items:flex-start;}.pb-emoji{font-size:28px;flex-shrink:0;}.pb-tag{display:inline-block;font-size:7px;font-weight:700;padding:3px 8px;border-radius:10px;background:#6040A0;color:#fff;margin-bottom:3px;}.pb-name{font-size:13px;font-weight:700;color:#6040A0;line-height:1.2;}.pb-desc{font-size:9px;color:#6B6B80;line-height:1.6;margin-top:4px;}.pb-desc strong{color:#2A2A3D;}
+.ha-box{margin-top:12px;padding:12px;border-radius:14px;background:#E8F0F8;border:2px solid #3868A0;}.ha-title{font-size:10px;font-weight:700;color:#3868A0;margin-bottom:6px;}.ha-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;}.hg{border-radius:6px;padding:4px 2px;text-align:center;background:#fff;transition:transform 0.2s;}.hg:hover{transform:scale(1.04);}.hgt{display:inline-block;font-size:3.5px;font-weight:700;padding:1px 2px;border-radius:2px;background:#C5D0F5;color:#5A72C0;}.hgn{font-size:5px;font-weight:700;line-height:1.1;margin-top:1px;}.hgd{font-size:3.5px;color:#6B6B80;line-height:1.1;}
+.cica-box{margin-top:12px;padding:12px;border-radius:12px;background:#F0F8E8;border:1.5px solid #508040;}.ct{font-size:10px;font-weight:700;color:#508040;margin-bottom:4px;}.cg{display:flex;gap:4px;}.ci{flex:1;background:#fff;border-radius:8px;padding:6px 4px;text-align:center;}.cin{font-size:7px;font-weight:700;line-height:1.1;}.cid{font-size:5px;color:#6B6B80;line-height:1.2;}
+.sp-row{display:flex;gap:3px;flex-wrap:wrap;margin-top:10px;}.sp{font-size:6px;padding:3px 5px;border-radius:6px;background:#E8F8F5;color:#003830;}
+.ap-verdict{background:#2A2A3D;color:#fff;}.ap-verdict .ap-label{background:#6040A0;color:#fff;}.ap-verdict .ap-title{color:#60D8C8;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}.vr{display:flex;align-items:flex-start;gap:10px;}.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}.vi-p{background:#D2D25A;color:#2A2A3D;}.vi-n{background:#FF7D59;color:#fff;}.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.stt{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(96,216,200,0.15);color:#60D8C8;}
+.duo-box{margin-top:16px;padding:14px;background:rgba(0,107,90,0.08);border-radius:14px;border:1px solid rgba(96,216,200,0.2);}.duo-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#60D8C8;margin-bottom:8px;text-align:center;}.duo-row{display:flex;gap:6px;align-items:center;}.duo-item{flex:1;border-radius:10px;padding:10px 6px;text-align:center;border:1px solid rgba(255,255,255,0.08);}.duo-lbl{font-size:8px;font-weight:700;margin-bottom:3px;}.dl-t{color:#90D88A;}.dl-c{color:#60D8C8;}.duo-desc{font-size:6.5px;color:rgba(255,255,255,0.45);line-height:1.3;}.duo-plus{font-size:18px;font-weight:700;color:#60D8C8;padding:0 2px;}
+@media(max-width:440px){.ha-grid{grid-template-columns:repeat(3,1fr);}.cg{flex-direction:column;}.duo-row{flex-direction:column;gap:6px;}}
+</style>
+
+<div class="ap-card ap-overview">
+<div class="ap-num">01</div>
+<span class="ap-label">Product Overview</span>
+<div class="ap-brand">anua (Korea)</div>
+<div class="ap-pname">PDRN Hyaluronic Acid 100<br>Moisturizing Cream</div>
+<span class="ap-type">Moisturizer &middot; PDRN (Salmon DNA) &middot; 10x HA &middot; Centella Trio &middot; Niacinamide</span>
+<p class="ap-body">Anua BUKAN hanya "heartleaf brand." <strong>PDRN (Sodium DNA #7)</strong> = fragmen DNA salmon dari <strong>Korean derm clinic injections</strong>, sekarang topical! <strong>10x HA = ALL-TIME RECORD.</strong> Niacinamide + Squalane #2 + Centella TRIO. <strong>48 bahan. 15+ Goodies. 0 ICKY!</strong></p>
+<div class="ap-stat">
+<div class="ap-sbox"><div class="ap-snum">10</div><div class="ap-slabel">HA Forms<br>(Record!)</div></div>
+<div class="ap-sbox"><div class="ap-snum">2</div><div class="ap-slabel">Super-<br>stars</div></div>
+<div class="ap-sbox"><div class="ap-snum">15+</div><div class="ap-slabel">Goodies</div></div>
+<div class="ap-sbox"><div class="ap-snum">48</div><div class="ap-slabel">Total<br>Bahan</div></div>
+<div class="ap-sbox"><div class="ap-snum">0</div><div class="ap-slabel">Ickies!</div></div>
+</div>
+<div class="ap-badges">
+<span class="ap-badge ap-pdrn">&#129516; PDRN Salmon DNA!</span>
+<span class="ap-badge ap-rec">&#127942; 10x HA = RECORD!</span>
+<span class="ap-badge ap-hl">Niacinamide #4!</span>
+<span class="ap-badge ap-hl">Centella TRIO!</span>
+<span class="ap-badge">Squalane #2</span>
+<span class="ap-badge">&#10003; 0 Icky!</span>
+</div>
+</div>
+
+<div class="ap-card ap-deep">
+<div class="ap-num">02</div>
+<span class="ap-label">PDRN + 10x HA + Centella Trio</span>
+<div class="ap-title">Clinic-Grade Ingredients in K-Beauty Cream</div>
+<div class="pdrn-box"><div class="pb-row"><div class="pb-emoji">&#129516;</div><div style="flex:1"><span class="pb-tag">K-Beauty HOTTEST Trend!</span><div class="pb-name">Sodium DNA (PDRN) #7</div><div class="pb-desc"><strong>PDRN = fragmen DNA SALMON.</strong> Awalnya <strong>INJECTABLE di Korean derm clinics</strong> ("salmon injection" / Rejuran). Binds <strong>A2A adenosine receptors</strong> &rarr; tissue repair, wound healing, anti-inflammatory. Posisi #7 = FEATURED, not sprinkled.</div></div></div></div>
+<div class="ha-box"><div class="ha-title">&#128167; 10x HA Forms &mdash; ALL-TIME RECORD!</div>
+<div class="ha-grid">
+<div class="hg"><span class="hgt">G</span><div class="hgn">Sodium HA</div><div class="hgd">Standard</div></div>
+<div class="hg"><span class="hgt">G</span><div class="hgn">Hydrolyzed HA</div><div class="hgd">Low MW</div></div>
+<div class="hg"><span class="hgt">G</span><div class="hgn">Pure HA</div><div class="hgd">1000x water</div></div>
+<div class="hg"><div class="hgn">Dimethylsilanol HA</div><div class="hgd">Silicone-HA!</div></div>
+<div class="hg"><div class="hgn">miniHA 10kDa</div><div class="hgd">Ultra-deep</div></div>
+<div class="hg"><div class="hgn">Potassium HA</div><div class="hgd">K+ salt</div></div>
+<div class="hg"><div class="hgn">Cationic HA</div><div class="hgd">Sticks!</div></div>
+<div class="hg"><span class="hgt">G</span><div class="hgn">HA Crosspolymer</div><div class="hgd">5x water!</div></div>
+<div class="hg"><div class="hgn">HA Dimethylsilanol</div><div class="hgd">Hybrid #2</div></div>
+<div class="hg"><span class="hgt">G</span><div class="hgn">Acetylated HA</div><div class="hgd">"Super HA"</div></div>
+</div></div>
+<div class="cica-box"><div class="ct">&#127807; Centella TRIO &mdash; Isolated Active Compounds!</div>
+<div class="cg">
+<div class="ci"><span class="hgt">G</span><div class="cin">Centella Extract #20</div><div class="cid">Whole extract. All centellosides</div></div>
+<div class="ci"><span class="hgt">G</span><div class="cin">Madecassoside #36</div><div class="cid">ISOLATED! Wound healing + melanin inhibitor</div></div>
+<div class="ci"><span class="hgt">G</span><div class="cin">Asiaticoside #40</div><div class="cid">ISOLATED! Collagen + GAGs stimulation</div></div>
+</div></div>
+<div class="sp-row">
+<span class="sp">&#9733; <strong>Glycerin #3</strong> &mdash; Superstar!</span>
+<span class="sp">&#9733; <strong>Niacinamide #4</strong> &mdash; Superstar!</span>
+<span class="sp">&#10003; <strong>Squalane #2</strong> &mdash; Posisi tinggi!</span>
+<span class="sp">&#10003; <strong>Collagen #8</strong> &mdash; Goodie</span>
+<span class="sp">&#10003; <strong>Adenosine #32</strong></span>
+<span class="sp">&#10003; <strong>Turmeric #19</strong></span>
+</div>
+</div>
+
+<div class="ap-card ap-verdict">
+<div class="ap-num">03</div>
+<span class="ap-label">Verdict</span>
+<div class="ap-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>PDRN = clinic-grade ingredient trending di K-beauty.</strong> "Salmon injection" (Rejuran) sekarang topical. Posisi #7 = featured.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>10x HA = ALL-TIME RECORD.</strong> Termasuk 2 silicone-HA hybrids + Cationic + Crosspolymer + Acetylated. 10 mechanisms = complete hydration.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Centella TRIO (Extract + Madecassoside + Asiaticoside) = next level.</strong> Isolated actives = LRP-level approach.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Niacinamide #4 + Squalane #2 = both high position.</strong> Multi-active moisturizer.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Topical PDRN = BARU, belum banyak independent research.</strong> Injectable well-studied, topical masih emerging. Penetration challenge.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>miniHA (10kDa) = CONTROVERSIAL.</strong> Ultra-LMW HA might be pro-inflammatory. Small portion of 10 forms tapi caveat.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>"100-hour hydration" = MARKETING.</strong> Physically impossible dari 1 application. Ingredients bagus, claim over-the-top.</div></div>
+</div>
+<div class="stt">
+<span class="stg">Dehydrated Skin</span><span class="stg">Anti-Aging</span><span class="stg">K-Beauty Enthusiast</span><span class="stg">All Skin Types</span><span class="stg">Brightening</span><span class="stg">Daily Moisturizer</span>
+</div>
+<div class="duo-box"><div class="duo-title">&#128302; Anua System: Toner + Cream</div>
+<div class="duo-row">
+<div class="duo-item"><div class="duo-lbl dl-t">&#127811; Heartleaf 77% Toner</div><div class="duo-desc"><strong>SOOTHE + PREP.</strong> 77% Heartleaf. 7x HA. 7 soothing botanicals.</div></div>
+<div class="duo-plus">+</div>
+<div class="duo-item"><div class="duo-lbl dl-c">&#129516; PDRN HA 100 Cream</div><div class="duo-desc"><strong>REGENERATE + HYDRATE.</strong> PDRN. 10x HA. Niacinamide + Squalane. Centella TRIO.</div></div>
+</div></div>
+</div>
+</div>

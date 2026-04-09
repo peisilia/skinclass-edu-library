@@ -1,0 +1,131 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.an-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(61,139,55,0.1);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}.an-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(61,139,55,0.18);}
+.an-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}.an-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}.an-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}.an-body{font-size:12.5px;line-height:1.7;color:#6B6B80;}.an-body strong{color:#2A2A3D;}
+
+.an-overview{background:linear-gradient(155deg,#5DAB57 0%,#3D8B37 40%,#1D4B17 70%,#0A200A 100%);color:#fff;}
+.an-overview .an-label{background:rgba(255,255,255,0.2);color:#fff;}.an-overview .an-body{color:rgba(255,255,255,0.85);}.an-overview .an-body strong{color:#fff;}
+.an-brand{font-size:11px;font-weight:700;color:#90D88A;letter-spacing:3px;text-transform:lowercase;margin-bottom:4px;}
+.an-pname{font-family:'Libre Baskerville',serif;font-size:19px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.2;}
+.an-type{display:inline-block;background:#FFF8EB;color:#1D4B17;font-size:9px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
+.pct-box{margin-top:10px;text-align:center;padding:28px 20px;border-radius:18px;background:rgba(255,255,255,0.08);border:1px dashed rgba(255,255,255,0.2);position:relative;overflow:hidden;}
+.pct-num{font-family:'Libre Baskerville',serif;font-size:90px;font-weight:700;color:rgba(255,255,255,0.08);line-height:0.8;position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);}.pct-label{position:relative;font-size:26px;font-weight:800;color:#fff;letter-spacing:2px;}.pct-sub{position:relative;font-size:9px;color:rgba(255,255,255,0.5);margin-top:4px;}
+.an-stat{display:flex;gap:5px;flex-wrap:wrap;margin-top:14px;}.an-sbox{flex:1;min-width:50px;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 5px;text-align:center;}.an-snum{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#90D88A;}.an-slabel{font-size:6.5px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.an-badges{display:flex;gap:3px;flex-wrap:wrap;margin-top:12px;}.an-badge{font-size:7px;font-weight:600;padding:3px 6px;border-radius:14px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}.an-hl{background:#D2D25A;color:#2A2A3D;font-weight:700;}.an-rec{background:#fff;color:#1D4B17;font-weight:800;}
+
+.an-deep{background:#fff;border:2px solid #3D8B37;}.an-deep .an-label{background:#3D8B37;color:#fff;}
+.leaf-box{margin-top:12px;padding:16px;border-radius:16px;background:#EFF8EE;border:2.5px solid #3D8B37;}
+.lb-row{display:flex;gap:10px;align-items:flex-start;}.lb-emoji{font-size:30px;flex-shrink:0;}
+.lb-tag{display:inline-block;font-size:7px;font-weight:700;padding:3px 8px;border-radius:10px;background:#C5D0F5;color:#5A72C0;margin-bottom:3px;}
+.lb-name{font-size:14px;font-weight:700;color:#1D4B17;line-height:1.2;}.lb-desc{font-size:9px;color:#6B6B80;line-height:1.6;margin-top:4px;}.lb-desc strong{color:#2A2A3D;}
+.ha-box{margin-top:12px;padding:14px;border-radius:14px;background:#E8F0F8;border:2px solid #3868A0;}.ha-title{font-size:10px;font-weight:700;color:#3868A0;margin-bottom:6px;}
+.ha-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}.hg-item{border-radius:6px;padding:5px 3px;text-align:center;background:#fff;transition:transform 0.2s;}.hg-item:hover{transform:scale(1.03);}
+.hg-tag{display:inline-block;font-size:4px;font-weight:700;padding:1px 3px;border-radius:2px;background:#C5D0F5;color:#5A72C0;}.hg-name{font-size:5.5px;font-weight:700;line-height:1.2;margin-top:1px;}.hg-desc{font-size:4px;color:#6B6B80;line-height:1.2;}
+.sooth-title{font-size:10px;font-weight:700;color:#3D8B37;margin-top:12px;margin-bottom:6px;}
+.sooth-grid{display:flex;flex-wrap:wrap;gap:3px;}.sg-item{font-size:6px;padding:4px 6px;border-radius:6px;background:#EFF8EE;color:#1D4B17;line-height:1.3;}.sg-item strong{font-weight:700;}
+.tg{display:inline-block;font-size:4px;font-weight:700;padding:1px 3px;border-radius:2px;background:#C5D0F5;color:#5A72C0;vertical-align:middle;}
+
+.an-verdict{background:#2A2A3D;color:#fff;}.an-verdict .an-label{background:#3D8B37;color:#fff;}.an-verdict .an-title{color:#90D88A;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}.vr{display:flex;align-items:flex-start;gap:10px;}.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}.vi-p{background:#D2D25A;color:#2A2A3D;}.vi-n{background:#FF7D59;color:#fff;}.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.stt{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(144,216,138,0.15);color:#90D88A;}
+.vs-box{margin-top:16px;padding:14px;background:rgba(61,139,55,0.08);border-radius:14px;border:1px solid rgba(144,216,138,0.2);}.vs-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#90D88A;margin-bottom:6px;text-align:center;}.vs-sub{font-size:7px;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:8px;}
+.vs-row{display:flex;gap:6px;}.vs-item{flex:1;background:rgba(255,255,255,0.05);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid rgba(255,255,255,0.06);}.vs-lbl{font-size:8px;font-weight:700;margin-bottom:3px;}.vl-an{color:#90D88A;}.vl-cx{color:#FF8080;}.vs-desc{font-size:6.5px;color:rgba(255,255,255,0.45);line-height:1.3;}
+@media(max-width:440px){.ha-grid{grid-template-columns:repeat(2,1fr);}.vs-row{flex-direction:column;gap:6px;}}
+</style>
+
+<!-- CARD 01 -->
+<div class="an-card an-overview">
+<div class="an-num">01</div>
+<span class="an-label">Product Overview</span>
+<div class="an-brand">anua (Korea)</div>
+<div class="an-pname">Heartleaf 77%<br>Soothing Toner</div>
+<span class="an-type">Toner &middot; 77% Heartleaf &middot; 7x HA &middot; Soothing</span>
+<div class="pct-box"><div class="pct-num">77</div><div class="pct-label">77% Heartleaf</div><div class="pct-sub">Houttuynia Cordata Extract &middot; Highest Single-Ingredient Concentration!</div></div>
+<p class="an-body" style="margin-top:14px;"><strong>Anua = K-beauty brand VIRAL</strong> dibangun di atas <strong>Heartleaf (Houttuynia Cordata)</strong>. <strong>77%</strong> = TERTINGGI single-ingredient concentration. <strong>7x HA forms</strong> = TERBANYAK. <strong>7 soothing botanicals</strong>. <strong>28 bahan. 1 Superstar, 15+ Goodies, 0 ICKY!</strong></p>
+<div class="an-stat">
+<div class="an-sbox"><div class="an-snum">77%</div><div class="an-slabel">Heartleaf</div></div>
+<div class="an-sbox"><div class="an-snum">7</div><div class="an-slabel">HA<br>Forms</div></div>
+<div class="an-sbox"><div class="an-snum">7</div><div class="an-slabel">Soothing<br>Botanicals</div></div>
+<div class="an-sbox"><div class="an-snum">15+</div><div class="an-slabel">Goodies</div></div>
+<div class="an-sbox"><div class="an-snum">0</div><div class="an-slabel">Ickies!</div></div>
+</div>
+<div class="an-badges">
+<span class="an-badge an-rec">&#127942; Highest Hero %!</span>
+<span class="an-badge an-rec">&#127942; Most HA Forms!</span>
+<span class="an-badge an-hl">7 Soothing Botanicals</span>
+<span class="an-badge an-hl">Centella/Cica</span>
+<span class="an-badge">Panthenol</span>
+<span class="an-badge">&#10003; 0 Icky!</span>
+<span class="an-badge">&#10003; Fragrance-Free!</span>
+</div>
+</div>
+
+<!-- CARD 02 -->
+<div class="an-card an-deep">
+<div class="an-num">02</div>
+<span class="an-label">77% Heartleaf + 7x HA + 7 Botanicals</span>
+<div class="an-title">THIS is What "Soothing" Actually Looks Like</div>
+<div class="leaf-box">
+<div class="lb-row">
+<div class="lb-emoji">&#127811;</div>
+<div style="flex:1">
+<span class="lb-tag">Goodie &mdash; 77%!</span>
+<div class="lb-name">Houttuynia Cordata (Heartleaf)</div>
+<div class="lb-desc"><strong>77% = TUJUH PULUH TUJUH PERSEN.</strong> Rich in <strong>polyphenolic flavonoids</strong> (quercetin, rutin) = anti-inflammatory + antioxidant + antibacterial. Contains <strong>polysaccharides</strong> (humectant). In-vitro: <strong>anti-allergic effects for eczema/atopic dermatitis</strong>.</div>
+</div>
+</div>
+</div>
+<div class="ha-box">
+<div class="ha-title">&#128167; 7x HA Forms &mdash; MOST in Series!</div>
+<div class="ha-grid">
+<div class="hg-item"><span class="hg-tag">Goodie</span><div class="hg-name">Sodium Hyaluronate</div><div class="hg-desc">Standard. Surface</div></div>
+<div class="hg-item"><div class="hg-name">HP Trimonium HA</div><div class="hg-desc">CATIONIC! Sticks to skin</div></div>
+<div class="hg-item"><span class="hg-tag">Goodie</span><div class="hg-name">Hydrolyzed HA</div><div class="hg-desc">LOW MW. Deeper</div></div>
+<div class="hg-item"><span class="hg-tag">Goodie</span><div class="hg-name">Acetylated HA</div><div class="hg-desc">"SUPER HA." Better retention</div></div>
+<div class="hg-item"><span class="hg-tag">Goodie</span><div class="hg-name">Hyaluronic Acid</div><div class="hg-desc">Pure HA. 1000x water</div></div>
+<div class="hg-item"><span class="hg-tag">Goodie</span><div class="hg-name">HA Crosspolymer</div><div class="hg-desc">5x water binding!</div></div>
+<div class="hg-item"><div class="hg-name">Potassium HA</div><div class="hg-desc">Potassium salt form</div></div>
+<div class="hg-item" style="background:#E8F0F8;"><div class="hg-name" style="color:#3868A0;font-size:5px;">= MULTI-DEPTH</div><div class="hg-desc">7 forms = 7 depths</div></div>
+</div>
+</div>
+<div class="sooth-title">&#127807; 7 Soothing Botanicals</div>
+<div class="sooth-grid">
+<div class="sg-item"><span class="tg">G</span> <strong>Centella #6</strong> &mdash; CICA! Wound healing</div>
+<div class="sg-item"><span class="tg">G</span> <strong>Burdock Root #8</strong> &mdash; Anti-inflammatory + seborrhea</div>
+<div class="sg-item"><strong>Phellinus Linteus #9</strong> &mdash; Sanghuang mushroom!</div>
+<div class="sg-item"><span class="tg">G</span> <strong>Purslane #10</strong> &mdash; Richest omega-3 green plant!</div>
+<div class="sg-item"><span class="tg">G</span> <strong>Grape Fruit #11</strong> &mdash; Polyphenol antioxidant</div>
+<div class="sg-item"><span class="tg">G</span> <strong>Panthenol #14</strong> &mdash; Pro-B5! irr:0 com:0</div>
+<div class="sg-item"><span class="tg">G</span> <strong>Chamomile #15</strong> &mdash; Chamazulene + bisabolol</div>
+<div class="sg-item"><span class="tg">G</span> <strong>Betaine #5</strong> &mdash; Osmolyte. Cell-water balance</div>
+<div class="sg-item">&#9733; <strong>Glycerin #4</strong> &mdash; Superstar! Barrier</div>
+</div>
+</div>
+
+<!-- CARD 03: VERDICT -->
+<div class="an-card an-verdict">
+<div class="an-num">03</div>
+<span class="an-label">Verdict</span>
+<div class="an-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>77% hero extract = COMMITMENT, bukan sprinkle.</strong> Polyphenolic flavonoids (quercetin, rutin) genuinely active at this concentration.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>7x HA = multi-depth hydration PALING COMPREHENSIVE.</strong> Standard + Hydrolyzed + Crosspolymer + Acetylated + Cationic + Pure + Potassium HA.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>0 ICKY + fragrance-free + alcohol-free = ACTUALLY soothing.</strong> Bandingkan COSRX "Aloe Soothing" = Aloe 0.11% + Alcohol + Fragrance. Anua = soothing di FORMULA, bukan cuma nama.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Korean version = ORIGINAL formulation.</strong> Pastikan dapat Korean version untuk formula sesuai analisis ini.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>77% extract ≠ 77% pure active.</strong> Extract = water + actives. Mungkin ~70% water + ~7% active compounds. Normal untuk semua botanical extracts.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>TONER = light, quickly absorbed.</strong> Great prep layer tapi skincare RESULTS datang dari leave-on products. Toner = SUPPORT.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>"Seems to miss preservatives"</strong> per INCIDecoder. 1,2-Hexanediol = preservative booster tapi check packaging fisik.</div></div>
+</div>
+<div class="stt">
+<span class="stg">Sensitive Skin</span><span class="stg">Irritated Skin</span><span class="stg">Redness</span><span class="stg">Post-Exfoliation</span><span class="stg">Eczema-Prone</span><span class="stg">Hydration Prep</span><span class="stg">Daily Use</span>
+</div>
+<div class="vs-box">
+<div class="vs-title">&#9878; "Soothing" Battle</div>
+<div class="vs-sub">Marketing vs Ingredients</div>
+<div class="vs-row">
+<div class="vs-item"><div class="vs-lbl vl-an">Anua Heartleaf 77%</div><div class="vs-desc">28 bahan. <strong>77% Heartleaf. 7x HA. 7 soothing botanicals.</strong> 15+ Goodies. <strong>0 Icky.</strong> "SOOTHING in the FORMULA."</div></div>
+<div class="vs-item"><div class="vs-lbl vl-cx">COSRX Aloe "Soothing"</div><div class="vs-desc">36 bahan. <strong>Aloe = 0.11% only!</strong> <strong>2 Icky: Alcohol + Fragrance.</strong> "SOOTHING in the NAME."</div></div>
+</div>
+</div>
+</div>
+</div>
