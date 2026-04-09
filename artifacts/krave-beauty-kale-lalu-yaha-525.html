@@ -1,0 +1,121 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.kb-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(45,107,58,0.1);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}.kb-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(45,107,58,0.18);}
+.kb-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}.kb-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}.kb-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}.kb-body{font-size:12px;line-height:1.7;color:#6B6B80;}.kb-body strong{color:#2A2A3D;}
+
+.kb-overview{background:linear-gradient(155deg,#4D8B5A 0%,#2D6B3A 40%,#0D4B1A 70%,#041A08 100%);color:#fff;}
+.kb-overview .kb-label{background:rgba(255,255,255,0.2);color:#fff;}.kb-overview .kb-body{color:rgba(255,255,255,0.85);}.kb-overview .kb-body strong{color:#fff;}
+.kb-brand{font-size:10px;font-weight:700;color:#90D898;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.kb-pname{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.15;}
+.kb-type{display:inline-block;background:#FFF8EB;color:#0D4B1A;font-size:8px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
+.kb-disc{display:inline-block;background:#FF7D59;color:#fff;font-size:8px;font-weight:700;padding:4px 10px;border-radius:14px;margin-left:6px;margin-bottom:14px;}
+.kb-stat{display:flex;gap:5px;flex-wrap:wrap;margin-top:14px;}.kb-sbox{flex:1;min-width:55px;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 5px;text-align:center;}.kb-snum{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#90D898;}.kb-slabel{font-size:6.5px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.kb-badges{display:flex;gap:3px;flex-wrap:wrap;margin-top:12px;}.kb-badge{font-size:6.5px;font-weight:600;padding:3px 6px;border-radius:14px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}.kb-hl{background:#D2D25A;color:#2A2A3D;font-weight:700;}.kb-dc{background:#FF7D59;color:#fff;font-weight:700;}
+
+.kb-deep{background:#fff;border:2px solid #2D6B3A;}.kb-deep .kb-label{background:#2D6B3A;color:#fff;}
+.green-box{margin-top:12px;padding:14px;border-radius:14px;background:#E8F8EC;border:2.5px solid #2D6B3A;}.gb-title{font-size:11px;font-weight:700;color:#0D4B1A;margin-bottom:6px;}
+.gb-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;}.gg{border-radius:8px;padding:5px 2px;text-align:center;background:#fff;}.ggn{font-size:6px;font-weight:700;line-height:1.1;}.ggd{font-size:4px;color:#6B6B80;line-height:1.1;}
+.aha-box{margin-top:12px;padding:12px;border-radius:12px;background:#FFF8E8;border:2px solid #C8A040;}.ab-title{font-size:10px;font-weight:700;color:#806020;margin-bottom:4px;}
+.ab-row{display:flex;gap:6px;}.ab-item{flex:1;background:#fff;border-radius:8px;padding:8px 5px;}.abn{font-size:8px;font-weight:700;line-height:1.1;}.abd{font-size:6px;color:#6B6B80;line-height:1.3;}
+.sooth-box{margin-top:10px;padding:10px;border-radius:10px;background:#E8F5F0;border:1.5px solid #308060;}.sooth-t{font-size:9px;font-weight:700;color:#308060;margin-bottom:3px;}
+.sr{display:flex;gap:3px;flex-wrap:wrap;}.si{font-size:6px;padding:3px 5px;border-radius:6px;background:#fff;color:#2A2A3D;}
+
+.kb-verdict{background:#2A2A3D;color:#fff;}.kb-verdict .kb-label{background:#2D6B3A;color:#fff;}.kb-verdict .kb-title{color:#90D898;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}.vr{display:flex;align-items:flex-start;gap:10px;}.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}.vi-p{background:#D2D25A;color:#2A2A3D;}.vi-n{background:#FF7D59;color:#fff;}.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.st{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(144,216,152,0.15);color:#90D898;}
+.vs-box{margin-top:16px;padding:14px;background:rgba(45,107,58,0.08);border-radius:14px;border:1px solid rgba(144,216,152,0.2);}.vs-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#90D898;margin-bottom:6px;text-align:center;}
+.vs-row{display:flex;gap:6px;}.vs-item{flex:1;background:rgba(255,255,255,0.05);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid rgba(255,255,255,0.06);}.vs-lbl{font-size:7px;font-weight:700;margin-bottom:2px;}.vl-kv{color:#90D898;}.vl-cd{color:#D0A0A0;}.vs-desc{font-size:6px;color:rgba(255,255,255,0.45);line-height:1.3;}
+@media(max-width:440px){.gb-grid{grid-template-columns:repeat(3,1fr);}.ab-row{flex-direction:column;}.vs-row{flex-direction:column;gap:6px;}}
+</style>
+
+<!-- CARD 01 -->
+<div class="kb-card kb-overview">
+<div class="kb-num">01</div>
+<span class="kb-label">Product Overview</span>
+<div class="kb-brand">Krave Beauty &middot; by Liah Yoo</div>
+<div class="kb-pname">Kale-Lalu-yAHA<br>5.25% Glycolic Acid Treatment</div>
+<span class="kb-type">AHA Exfoliant &middot; 5.25% Glycolic Acid &middot; Superfood Greens</span>
+<span class="kb-disc">&#9888; DISCONTINUED</span>
+<p class="kb-body">Brand <strong>Liah Yoo</strong>, K-beauty educator. Filosofi <strong>"Press Reset"</strong>. <strong>5.25% Glycolic Acid</strong> + <strong>KALE Extract #4</strong> + <strong>5 SUPERFOODS</strong> + <strong>Betaine Salicylate</strong> (gentle BHA) + Malachite (mineral antioxidant!). <strong>0 ICKY! 23 bahan</strong>.</p>
+<div class="kb-stat">
+<div class="kb-sbox"><div class="kb-snum">5.25%</div><div class="kb-slabel">Glycolic<br>Acid</div></div>
+<div class="kb-sbox"><div class="kb-snum">5</div><div class="kb-slabel">Superfood<br>Greens</div></div>
+<div class="kb-sbox"><div class="kb-snum">23</div><div class="kb-slabel">Total<br>Bahan</div></div>
+<div class="kb-sbox"><div class="kb-snum">0</div><div class="kb-slabel">Ickies!</div></div>
+</div>
+<div class="kb-badges">
+<span class="kb-badge kb-dc">&#9888; DISCONTINUED</span>
+<span class="kb-badge kb-hl">5.25% Glycolic Acid</span>
+<span class="kb-badge kb-hl">Kale Extract</span>
+<span class="kb-badge kb-hl">Betaine Salicylate</span>
+<span class="kb-badge">Malachite</span>
+<span class="kb-badge">2 Ferments</span>
+<span class="kb-badge">&#10003; 0 Icky!</span>
+</div>
+</div>
+
+<!-- CARD 02 -->
+<div class="kb-card kb-deep">
+<div class="kb-num">02</div>
+<span class="kb-label">Superfood Greens + Dual Exfoliants + Soothing</span>
+<div class="kb-title">Exfoliant yang Di-design untuk TIDAK Over-Exfoliate</div>
+<div class="green-box">
+<div class="gb-title">&#129382; 5 Superfood Greens</div>
+<div class="gb-grid">
+<div class="gg"><div class="ggn">&#129388; Kale #4</div><div class="ggd">Vit A,C,K. Antioxidant</div></div>
+<div class="gg"><div class="ggn">&#129385; Spinach #9</div><div class="ggd">Iron + polyphenols</div></div>
+<div class="gg"><div class="ggn">&#129388; Parsley #10</div><div class="ggd">Vit C + flavonoids</div></div>
+<div class="gg"><div class="ggn">&#129679; Chlorella #11</div><div class="ggd">Microalgae! Growth factor</div></div>
+<div class="gg"><div class="ggn">&#127823; Green Apple #12</div><div class="ggd">Natural AHA. Malic acid</div></div>
+</div>
+</div>
+<div class="aha-box">
+<div class="ab-title">&#128300; Dual Exfoliant System</div>
+<div class="ab-row">
+<div class="ab-item"><div class="abn">&#9733; Glycolic Acid 5.25% #5 &mdash; SUPERSTAR</div><div class="abd"><strong>AHA surface exfoliation.</strong> Moderate strength. KOH #7 partially neutralizes = controlled. "Enough to work, not enough to destroy."</div></div>
+<div class="ab-item"><div class="abn">Betaine Salicylate #14 &mdash; Gentle BHA</div><div class="abd"><strong>Oil-soluble = penetrates pores.</strong> Gentler than pure SA. AHA + BHA = dual exfoliation (surface + pores) di gentle doses.</div></div>
+</div>
+</div>
+<div class="sooth-box">
+<div class="sooth-t">&#127807; 4 Soothing Agents + 2 Ferments</div>
+<div class="sr">
+<div class="si"><strong>Panthenol #13</strong> &mdash; Pro-B5. Barrier. Goodie</div>
+<div class="si"><strong>Allantoin #16</strong> &mdash; Wound healing. Goodie</div>
+<div class="si"><strong>Licorice #18</strong> &mdash; Anti-inflammatory. Goodie</div>
+<div class="si"><strong>Coptis Japonica #20</strong> &mdash; Berberine! Anti-inflammatory</div>
+<div class="si"><strong>Ferment #17</strong> &mdash; Ceramide-like biosurfactant</div>
+<div class="si"><strong>Ferment #19</strong> &mdash; Fermented soy amino acids</div>
+<div class="si"><strong>Malachite #21</strong> &mdash; MINERAL antioxidant! Copper-based. Rare!</div>
+<div class="si">&#9733; <strong>Glycerin #8</strong> &mdash; Superstar! Barrier</div>
+<div class="si"><strong>Sodium HA #15</strong> &mdash; Goodie. Hydration</div>
+<div class="si"><strong>Aloe Leaf Water #1</strong> &mdash; BASE! Soothing solvent</div>
+</div>
+</div>
+</div>
+
+<!-- CARD 03: VERDICT -->
+<div class="kb-card kb-verdict">
+<div class="kb-num">03</div>
+<span class="kb-label">Verdict</span>
+<div class="kb-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>5.25% = "GOLDILOCKS ZONE" untuk AHA beginners.</strong> Research: GA effective dari 5%. + KOH partially neutralizes = even gentler. Designed untuk orang yang BARU mulai exfoliating.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>DUAL EXFOLIANT (AHA + Betaine Salicylate) = surface + pores di gentle doses.</strong> Instead of ONE aggressive acid, use TWO gentle acids for broader coverage.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Aloe Leaf Water #1 + 4 soothing agents = DESIGNED to minimize irritation.</strong> Compare: Cos De BAHA = Witch Hazel + Eucalyptus (sensitizers!). Krave = soothing botanicals.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>SUPERFOOD GREENS + Malachite + 2 Ferments = antioxidant support UNIK.</strong> Kale, Spinach, Parsley, Chlorella, Green Apple + mineral antioxidant copper-based.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>DISCONTINUED!</strong> Formula ini SUDAH TIDAK DIJUAL. Cek current version karena formula mungkin BERUBAH.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>5.25% GA = masih ACID untuk total beginners.</strong> Kulit belum pernah AHA = start lactic/mandelic acid dulu. 5.25% = great SECOND step.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Superfood greens = FUN MARKETING tapi topical kale/spinach evidence = LIMITED.</strong> Antioxidant properties exist tapi clinical studies very limited.</div></div>
+</div>
+<div class="st">
+<span class="stg">AHA Beginner</span><span class="stg">First-Time Exfoliant</span><span class="stg">Dull Skin</span><span class="stg">Texture</span><span class="stg">Clean Beauty</span><span class="stg">&#9888; DISCONTINUED!</span>
+</div>
+<div class="vs-box">
+<div class="vs-title">&#9878; AHA Battle: Gentle vs Raw Potency</div>
+<div class="vs-row">
+<div class="vs-item"><div class="vs-lbl vl-kv">Krave Kale-Lalu-yAHA 5.25%</div><div class="vs-desc">23 bahan. <strong>5.25% GA + Betaine Salicylate.</strong> Aloe Water base. 5 superfoods. 4 soothing agents. <strong>0 Icky.</strong> "Exfoliate gently."</div></div>
+<div class="vs-item"><div class="vs-lbl vl-cd">Cos De BAHA AHA 10%</div><div class="vs-desc">11 bahan. <strong>10% GA + Arginine.</strong> Witch Hazel + Eucalyptus. Lean formula. <strong>0 Icky.</strong> "Maximum potency."</div></div>
+</div>
+</div>
+</div>
+</div>
