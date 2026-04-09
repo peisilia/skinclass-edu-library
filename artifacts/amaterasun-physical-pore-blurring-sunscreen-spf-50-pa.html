@@ -1,0 +1,145 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.am-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(200,160,80,0.12);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}
+.am-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,160,80,0.2);}
+.am-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}
+.am-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+.am-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.am-body{font-size:13px;line-height:1.7;color:#6B6B80;}.am-body strong{color:#2A2A3D;}
+
+.am-overview{background:linear-gradient(155deg,#D8C070 0%,#C8A050 35%,#886020 70%,#402810 100%);color:#fff;}
+.am-overview .am-label{background:#38A060;color:#fff;}
+.am-overview .am-body{color:rgba(255,255,255,0.85);}.am-overview .am-body strong{color:#fff;}
+.am-brand{font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.am-pname{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.2;}
+.am-type{display:inline-block;background:#FFF8EB;color:#886020;font-size:10px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
+.am-stat{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px;}
+.am-sbox{flex:1;min-width:50px;background:rgba(255,255,255,0.14);border-radius:12px;padding:12px 6px;text-align:center;}
+.am-snum{font-family:'Libre Baskerville',serif;font-size:19px;font-weight:700;color:#F0D898;}.am-slabel{font-size:7px;color:rgba(255,255,255,0.6);margin-top:3px;}
+.am-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:14px;}
+.am-badge{font-size:8px;font-weight:600;padding:4px 8px;border-radius:16px;background:rgba(255,255,255,0.15);color:#FFF8EB;}
+.am-hl{background:#D2D25A;color:#2A2A3D;font-weight:700;}.am-up{background:#38A060;color:#fff;font-weight:700;}
+
+.am-pep{background:#fff;border:2px solid #7858A0;}
+.am-pep .am-label{background:#7858A0;color:#fff;}
+.pep-trio{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap;}
+.pt-item{flex:1;min-width:110px;border-radius:14px;padding:14px 8px;text-align:center;transition:transform 0.2s;}.pt-item:hover{transform:scale(1.02);}
+.pt-copper{background:#FDF5E8;border:2px solid #C08848;}
+.pt-argi{background:#F0E8F8;border:1.5px solid rgba(120,88,160,0.2);}
+.pt-thymu{background:#E0F5E8;border:1.5px solid #38A060;}
+.pt-emoji{font-size:20px;margin-bottom:4px;}
+.pt-tag{display:inline-block;font-size:6px;font-weight:700;padding:2px 5px;border-radius:4px;margin-bottom:3px;text-transform:uppercase;background:#C5D0F5;color:#5A72C0;}
+.pt-name{font-size:9px;font-weight:700;line-height:1.2;margin-bottom:2px;}.pt-desc{font-size:7px;color:#6B6B80;line-height:1.3;}
+.ha-box{margin-top:14px;padding:12px;background:#E0F0F5;border-radius:12px;border:1.5px solid #4898B0;}
+.ha-title{font-size:10px;font-weight:700;color:#4898B0;margin-bottom:4px;}
+.ha-desc{font-size:9px;color:#6B6B80;line-height:1.5;}.ha-desc strong{color:#2A2A3D;}
+.upgrade-box{margin-top:14px;padding:14px;background:#E0F5E8;border:2px solid #38A060;border-radius:14px;}
+.upg-title{font-size:11px;font-weight:700;color:#38A060;margin-bottom:6px;}
+.upg-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+.upg-item{font-size:8px;color:#6B6B80;line-height:1.4;}.upg-item strong{color:#2A2A3D;}
+.upg-add{color:#38A060;font-weight:700;}.upg-rem{color:#FF7D59;font-weight:700;}
+
+.am-verdict{background:#2A2A3D;color:#fff;}
+.am-verdict .am-label{background:#C8A050;color:#2A2A3D;}
+.am-verdict .am-title{color:#F0D898;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}
+.vr{display:flex;align-items:flex-start;gap:10px;}
+.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.vi-p{background:#D2D25A;color:#2A2A3D;}.vi-n{background:#FF7D59;color:#fff;}
+.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.st{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(240,216,152,0.2);color:#F0D898;}
+.qbox{margin-top:16px;padding:14px;background:rgba(255,255,255,0.06);border-radius:14px;border:1px solid rgba(255,255,255,0.1);}
+.qtitle{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F0D898;margin-bottom:8px;text-align:center;}
+.ql{display:flex;flex-direction:column;gap:4px;}
+.qr{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:8px;font-size:8px;color:rgba(255,255,255,0.6);}
+.qr.qc{background:rgba(255,255,255,0.08);border:1px solid #F0D898;color:#fff;}
+.qe{font-size:12px;width:18px;text-align:center;}.qn{flex:1;font-weight:600;}.qd{font-size:7px;text-align:right;}
+.qpa{display:inline-block;font-size:6px;font-weight:800;padding:1px 4px;border-radius:3px;margin-left:3px;}
+.pa-h{background:#D2D25A;color:#2A2A3D;}.pa-m{background:#C8A050;color:#fff;}.pa-l{background:#FF7D59;color:#fff;}
+@media(max-width:440px){.pep-trio{flex-direction:column;}.upg-grid{grid-template-columns:1fr;}}
+</style>
+
+<!-- CARD 01 -->
+<div class="am-card am-overview">
+<div class="am-num">01</div>
+<span class="am-label">&#10024; Physical v2 &mdash; Massive Upgrade</span>
+<div class="am-brand">Amaterasun &#127470;&#127465;</div>
+<div class="am-pname">Physical Pore Blurring<br>Sunscreen SPF 50+ PA++++</div>
+<span class="am-type">100% Mineral &middot; ZnO Only &middot; Anti-Aging Pore Blur</span>
+<p class="am-body"><strong>OVERHAUL TOTAL dari Physical v1!</strong> ZnO-only mineral + <strong>3 peptides</strong> (GHK-Cu! + Argireline + Thymulen 4), <strong>triple HA</strong>, <strong>DOUBLE ferulic</strong>, Panthenol, Allantoin, Licorice. <strong>Isopropyl Myristate (com:3-5!) DIHAPUS!</strong> <strong>0 Icky, fragrance-free. 48 bahan</strong>.</p>
+<div class="am-stat">
+<div class="am-sbox"><div class="am-snum">3</div><div class="am-slabel">Peptides<br>(GHK-Cu!)</div></div>
+<div class="am-sbox"><div class="am-snum">3</div><div class="am-slabel">HA<br>Types</div></div>
+<div class="am-sbox"><div class="am-snum">14+</div><div class="am-slabel">Goodies</div></div>
+<div class="am-sbox"><div class="am-snum">0</div><div class="am-slabel">Ickies!</div></div>
+<div class="am-sbox"><div class="am-snum">48</div><div class="am-slabel">Total<br>Bahan</div></div>
+</div>
+<div class="am-badges">
+<span class="am-badge am-hl">&#127470;&#127465; Brand Lokal</span>
+<span class="am-badge am-up">&#128640; Physical v2 UPGRADE</span>
+<span class="am-badge am-hl">GHK-Cu Copper Peptide!</span>
+<span class="am-badge am-hl">Triple HA</span>
+<span class="am-badge am-hl">Double Ferulic</span>
+<span class="am-badge">&#10003; 0 Icky</span>
+<span class="am-badge">&#10003; Fragrance-Free</span>
+</div>
+</div>
+
+<!-- CARD 02 -->
+<div class="am-card am-pep">
+<div class="am-num">02</div>
+<span class="am-label">3 Peptides + Triple HA + v1&rarr;v2 Upgrade</span>
+<div class="am-title">GHK-Cu + Argireline + Thymulen + Triple HA</div>
+<div class="pep-trio">
+<div class="pt-item pt-copper"><div class="pt-emoji">&#129382;</div><span class="pt-tag">Goodie</span><div class="pt-name">Copper Tripeptide-1 #16</div><div class="pt-desc">GHK-Cu! THE copper peptide. Wound healing + collagen remodeling + elastin + GAGs.</div></div>
+<div class="pt-item pt-argi"><div class="pt-emoji">&#128137;</div><span class="pt-tag">Goodie</span><div class="pt-name">Argireline #17</div><div class="pt-desc">"Botox in a jar." Muscle relaxation. -16% wrinkle depth (28 hari).</div></div>
+<div class="pt-item pt-thymu"><div class="pt-emoji">&#128171;</div><span class="pt-tag">Goodie</span><div class="pt-name">Thymulen 4 #15</div><div class="pt-desc">Acetyl Tetrapeptide-2. Mimics thymopoietin. Skin immune + regeneration.</div></div>
+</div>
+<div class="ha-box">
+<div class="ha-title">&#128167; Triple HA &mdash; 3 Molecular Weights</div>
+<div class="ha-desc"><strong>HA #18</strong> (high MW, surface) + <strong>Sodium Hyaluronate #19</strong> (mid MW) + <strong>Hydrolyzed HA #20</strong> (low MW, deeper). Plus <strong>Panthenol #26</strong> + <strong>Allantoin #27</strong> + <strong>Licorice #25</strong> + <strong>Glycerin #28</strong> (Superstar). JAUH lebih nourishing dari v1.</div>
+</div>
+<div class="upgrade-box">
+<div class="upg-title">&#128640; Physical v1 &rarr; v2: What Changed?</div>
+<div class="upg-grid">
+<div class="upg-item"><span class="upg-add">+ ADDED:</span><br><strong>3 Peptides</strong> (GHK-Cu, Argireline, Thymulen 4)</div>
+<div class="upg-item"><span class="upg-add">+ ADDED:</span><br><strong>Triple HA</strong> (3 MW types)</div>
+<div class="upg-item"><span class="upg-add">+ ADDED:</span><br><strong>Ferulic Acid murni</strong> + Ethyl Ferulate = double ferulic!</div>
+<div class="upg-item"><span class="upg-add">+ ADDED:</span><br><strong>Panthenol + Allantoin</strong> (soothing duo)</div>
+<div class="upg-item"><span class="upg-rem">&mdash; REMOVED:</span><br><strong>Isopropyl Myristate</strong> (com: 3-5!)</div>
+<div class="upg-item"><span class="upg-rem">&mdash; REMOVED:</span><br><strong>Ethylhexyl Palmitate</strong> (com: 2-4)</div>
+</div>
+</div>
+</div>
+
+<!-- CARD 03: VERDICT -->
+<div class="am-card am-verdict">
+<div class="am-num">03</div>
+<span class="am-label">Verdict + Amaterasun Quintet</span>
+<div class="am-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>GHK-Cu di mineral sunscreen brand lokal = UNPRECEDENTED.</strong> Peptide paling rigorously-studied di sunscreen. Biasanya di serum premium.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Isopropyl Myristate (com:3-5!) DIHAPUS.</strong> Amaterasun MENDENGARKAN feedback. Diganti emollient modern. BRAVO.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>DOUBLE Ferulic (murni + Ethyl Ferulate).</strong> Upgrade nyata dari v1. Doubles photoprotection.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Triple HA + Panthenol + Allantoin + Licorice = soothing layer TIDAK ADA di v1.</strong> V2 = protection + care.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>14+ Goodies, 0 Icky, fragrance-free, 100% mineral.</strong> Formula sunscreen TERBAIK dari seluruh range Amaterasun.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>48 bahan = formula TERPANJANG.</strong> Tapi semua tambahan = aktif beneficial, bukan filler. Justified complexity.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>ZnO #2 = white cast tetap inevitable.</strong> Pore blurring microspheres membantu texture tapi white cast tetap ada.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>3 peptides + Triple HA di posisi #15-20 = konsentrasi kecil.</strong> Lebih ke "bonus" daripada primary function. Primary = UV protection.</div></div>
+</div>
+<div class="st">
+<span class="stg">Pregnant / Nursing</span><span class="stg">Sensitive Skin</span><span class="stg">Anti-Aging</span><span class="stg">Pore Blurring</span><span class="stg">Brand Lokal Terbaik</span><span class="stg">All Skin Types</span>
+</div>
+<div class="qbox">
+<div class="qtitle">&#9878; Amaterasun Quintet</div>
+<div class="ql">
+<div class="qr"><span class="qe">&#128302;</span><span class="qn">Transparent</span><span class="qd">Mexoryl SX. 24 bahan.<span class="qpa pa-m">PA+++</span></span></div>
+<div class="qr"><span class="qe">&#9878;</span><span class="qn">Physical (v1)</span><span class="qd">ZnO only. 34 bahan.<span class="qpa pa-h">PA++++</span></span></div>
+<div class="qr"><span class="qe">&#127791;</span><span class="qn">UV Cream</span><span class="qd">Uvinul T 150. 21 bahan.<span class="qpa pa-h">PA++++</span></span></div>
+<div class="qr"><span class="qe">&#128167;</span><span class="qn">UV Serum</span><span class="qd">Tinosorb S. 29 bahan.<span class="qpa pa-l">PA++</span></span></div>
+<div class="qr qc"><span class="qe">&#10024;</span><span class="qn">Pore Blurring (v2)</span><span class="qd">ZnO + 3 peptides + 3HA. 48 bahan.<span class="qpa pa-h">PA++++</span></span></div>
+</div>
+</div>
+</div>
+</div>
