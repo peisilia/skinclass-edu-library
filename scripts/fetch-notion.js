@@ -6,7 +6,7 @@ const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 });
 
-const DATABASE_ID = process.env.NOTION_DATABASE_ID || "d5471b80-43f8-406a-b7c6-66308cced3db";
+const DATABASE_ID = process.env.NOTION_DATABASE_ID || "1e68d0d769724eecbf881f8a8ad98c54";
 
 function slugify(name) {
   return name
