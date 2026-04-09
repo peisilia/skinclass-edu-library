@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu Library | SkinClassForYou</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #9CAEF0;
+            --blue-dark: #7B91D9;
+            --lime: #D2D25A;
+            --cream: #FFF8EB;
+            --coral: #FF7D59;
+            --dark: #2D2D2D;
+            --gray: #6B7280;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+        header h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .brand-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* SEARCH */
+        .search-section {
+            padding: 1.5rem;
+            max-width: 600px;
+            margin: -1.5rem auto 0;
+            position: relative;
+            z-index: 1;
+        }
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--blue);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .search-box::placeholder { color: #aaa; }
+
+        /* CATEGORY PILLS */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            padding: 0 1.5rem 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cat-pill {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: 2px solid var(--blue);
+            background: white;
+            color: var(--blue-dark);
+            transition: all 0.2s;
+        }
+        .cat-pill:hover, .cat-pill.active {
+            background: var(--blue);
+            color: white;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+            padding: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: var(--dark);
+            display: block;
+            border-left: 4px solid var(--blue);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        .card-category {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--coral);
+            margin-bottom: 0.5rem;
+        }
+        .card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.3rem;
+        }
+        .card .inci {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 0.7rem;
+        }
+        .card .desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        .tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            background: #F0F4FF;
+            color: var(--blue-dark);
+        }
+        .evidence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 10px;
+            margin-bottom: 0.7rem;
+        }
+        .evidence-high { background: #DCFCE7; color: #166534; }
+        .evidence-mid { background: #FEF9C3; color: #854D0E; }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+        footer a { color: var(--coral); text-decoration: none; }
+
+        /* EMPTY STATE */
+        .empty {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--gray);
+        }
+        .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Edu Library</h1>
+    <p>Ensiklopedia ingredients skincare berbasis riset ilmiah. Pahami bahan aktif di produk skincare-mu.</p>
+    <span class="brand-tag">SKINCLASSFORYOU</span>
+</header>
+
+<div class="search-section">
+    <input type="text" class="search-box" id="search" placeholder="Cari ingredient... (contoh: Retinol, Niacinamide)">
+</div>
+
+<div class="categories" id="categories">
+    <span class="cat-pill active" data-cat="all">Semua</span>
+    <span class="cat-pill" data-cat="Superstar">Superstar</span>
+    <span class="cat-pill" data-cat="Goodie">Goodie</span>
+    <span class="cat-pill" data-cat="tag:Anti-Aging">Anti-Aging</span>
+    <span class="cat-pill" data-cat="tag:Brightening">Brightening</span>
+    <span class="cat-pill" data-cat="tag:Hydration">Hydration</span>
+    <span class="cat-pill" data-cat="tag:Soothing">Soothing</span>
+    <span class="cat-pill" data-cat="tag:Exfoliant">Exfoliant</span>
+    <span class="cat-pill" data-cat="tag:Anti-Acne">Anti-Acne</span>
+    <span class="cat-pill" data-cat="tag:Sunscreen">Sunscreen</span>
+    <span class="cat-pill" data-cat="tag:Barrier Repair">Barrier Repair</span>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="empty" id="empty" style="display:none">
+    <div class="empty-icon">&#128300;</div>
+    <p>Ingredient tidak ditemukan.<br>Coba kata kunci lain atau pilih kategori.</p>
+</div>
+
+<footer>
+    <p>SkinClassForYou Edu Library &copy; 2026 | by <a href="https://lynk.id/peisilia" target="_blank">Ci Pei</a></p>
+    <p style="margin-top:0.5rem">@sharing.ingredientsskincare</p>
+</footer>
+
+<script>
+let ingredients = [];
+
+const grid = document.getElementById('grid');
+const searchInput = document.getElementById('search');
+const emptyState = document.getElementById('empty');
+const pills = document.querySelectorAll('.cat-pill');
+let activeCategory = 'all';
+
+function renderCards(list) {
+    grid.innerHTML = '';
+    if (list.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+    }
+    emptyState.style.display = 'none';
+    list.forEach(ing => {
+        const evidenceClass = ing.evidence === 'high' ? 'evidence-high' : 'evidence-mid';
+        const catColor = ing.category === 'Superstar' ? 'var(--coral)' :
+                         ing.category === 'Goodie' ? '#10B981' : 'var(--gray)';
+        const borderColor = ing.category === 'Superstar' ? 'var(--blue)' :
+                            ing.category === 'Goodie' ? '#10B981' : '#D1D5DB';
+        const desc = ing.description || '';
+        const shortDesc = desc.length > 120 ? desc.substring(0, 120) + '...' : desc;
+        grid.innerHTML += `
+            <a href="ingredients/detail.html?slug=${ing.slug}" class="card" style="border-left-color:${borderColor}">
+                <div class="card-category" style="color:${catColor}">${ing.category}</div>
+                <h3>${ing.name}</h3>
+                <div class="inci">${ing.function || ''}</div>
+                <div class="evidence-badge ${evidenceClass}">${ing.evidenceLabel}</div>
+                <div class="desc">${shortDesc}</div>
+                <div class="card-tags">
+                    ${(ing.tags || []).map(t => '<span class="tag">' + t + '</span>').join('')}
+                </div>
+            </a>
+        `;
+    });
+}
+
+function filter() {
+    const q = searchInput.value.toLowerCase();
+    const filtered = ingredients.filter(ing => {
+        let matchCat = activeCategory === 'all';
+        if (!matchCat && activeCategory.startsWith('tag:')) {
+            const tagFilter = activeCategory.replace('tag:', '');
+            matchCat = (ing.tags || []).includes(tagFilter);
+        } else if (!matchCat) {
+            matchCat = ing.category === activeCategory;
+        }
+        const matchSearch = !q ||
+            ing.name.toLowerCase().includes(q) ||
+            (ing.function || '').toLowerCase().includes(q) ||
+            (ing.description || '').toLowerCase().includes(q) ||
+            (ing.tags || []).some(t => t.toLowerCase().includes(q));
+        return matchCat && matchSearch;
+    });
+    renderCards(filtered);
+}
+
+pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeCategory = pill.dataset.cat;
+        filter();
+    });
+});
+
+searchInput.addEventListener('input', filter);
+
+// Load data from JSON (generated at build time from Notion)
+grid.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--gray)">Memuat data ingredients...</div>';
+fetch('data/ingredients.json')
+    .then(r => r.json())
+    .then(data => {
+        ingredients = data;
+        renderCards(ingredients);
+    })
+    .catch(() => {
+        grid.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--coral)">Gagal memuat data. Silakan refresh halaman.</div>';
+    });
+</script>
+
+</body>
+</html>

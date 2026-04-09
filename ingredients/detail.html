@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... | SkinClassForYou</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #9CAEF0;
+            --blue-dark: #7B91D9;
+            --cream: #FFF8EB;
+            --coral: #FF7D59;
+            --dark: #2D2D2D;
+            --gray: #6B7280;
+            --green: #10B981;
+            --hero-color: #9CAEF0;
+            --hero-dark: #7B91D9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); min-height: 100vh; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 1.5rem; color: white; text-decoration: none;
+            font-size: 0.9rem; opacity: 0.9;
+        }
+        .back-link:hover { opacity: 1; }
+
+        .hero {
+            background: linear-gradient(135deg, var(--hero-color), var(--hero-dark));
+            padding: 0 1.5rem 2.5rem; color: white; text-align: center;
+        }
+        .hero-category {
+            display: inline-block; background: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem;
+            letter-spacing: 1px; margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: 'Libre Baskerville', serif; font-size: 2rem; margin-bottom: 0.5rem;
+        }
+        .hero-function {
+            font-size: 0.95rem; opacity: 0.9; max-width: 600px; margin: 0 auto 1rem;
+        }
+        .hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+        .badge {
+            padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+        }
+        .badge-evidence-high { background: #DCFCE7; color: #166534; }
+        .badge-evidence-mid { background: #FEF9C3; color: #854D0E; }
+        .badge-evidence-low { background: #FEE2E2; color: #991B1B; }
+        .badge-photo { background: #FEE2E2; color: #991B1B; }
+
+        .content { max-width: 700px; margin: 0 auto; padding: 1.5rem; }
+
+        .section {
+            background: white; border-radius: 16px; padding: 1.5rem;
+            margin-bottom: 1.2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-family: 'Libre Baskerville', serif; font-size: 1.1rem;
+            margin-bottom: 1rem; color: var(--dark);
+        }
+        .section p { font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+
+        .score-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.8rem;
+        }
+        .score-item {
+            text-align: center; padding: 1rem; border-radius: 12px; background: #F8FAFC;
+        }
+        .score-value { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.2rem; }
+        .score-label { font-size: 0.75rem; color: var(--gray); }
+
+        .tag-group { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+        .tag-good {
+            padding: 0.3rem 0.8rem; border-radius: 10px; font-size: 0.8rem;
+            background: #DCFCE7; color: #166534;
+        }
+        .tag-warn {
+            padding: 0.3rem 0.8rem; border-radius: 10px; font-size: 0.8rem;
+            background: #FEE2E2; color: #991B1B;
+        }
+
+        .info-row {
+            display: flex; justify-content: space-between; padding: 0.7rem 0;
+            border-bottom: 1px solid #F1F5F9; font-size: 0.9rem;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { color: var(--gray); font-weight: 500; }
+        .info-value { text-align: right; max-width: 60%; }
+
+        .interaction-box {
+            background: #FFF7ED; border-left: 4px solid #F59E0B;
+            padding: 1rem; border-radius: 8px; margin-top: 0.5rem;
+            font-size: 0.85rem; line-height: 1.6; color: #92400E;
+        }
+
+        .link-list { list-style: none; }
+        .link-list li { margin-bottom: 0.5rem; }
+        .link-list a {
+            color: var(--blue-dark); text-decoration: none; font-size: 0.9rem;
+        }
+        .link-list a:hover { text-decoration: underline; }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--hero-color), var(--hero-dark));
+            border-radius: 16px; padding: 2rem; text-align: center; color: white;
+            margin-bottom: 1.2rem;
+        }
+        .cta-section h2 { color: white; margin-bottom: 0.5rem; }
+        .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 1rem; }
+        .cta-btn {
+            display: inline-block; background: white; color: var(--blue-dark);
+            padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none;
+            font-weight: 600; font-size: 0.9rem; transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: scale(1.05); }
+
+        footer {
+            text-align: center; padding: 2rem 1.5rem; color: var(--gray); font-size: 0.8rem;
+        }
+        footer a { color: var(--coral); text-decoration: none; }
+
+        .loading { text-align: center; padding: 4rem 1.5rem; color: var(--gray); }
+        .not-found { text-align: center; padding: 4rem 1.5rem; }
+        .not-found h2 { margin-bottom: 1rem; }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.5rem; }
+            .score-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div class="loading">
+        <p>Memuat data ingredient...</p>
+    </div>
+</div>
+
+<script>
+const app = document.getElementById('app');
+const params = new URLSearchParams(window.location.search);
+const slug = params.get('slug');
+
+if (!slug) {
+    window.location.href = '../index.html';
+}
+
+function scoreColor(val, max) {
+    if (val === null || val === undefined) return 'var(--gray)';
+    const ratio = val / max;
+    if (ratio >= 0.7) return '#10B981';
+    if (ratio >= 0.4) return '#F59E0B';
+    return '#EF4444';
+}
+
+function irritancyColor(val) {
+    if (val === null || val === undefined) return 'var(--gray)';
+    if (val <= 1) return '#10B981';
+    if (val <= 2) return '#F59E0B';
+    return '#EF4444';
+}
+
+function render(ing) {
+    document.title = `${ing.name} | SkinClassForYou`;
+
+    const heroColor = ing.categoryColor || '#9CAEF0';
+    const heroDark = ing.category === 'Superstar' ? '#7B91D9' :
+                     ing.category === 'Goodie' ? '#059669' : '#4B5563';
+
+    const evidenceClass = ing.evidence === 'high' ? 'badge-evidence-high' :
+                          ing.evidence === 'mid' ? 'badge-evidence-mid' : 'badge-evidence-low';
+
+    let badges = `<span class="badge ${evidenceClass}">${ing.evidenceLabel}</span>`;
+    if (ing.photosensitivity) {
+        badges += ' <span class="badge badge-photo">Photosensitivity</span>';
+    }
+
+    // Score section
+    let scoreHtml = '';
+    const scores = [
+        { val: ing.safetyScore, max: 10, label: 'Safety Score', suffix: '/10' },
+        { val: ing.irritancy, max: 5, label: 'Irritancy', suffix: '/5', invert: true },
+        { val: ing.comedogenicity, max: 5, label: 'Comedogenicity', suffix: '/5', invert: true },
+    ].filter(s => s.val !== null && s.val !== undefined);
+
+    if (scores.length > 0) {
+        scoreHtml = '<div class="section"><h2>Skor Keamanan</h2><div class="score-grid">';
+        scores.forEach(s => {
+            const color = s.invert ? irritancyColor(s.val) : scoreColor(s.val, s.max);
+            scoreHtml += `<div class="score-item">
+                <div class="score-value" style="color:${color}">${s.val}${s.suffix}</div>
+                <div class="score-label">${s.label}</div>
+            </div>`;
+        });
+        scoreHtml += '</div></div>';
+    }
+
+    // Cocok Untuk & Hindari Jika
+    let tagsHtml = '';
+    if ((ing.cocokUntuk && ing.cocokUntuk.length) || (ing.hindariJika && ing.hindariJika.length)) {
+        tagsHtml = '<div class="section">';
+        if (ing.cocokUntuk && ing.cocokUntuk.length) {
+            tagsHtml += '<h2>Cocok Untuk</h2><div class="tag-group">';
+            ing.cocokUntuk.forEach(t => tagsHtml += `<span class="tag-good">${t}</span>`);
+            tagsHtml += '</div>';
+        }
+        if (ing.hindariJika && ing.hindariJika.length) {
+            tagsHtml += '<h2 style="margin-top:1rem">Hindari Jika</h2><div class="tag-group">';
+            ing.hindariJika.forEach(t => tagsHtml += `<span class="tag-warn">${t}</span>`);
+            tagsHtml += '</div>';
+        }
+        tagsHtml += '</div>';
+    }
+
+    // Info section
+    let infoHtml = '';
+    const infoRows = [
+        { label: 'Konsentrasi Ideal', val: ing.idealConcentration },
+        { label: 'pH Range', val: ing.phRange },
+    ].filter(r => r.val);
+
+    if (infoRows.length) {
+        infoHtml = '<div class="section"><h2>Konsentrasi & pH</h2>';
+        infoRows.forEach(r => {
+            infoHtml += `<div class="info-row"><span class="info-label">${r.label}</span><span class="info-value">${r.val}</span></div>`;
+        });
+        infoHtml += '</div>';
+    }
+
+    // Interaction section
+    let interaksiHtml = '';
+    if (ing.interaksi) {
+        interaksiHtml = `<div class="section"><h2>Interaksi Ingredient</h2>
+            <div class="interaction-box">${ing.interaksi}</div></div>`;
+    }
+
+    // Links section
+    let linksHtml = '';
+    if (ing.inciDecoderUrl || ing.sumberRiset) {
+        linksHtml = '<div class="section"><h2>Sumber & Referensi</h2><ul class="link-list">';
+        if (ing.inciDecoderUrl) linksHtml += `<li><a href="${ing.inciDecoderUrl}" target="_blank">INCIDecoder Page</a></li>`;
+        if (ing.sumberRiset) linksHtml += `<li><a href="${ing.sumberRiset}" target="_blank">Sumber Riset (PubMed)</a></li>`;
+        linksHtml += '</ul></div>';
+    }
+
+    app.innerHTML = `
+        <div class="hero" style="background:linear-gradient(135deg,${heroColor},${heroDark})">
+            <a href="../index.html" class="back-link">&larr; Kembali ke Library</a>
+            <span class="hero-category">${ing.category}</span>
+            <h1>${ing.name}</h1>
+            <div class="hero-function">${ing.function || ''}</div>
+            <div class="hero-badges">${badges}</div>
+        </div>
+        <div class="content">
+            <div class="section">
+                <h2>Tentang Ingredient Ini</h2>
+                <p>${ing.description || 'Belum ada deskripsi.'}</p>
+            </div>
+            ${scoreHtml}
+            ${tagsHtml}
+            ${infoHtml}
+            ${interaksiHtml}
+            ${linksHtml}
+            <div class="cta-section" style="background:linear-gradient(135deg,${heroColor},${heroDark})">
+                <h2>Butuh Konsultasi Personal?</h2>
+                <p>Dapatkan analisa skincare yang disesuaikan dengan kondisi kulitmu</p>
+                <a href="https://lynk.id/peisilia" target="_blank" class="cta-btn">Konsultasi Sekarang</a>
+            </div>
+        </div>
+        <footer>
+            <p>SkinClassForYou Edu Library &copy; 2026 | by <a href="https://lynk.id/peisilia" target="_blank">Ci Pei</a></p>
+            <p style="margin-top:0.5rem">@sharing.ingredientsskincare</p>
+        </footer>
+    `;
+}
+
+fetch('../data/ingredients.json')
+    .then(r => r.json())
+    .then(data => {
+        const ing = data.find(i => i.slug === slug);
+        if (!ing) {
+            app.innerHTML = `<div class="not-found">
+                <h2>Ingredient tidak ditemukan</h2>
+                <p><a href="../index.html">&larr; Kembali ke Library</a></p>
+            </div>`;
+            return;
+        }
+        render(ing);
+    })
+    .catch(() => {
+        app.innerHTML = '<div class="loading" style="color:var(--coral)">Gagal memuat data. Silakan refresh.</div>';
+    });
+</script>
+
+</body>
+</html>
