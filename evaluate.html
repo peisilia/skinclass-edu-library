@@ -239,16 +239,17 @@
         </div>
 
         <div class="section">
-            <h2>Skin Parameters (dari alat)</h2>
-            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.8rem">Kosongkan jika tidak diukur</p>
+            <h2>Skin Check (dari alat Skin Analysis)</h2>
+            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.8rem">Masukkan persentase dari hasil alat. Kosongkan jika tidak diukur.</p>
             <div class="param-grid">
-                <div class="param-item form-group"><label>Sebum Level (ug/cm2)</label><input type="number" id="paramSebum" placeholder="0-300" step="1"><span class="param-status" id="statusSebum"></span></div>
-                <div class="param-item form-group"><label>Moisture (AU)</label><input type="number" id="paramMoisture" placeholder="0-100" step="1"><span class="param-status" id="statusMoisture"></span></div>
-                <div class="param-item form-group"><label>TEWL (g/h/m2)</label><input type="number" id="paramTEWL" placeholder="0-50" step="0.1"><span class="param-status" id="statusTEWL"></span></div>
-                <div class="param-item form-group"><label>pH Kulit</label><input type="number" id="paramPH" placeholder="3.0-7.0" step="0.1"><span class="param-status" id="statusPH"></span></div>
-                <div class="param-item form-group"><label>Elastisitas (R2)</label><input type="number" id="paramElastisitas" placeholder="0-1" step="0.01"><span class="param-status" id="statusElastisitas"></span></div>
-                <div class="param-item form-group"><label>Melanin Index</label><input type="number" id="paramMelanin" placeholder="0-999" step="1"><span class="param-status" id="statusMelanin"></span></div>
-                <div class="param-item form-group"><label>Collagen Density</label><input type="number" id="paramCollagen" placeholder="score"><span class="param-status" id="statusCollagen"></span></div>
+                <div class="param-item form-group"><label>Sebum (%)</label><input type="number" id="paramSebum" placeholder="0-100" min="0" max="100" step="1"><span class="param-status" id="statusSebum"></span></div>
+                <div class="param-item form-group"><label>Moisture (%)</label><input type="number" id="paramMoisture" placeholder="0-100" min="0" max="100" step="1"><span class="param-status" id="statusMoisture"></span></div>
+                <div class="param-item form-group"><label>Pigment (%)</label><input type="number" id="paramPigment" placeholder="0-100" min="0" max="100" step="1"><span class="param-status" id="statusPigment"></span></div>
+                <div class="param-item form-group"><label>Collagen Fibers (%)</label><input type="number" id="paramCollagen" placeholder="0-100" min="0" max="100" step="1"><span class="param-status" id="statusCollagen"></span></div>
+                <div class="param-item form-group"><label>Elasticity (%)</label><input type="number" id="paramElastisitas" placeholder="0-100" min="0" max="100" step="1"><span class="param-status" id="statusElastisitas"></span></div>
+                <div class="param-item form-group"><label>Pore (%)</label><input type="number" id="paramPore" placeholder="0-100" min="0" max="100" step="1"><span class="param-status" id="statusPore"></span></div>
+                <div class="param-item form-group"><label>Acne (%)</label><input type="number" id="paramAcne" placeholder="0-100" min="0" max="100" step="1"><span class="param-status" id="statusAcne"></span></div>
+                <div class="param-item form-group"><label>Sensitivity (%)</label><input type="number" id="paramSensitivity" placeholder="0-100" min="0" max="100" step="1"><span class="param-status" id="statusSensitivity"></span></div>
             </div>
         </div>
 
@@ -339,43 +340,70 @@ function getSelectedChips(containerId) {
     return Array.from(document.querySelectorAll('#' + containerId + ' .chip.selected')).map(c => c.dataset.val);
 }
 
-// PARAM AUTO-INTERPRET
+// SKIN CHECK PARAMETERS (percentage-based from Skin Analysis machine)
+// Ranges: ideal % ranges for each parameter
+const skinCheckRanges = {
+    paramSebum:       { low: 0, normalLow: 20, normalHigh: 50, high: 100, labelLow: 'Kering', labelNormal: 'Normal', labelHigh: 'Berminyak', unit: '%',
+        interpLow: 'Produksi sebum rendah, kulit kering. Butuh emollient dan facial oil.',
+        interpHigh: 'Produksi sebum berlebih, risiko acne & komedo. Butuh niacinamide, BHA, clay mask.',
+        rekomLow: 'Ceramide, squalane, facial oil, emollient-rich moisturizer',
+        rekomHigh: 'Niacinamide 2-5%, zinc PCA, salicylic acid 0.5-2%, clay mask' },
+    paramMoisture:    { low: 0, normalLow: 40, normalHigh: 65, high: 100, labelLow: 'Dehidrasi', labelNormal: 'Normal', labelHigh: 'Terhidrasi Baik', unit: '%',
+        interpLow: 'Kulit dehidrasi, barrier terganggu. Perlu humectant dan occlusive.',
+        interpHigh: 'Hidrasi kulit sangat baik.',
+        rekomLow: 'Hyaluronic acid, glycerin, ceramide, urea 5-10%, occlusives',
+        rekomHigh: '' },
+    paramPigment:     { low: 0, normalLow: 0, normalHigh: 30, high: 100, labelLow: 'Normal', labelNormal: 'Normal', labelHigh: 'Hiperpigmentasi', unit: '%',
+        interpLow: 'Level pigmentasi normal.',
+        interpHigh: 'Hiperpigmentasi terdeteksi. Bisa melasma, PIH, atau sun damage.',
+        rekomLow: '',
+        rekomHigh: 'Vitamin C 10-20%, niacinamide 5%, arbutin, tranexamic acid, sunscreen SPF50+' },
+    paramCollagen:    { low: 0, normalLow: 50, normalHigh: 100, high: 100, labelLow: 'Rendah', labelNormal: 'Normal', labelHigh: 'Sangat Baik', unit: '%',
+        interpLow: 'Densitas kolagen menurun. Tanda aging, kulit mulai kehilangan firmness.',
+        interpHigh: 'Kolagen dalam kondisi baik.',
+        rekomLow: 'Retinoid, vitamin C, peptides (Matrixyl, copper peptide), sunscreen wajib',
+        rekomHigh: '' },
+    paramElastisitas: { low: 0, normalLow: 50, normalHigh: 100, high: 100, labelLow: 'Rendah', labelNormal: 'Normal', labelHigh: 'Sangat Baik', unit: '%',
+        interpLow: 'Elastisitas kulit menurun. Kulit kurang firm, tanda aging.',
+        interpHigh: 'Elastisitas kulit sangat baik, kulit firm dan bouncy.',
+        rekomLow: 'Retinoid, vitamin C, peptides, sunscreen SPF50+. Treatment: microneedling, RF',
+        rekomHigh: '' },
+    paramPore:        { low: 0, normalLow: 0, normalHigh: 30, high: 100, labelLow: 'Kecil', labelNormal: 'Normal', labelHigh: 'Besar/Visible', unit: '%',
+        interpLow: 'Pori halus, dalam kondisi baik.',
+        interpHigh: 'Pori besar/visible. Terkait sebum berlebih, aging, atau sun damage.',
+        rekomLow: '',
+        rekomHigh: 'Niacinamide 3-5%, retinoid, BHA/salicylic acid, clay mask' },
+    paramAcne:        { low: 0, normalLow: 0, normalHigh: 15, high: 100, labelLow: 'Bersih', labelNormal: 'Minimal', labelHigh: 'Acne Aktif', unit: '%',
+        interpLow: 'Kulit relatif bersih dari acne.',
+        interpHigh: 'Acne aktif terdeteksi. Butuh anti-acne treatment.',
+        rekomLow: '',
+        rekomHigh: 'Benzoyl peroxide 2.5%, salicylic acid 2%, niacinamide, azelaic acid 15-20%' },
+    paramSensitivity: { low: 0, normalLow: 0, normalHigh: 25, high: 100, labelLow: 'Tidak Sensitif', labelNormal: 'Normal', labelHigh: 'Sensitif', unit: '%',
+        interpLow: 'Kulit tidak menunjukkan tanda sensitivitas.',
+        interpHigh: 'Kulit sensitif/reaktif. Barrier mungkin terganggu.',
+        rekomLow: '',
+        rekomHigh: 'Ceramide, centella asiatica, azelaic acid. Hindari fragrance, alcohol, harsh surfactant' }
+};
+
 function setupParamListeners() {
-    const paramMap = {
-        paramSebum: { param: 'Sebum Level', statusId: 'statusSebum' },
-        paramMoisture: { param: 'Moisture / Hidrasi', statusId: 'statusMoisture' },
-        paramTEWL: { param: 'TEWL (Trans-Epidermal Water Loss)', statusId: 'statusTEWL' },
-        paramPH: { param: 'pH Kulit', statusId: 'statusPH' },
-        paramElastisitas: { param: 'Elastisitas (R2 - Gross Elasticity)', statusId: 'statusElastisitas' },
-        paramMelanin: { param: 'Melanin Index', statusId: 'statusMelanin' },
-        paramCollagen: { param: 'Collagen Density', statusId: 'statusCollagen' }
-    };
-    Object.entries(paramMap).forEach(([inputId, cfg]) => {
+    Object.entries(skinCheckRanges).forEach(([inputId, cfg]) => {
         const input = document.getElementById(inputId);
+        if (!input) return;
         input.addEventListener('input', () => {
             const val = parseFloat(input.value);
-            const statusEl = document.getElementById(cfg.statusId);
+            const statusEl = document.getElementById('status' + inputId.replace('param', ''));
             if (isNaN(val) || !input.value) { statusEl.textContent = ''; statusEl.className = 'param-status'; return; }
-            const ref = skinParamsDB.find(p => p.parameter === cfg.param);
-            if (!ref) { statusEl.textContent = '?'; statusEl.className = 'param-status'; return; }
-            const status = interpretParam(val, ref);
+            const status = interpretSkinCheck(val, cfg);
             statusEl.textContent = status.label;
             statusEl.className = 'param-status ' + status.cls;
         });
     });
 }
 
-function interpretParam(val, ref) {
-    // Parse "Normal" field to get range, e.g. "45-70" or "4.5-5.5" or "0.60-0.80"
-    const normalMatch = ref.normal.match(/([\d.]+)[^\d]+([\d.]+)/);
-    if (!normalMatch) return { label: '?', cls: '' };
-    const low = parseFloat(normalMatch[1]);
-    const high = parseFloat(normalMatch[2]);
-    // Special case for TEWL and Irritancy where higher = worse
-    const invertedParams = ['TEWL', 'pH Kulit'];
-    if (val < low) return { label: 'Rendah', cls: 'rendah' };
-    if (val > high) return { label: 'Tinggi', cls: 'tinggi' };
-    return { label: 'Normal', cls: 'normal' };
+function interpretSkinCheck(val, range) {
+    if (val < range.normalLow) return { label: range.labelLow, cls: 'rendah' };
+    if (val > range.normalHigh) return { label: range.labelHigh, cls: 'tinggi' };
+    return { label: range.labelNormal, cls: 'normal' };
 }
 
 // INGREDIENT PREVIEW
@@ -534,35 +562,40 @@ function collectClientData() {
         merokok: document.getElementById('merokok').checked,
         sebum: document.getElementById('paramSebum').value,
         moisture: document.getElementById('paramMoisture').value,
-        tewl: document.getElementById('paramTEWL').value,
-        ph: document.getElementById('paramPH').value,
-        elastisitas: document.getElementById('paramElastisitas').value,
-        melanin: document.getElementById('paramMelanin').value,
+        pigment: document.getElementById('paramPigment').value,
         collagen: document.getElementById('paramCollagen').value,
+        elastisitas: document.getElementById('paramElastisitas').value,
+        pore: document.getElementById('paramPore').value,
+        acne: document.getElementById('paramAcne').value,
+        sensitivity: document.getElementById('paramSensitivity').value,
         namaProduk: document.getElementById('namaProduk').value
     };
 }
 
 function interpretAllParams(client) {
     const results = [];
-    const paramMap = [
-        { key: 'sebum', param: 'Sebum Level' },
-        { key: 'moisture', param: 'Moisture / Hidrasi' },
-        { key: 'tewl', param: 'TEWL (Trans-Epidermal Water Loss)' },
-        { key: 'ph', param: 'pH Kulit' },
-        { key: 'elastisitas', param: 'Elastisitas (R2 - Gross Elasticity)' },
-        { key: 'melanin', param: 'Melanin Index' },
-        { key: 'collagen', param: 'Collagen Density' }
+    const paramKeys = [
+        { key: 'sebum', id: 'paramSebum', label: 'Sebum' },
+        { key: 'moisture', id: 'paramMoisture', label: 'Moisture' },
+        { key: 'pigment', id: 'paramPigment', label: 'Pigment' },
+        { key: 'collagen', id: 'paramCollagen', label: 'Collagen Fibers' },
+        { key: 'elastisitas', id: 'paramElastisitas', label: 'Elasticity' },
+        { key: 'pore', id: 'paramPore', label: 'Pore' },
+        { key: 'acne', id: 'paramAcne', label: 'Acne' },
+        { key: 'sensitivity', id: 'paramSensitivity', label: 'Sensitivity' }
     ];
-    paramMap.forEach(({ key, param }) => {
+    paramKeys.forEach(({ key, id, label }) => {
         const val = parseFloat(client[key]);
         if (isNaN(val)) return;
-        const ref = skinParamsDB.find(p => p.parameter === param);
-        if (!ref) return;
-        const status = interpretParam(val, ref);
-        results.push({ param: ref.parameter, value: val, satuan: ref.satuan, status: status.label,
-            interpretation: status.label === 'Rendah' ? ref.interpretasiRendah : status.label === 'Tinggi' ? ref.interpretasiTinggi : 'Dalam range normal',
-            rekomendasi: status.label !== 'Normal' ? ref.rekomendasi : '' });
+        const range = skinCheckRanges[id];
+        if (!range) return;
+        const status = interpretSkinCheck(val, range);
+        const isAbnormal = status.cls !== 'normal';
+        const interpretation = status.cls === 'rendah' ? range.interpLow :
+                               status.cls === 'tinggi' ? range.interpHigh : 'Dalam range normal';
+        const rekomendasi = status.cls === 'rendah' ? range.rekomLow :
+                            status.cls === 'tinggi' ? range.rekomHigh : '';
+        results.push({ param: label, value: val, satuan: '%', status: status.label, interpretation, rekomendasi });
     });
     return results;
 }
