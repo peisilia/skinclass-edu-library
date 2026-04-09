@@ -853,16 +853,28 @@ function setupProductSearch() {
 function selectProduct(slug) {
     const product = productsDB.find(p => p.slug === slug);
     if (!product) return;
-    document.getElementById('selectedProduct').style.display = 'block';
-    document.getElementById('selectedName').textContent = product.name;
-    document.getElementById('selectedMeta').textContent = (product.brand || '') + (product.ingredientCount ? ' | ' + product.ingredientCount + ' ingredients' : '');
-    document.getElementById('namaProduk').value = product.name;
-    if (product.keyIngredients) {
-        document.getElementById('ingredientInput').value = product.keyIngredients;
-        previewIngredients();
-    }
+
+    // Auto-add to client products list immediately
+    const jenis = document.getElementById('jenisProduk').value;
+    const lama = document.getElementById('lamaPakai').value;
+    clientProducts.push({
+        nama: product.name,
+        jenis: jenis || '',
+        lama: lama || '',
+        ingredients: product.keyIngredients || '',
+        keterangan: (product.brand || ''),
+        id: Date.now()
+    });
+    renderSavedProducts();
+
+    // Reset form for next product
     document.getElementById('productSearch').value = '';
     document.getElementById('productDropdown').style.display = 'none';
+    document.getElementById('jenisProduk').value = '';
+    document.getElementById('lamaPakai').value = '';
+    document.getElementById('namaProduk').value = '';
+    document.getElementById('ingredientInput').value = '';
+    document.getElementById('ingPreview').innerHTML = '';
 }
 
 function clearSelectedProduct() {
