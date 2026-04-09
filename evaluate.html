@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluasi Kulit | SkinClassForYou</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #9CAEF0; --blue-dark: #7B91D9; --cream: #FFF8EB;
+            --coral: #FF7D59; --dark: #2D2D2D; --gray: #6B7280;
+            --green: #10B981; --green-dark: #059669;
+            --red: #EF4444; --yellow: #F59E0B;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); min-height: 100vh; }
+
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.9; }
+        .back-link:hover { opacity: 1; }
+
+        header { background: linear-gradient(135deg, var(--green), var(--green-dark)); padding: 0 1.5rem 2rem; color: white; text-align: center; }
+        header h1 { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; margin-bottom: 0.5rem; }
+        header p { font-size: 0.9rem; opacity: 0.9; max-width: 500px; margin: 0 auto; }
+
+        .container { max-width: 750px; margin: 0 auto; padding: 1.5rem; }
+
+        /* STEPS */
+        .step { display: none; }
+        .step.active { display: block; }
+        .step-indicator { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .step-dot { width: 40px; height: 40px; border-radius: 50%; background: white; border: 2px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600; color: var(--green); cursor: pointer; transition: all 0.2s; }
+        .step-dot.active, .step-dot.done { background: var(--green); color: white; }
+        .step-label { text-align: center; font-size: 0.75rem; color: var(--gray); margin-bottom: 1.5rem; }
+
+        .section { background: white; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-family: 'Libre Baskerville', serif; font-size: 1.05rem; margin-bottom: 1rem; }
+        .section h3 { font-size: 0.9rem; font-weight: 600; margin: 1rem 0 0.5rem; color: var(--gray); }
+
+        /* FORM ELEMENTS */
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem; }
+        .form-row.full { grid-template-columns: 1fr; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group label { font-size: 0.8rem; font-weight: 500; margin-bottom: 0.3rem; color: var(--gray); }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 0.7rem 1rem; border: 2px solid #E5E7EB; border-radius: 12px;
+            font-family: 'Poppins', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green); }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+
+        /* CHIPS (multi-select) */
+        .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .chip { padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.8rem; cursor: pointer; border: 2px solid #E5E7EB; background: white; color: var(--dark); transition: all 0.2s; user-select: none; }
+        .chip.selected { background: var(--green); color: white; border-color: var(--green); }
+        .chip:hover { border-color: var(--green); }
+
+        /* CHECKBOX */
+        .check-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0; }
+        .check-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--green); }
+        .check-row label { font-size: 0.85rem; }
+
+        /* PARAM GRID */
+        .param-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+        .param-item { position: relative; }
+        .param-status { font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 8px; position: absolute; right: 8px; top: 8px; }
+        .param-status.rendah { background: #FEE2E2; color: #991B1B; }
+        .param-status.normal { background: #DCFCE7; color: #166534; }
+        .param-status.tinggi { background: #FEF9C3; color: #854D0E; }
+
+        /* BUTTONS */
+        .btn-row { display: flex; justify-content: space-between; margin-top: 1rem; }
+        .btn { padding: 0.8rem 2rem; border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-primary { background: var(--green); color: white; }
+        .btn-primary:hover { background: var(--green-dark); transform: scale(1.02); }
+        .btn-secondary { background: white; color: var(--green); border: 2px solid var(--green); }
+        .btn-secondary:hover { background: #F0FDF4; }
+        .btn-analyze { background: linear-gradient(135deg, var(--green), var(--green-dark)); color: white; width: 100%; padding: 1rem; font-size: 1rem; }
+        .btn-analyze:hover { transform: scale(1.02); box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
+
+        /* INGREDIENT PREVIEW */
+        .ing-preview { margin-top: 1rem; }
+        .ing-match { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0; border-bottom: 1px solid #F1F5F9; font-size: 0.85rem; }
+        .ing-match:last-child { border-bottom: none; }
+        .ing-badge { font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 8px; font-weight: 600; }
+        .ing-badge.superstar { background: #EDE9FE; color: #5B21B6; }
+        .ing-badge.goodie { background: #DCFCE7; color: #166534; }
+        .ing-badge.unknown { background: #F3F4F6; color: #6B7280; }
+
+        /* RESULTS */
+        #results { display: none; }
+        .result-header { text-align: center; padding: 2rem; }
+        .score-big { font-size: 4rem; font-weight: 700; line-height: 1; }
+        .verdict-badge { display: inline-block; padding: 0.4rem 1.5rem; border-radius: 20px; font-size: 1rem; font-weight: 600; margin-top: 0.5rem; }
+        .verdict-sangat-cocok { background: #DCFCE7; color: #166534; }
+        .verdict-cocok { background: #DBEAFE; color: #1E40AF; }
+        .verdict-netral { background: #F3F4F6; color: #4B5563; }
+        .verdict-kurang-cocok { background: #FEF3C7; color: #92400E; }
+        .verdict-tidak-cocok { background: #FEE2E2; color: #991B1B; }
+
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.8rem; }
+        .result-item { text-align: center; padding: 1rem; border-radius: 12px; background: #F8FAFC; }
+        .result-value { font-size: 1.3rem; font-weight: 700; }
+        .result-label { font-size: 0.75rem; color: var(--gray); }
+
+        .tag-good { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 10px; font-size: 0.8rem; background: #DCFCE7; color: #166534; margin: 0.2rem; }
+        .tag-warn { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 10px; font-size: 0.8rem; background: #FEE2E2; color: #991B1B; margin: 0.2rem; }
+        .tag-info { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 10px; font-size: 0.8rem; background: #DBEAFE; color: #1E40AF; margin: 0.2rem; }
+        .tag-neutral { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 10px; font-size: 0.8rem; background: #F3F4F6; color: #4B5563; margin: 0.2rem; }
+
+        .alert-box { padding: 1rem; border-radius: 12px; margin-top: 0.5rem; font-size: 0.85rem; line-height: 1.6; }
+        .alert-warn { background: #FFF7ED; border-left: 4px solid #F59E0B; color: #92400E; }
+        .alert-danger { background: #FEF2F2; border-left: 4px solid #EF4444; color: #991B1B; }
+        .alert-good { background: #F0FDF4; border-left: 4px solid #10B981; color: #166534; }
+        .alert-info { background: #EFF6FF; border-left: 4px solid #3B82F6; color: #1E40AF; }
+
+        .rec-list { list-style: none; margin-top: 0.5rem; }
+        .rec-list li { padding: 0.4rem 0; font-size: 0.85rem; border-bottom: 1px solid #F1F5F9; }
+        .rec-list li:last-child { border-bottom: none; }
+
+        footer { text-align: center; padding: 2rem 1.5rem; color: var(--gray); font-size: 0.8rem; }
+        footer a { color: var(--coral); text-decoration: none; }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.4rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .param-grid { grid-template-columns: 1fr; }
+            .result-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="back-link">&larr; Kembali ke Library</a>
+    <h1>Evaluasi Kulit & Produk</h1>
+    <p>Analisa kecocokan produk skincare berdasarkan kondisi kulit klien</p>
+</header>
+
+<div class="container">
+    <!-- STEP INDICATOR -->
+    <div class="step-indicator">
+        <div class="step-dot active" data-step="1">1</div>
+        <div class="step-dot" data-step="2">2</div>
+        <div class="step-dot" data-step="3">3</div>
+    </div>
+
+    <!-- STEP 1: DATA KLIEN -->
+    <div class="step active" id="step1">
+        <div class="step-label">Langkah 1/3 &mdash; Data Klien</div>
+
+        <div class="section">
+            <h2>Identitas Klien</h2>
+            <div class="form-row">
+                <div class="form-group"><label>Nama</label><input type="text" id="nama" placeholder="Nama klien"></div>
+                <div class="form-group"><label>Usia</label><input type="number" id="usia" placeholder="25" min="10" max="99"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Gender</label>
+                    <select id="gender"><option value="">Pilih...</option><option>Perempuan</option><option>Laki-laki</option></select>
+                </div>
+                <div class="form-group"><label>Jenis Kulit</label>
+                    <select id="jenisKulit"><option value="">Pilih...</option><option>Normal</option><option>Kering</option><option>Berminyak</option><option>Kombinasi</option><option>Sensitif</option></select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Fitzpatrick Type</label>
+                    <select id="fitzpatrick"><option value="">Pilih...</option><option>Type I</option><option>Type II</option><option>Type III</option><option>Type IV</option><option>Type V</option><option>Type VI</option></select>
+                </div>
+                <div class="form-group"><label>Kondisi Hormonal</label>
+                    <select id="hormonal"><option value="">Normal</option><option>PCOS</option><option>Menopause</option><option>Hamil</option><option>Menyusui</option><option>KB Hormonal</option></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Masalah Kulit</h2>
+            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.8rem">Pilih semua yang sesuai:</p>
+            <div class="chips" id="masalahChips">
+                <span class="chip" data-val="Jerawat Aktif">Jerawat Aktif</span>
+                <span class="chip" data-val="Komedo">Komedo</span>
+                <span class="chip" data-val="Flek/Hiperpigmentasi">Flek/Hiperpigmentasi</span>
+                <span class="chip" data-val="Dehidrasi">Dehidrasi</span>
+                <span class="chip" data-val="Skin Barrier Rusak">Skin Barrier Rusak</span>
+                <span class="chip" data-val="Rosacea">Rosacea</span>
+                <span class="chip" data-val="Bekas Jerawat (PIH)">Bekas Jerawat (PIH)</span>
+                <span class="chip" data-val="Garis Halus">Garis Halus</span>
+                <span class="chip" data-val="Pori Besar">Pori Besar</span>
+                <span class="chip" data-val="Kulit Kusam">Kulit Kusam</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Riwayat</h2>
+            <div class="form-row full">
+                <div class="form-group"><label>Riwayat Alergi Ingredient</label><input type="text" id="alergi" placeholder="Contoh: fragrance, paraben, retinoid..."></div>
+            </div>
+            <div class="form-row full">
+                <div class="form-group"><label>Obat yang Sedang Dipakai</label><input type="text" id="obat" placeholder="Contoh: isotretinoin, antibiotik..."></div>
+            </div>
+        </div>
+
+        <div class="btn-row"><div></div><button class="btn btn-primary" onclick="goStep(2)">Selanjutnya &rarr;</button></div>
+    </div>
+
+    <!-- STEP 2: LIFESTYLE & SKIN PARAMS -->
+    <div class="step" id="step2">
+        <div class="step-label">Langkah 2/3 &mdash; Lifestyle & Skin Parameters</div>
+
+        <div class="section">
+            <h2>Lifestyle</h2>
+            <div class="form-row">
+                <div class="form-group"><label>Jam Tidur</label>
+                    <select id="tidur"><option value="">&lt;5 jam</option><option>5-6 jam</option><option>6-7 jam</option><option selected>7-8 jam</option><option>&gt;8 jam</option></select>
+                </div>
+                <div class="form-group"><label>Level Stress</label>
+                    <select id="stress"><option>Rendah</option><option selected>Sedang</option><option>Tinggi</option></select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Olahraga</label>
+                    <select id="olahraga"><option>Tidak Pernah</option><option>Jarang</option><option selected>1-2x/minggu</option><option>3-5x/minggu</option><option>Setiap Hari</option></select>
+                </div>
+                <div class="form-group"><label>Paparan Matahari</label>
+                    <select id="matahari"><option>Rendah</option><option selected>Sedang</option><option>Tinggi (outdoor)</option></select>
+                </div>
+            </div>
+            <h3>Diet</h3>
+            <div class="chips" id="dietChips">
+                <span class="chip" data-val="Tinggi Gula">Tinggi Gula</span>
+                <span class="chip" data-val="Tinggi Dairy">Tinggi Dairy</span>
+                <span class="chip" data-val="Seimbang">Seimbang</span>
+                <span class="chip" data-val="Fast Food">Fast Food</span>
+                <span class="chip" data-val="Kurang Air">Kurang Air</span>
+            </div>
+            <div class="check-row" style="margin-top:0.8rem">
+                <input type="checkbox" id="merokok"><label for="merokok">Merokok</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Skin Parameters (dari alat)</h2>
+            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.8rem">Kosongkan jika tidak diukur</p>
+            <div class="param-grid">
+                <div class="param-item form-group"><label>Sebum Level (ug/cm2)</label><input type="number" id="paramSebum" placeholder="0-300" step="1"><span class="param-status" id="statusSebum"></span></div>
+                <div class="param-item form-group"><label>Moisture (AU)</label><input type="number" id="paramMoisture" placeholder="0-100" step="1"><span class="param-status" id="statusMoisture"></span></div>
+                <div class="param-item form-group"><label>TEWL (g/h/m2)</label><input type="number" id="paramTEWL" placeholder="0-50" step="0.1"><span class="param-status" id="statusTEWL"></span></div>
+                <div class="param-item form-group"><label>pH Kulit</label><input type="number" id="paramPH" placeholder="3.0-7.0" step="0.1"><span class="param-status" id="statusPH"></span></div>
+                <div class="param-item form-group"><label>Elastisitas (R2)</label><input type="number" id="paramElastisitas" placeholder="0-1" step="0.01"><span class="param-status" id="statusElastisitas"></span></div>
+                <div class="param-item form-group"><label>Melanin Index</label><input type="number" id="paramMelanin" placeholder="0-999" step="1"><span class="param-status" id="statusMelanin"></span></div>
+                <div class="param-item form-group"><label>Collagen Density</label><input type="number" id="paramCollagen" placeholder="score"><span class="param-status" id="statusCollagen"></span></div>
+            </div>
+        </div>
+
+        <div class="btn-row">
+            <button class="btn btn-secondary" onclick="goStep(1)">&larr; Kembali</button>
+            <button class="btn btn-primary" onclick="goStep(3)">Selanjutnya &rarr;</button>
+        </div>
+    </div>
+
+    <!-- STEP 3: PRODUK -->
+    <div class="step" id="step3">
+        <div class="step-label">Langkah 3/3 &mdash; Produk Skincare</div>
+
+        <div class="section">
+            <h2>Ingredient List Produk</h2>
+            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.8rem">Paste ingredient list dari produk (pisahkan dengan koma)</p>
+            <div class="form-row full">
+                <div class="form-group"><label>Nama Produk</label><input type="text" id="namaProduk" placeholder="Contoh: CeraVe Moisturizing Cream"></div>
+            </div>
+            <div class="form-row full">
+                <div class="form-group">
+                    <label>Ingredient List</label>
+                    <textarea id="ingredientInput" rows="6" placeholder="Contoh: Water, Glycerin, Niacinamide, Cetearyl Alcohol, Dimethicone, Tocopheryl Acetate..."></textarea>
+                </div>
+            </div>
+            <button class="btn btn-secondary" onclick="previewIngredients()" style="margin-top:0.5rem">Preview Ingredients</button>
+            <div id="ingPreview" class="ing-preview"></div>
+        </div>
+
+        <div class="btn-row">
+            <button class="btn btn-secondary" onclick="goStep(2)">&larr; Kembali</button>
+            <button class="btn btn-analyze" onclick="analyze()">Analisa Kecocokan Produk</button>
+        </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="results">
+        <div class="step-label" style="margin-top:1rem">Hasil Evaluasi</div>
+
+        <div class="section result-header" id="resultHeader"></div>
+        <div class="section" id="resultScores"></div>
+        <div class="section" id="resultPositive" style="display:none"></div>
+        <div class="section" id="resultWarnings" style="display:none"></div>
+        <div class="section" id="resultInteractions" style="display:none"></div>
+        <div class="section" id="resultSkinParams" style="display:none"></div>
+        <div class="section" id="resultLifestyle" style="display:none"></div>
+        <div class="section" id="resultRecommendations" style="display:none"></div>
+
+        <button class="btn btn-secondary" onclick="resetForm()" style="width:100%;margin:1rem 0">Evaluasi Baru</button>
+    </div>
+</div>
+
+<footer>
+    <p>SkinClassForYou Edu Library &copy; 2026 | by <a href="https://lynk.id/peisilia" target="_blank">Ci Pei</a></p>
+    <p style="margin-top:0.5rem">@sharing.ingredientsskincare</p>
+</footer>
+
+<script>
+let ingredientsDB = [];
+let skinParamsDB = [];
+
+// Load data
+Promise.all([
+    fetch('data/ingredients.json').then(r => r.json()),
+    fetch('data/skin-params.json').then(r => r.json())
+]).then(([ings, params]) => {
+    ingredientsDB = ings;
+    skinParamsDB = params;
+    setupParamListeners();
+}).catch(err => console.error('Failed to load data:', err));
+
+// STEP NAVIGATION
+function goStep(n) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('step' + n).classList.add('active');
+    document.querySelectorAll('.step-dot').forEach(d => {
+        const sn = parseInt(d.dataset.step);
+        d.classList.toggle('active', sn === n);
+        d.classList.toggle('done', sn < n);
+    });
+    window.scrollTo(0, 0);
+}
+document.querySelectorAll('.step-dot').forEach(d => d.addEventListener('click', () => goStep(parseInt(d.dataset.step))));
+
+// CHIPS
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => c.classList.toggle('selected')));
+function getSelectedChips(containerId) {
+    return Array.from(document.querySelectorAll('#' + containerId + ' .chip.selected')).map(c => c.dataset.val);
+}
+
+// PARAM AUTO-INTERPRET
+function setupParamListeners() {
+    const paramMap = {
+        paramSebum: { param: 'Sebum Level', statusId: 'statusSebum' },
+        paramMoisture: { param: 'Moisture / Hidrasi', statusId: 'statusMoisture' },
+        paramTEWL: { param: 'TEWL (Trans-Epidermal Water Loss)', statusId: 'statusTEWL' },
+        paramPH: { param: 'pH Kulit', statusId: 'statusPH' },
+        paramElastisitas: { param: 'Elastisitas (R2 - Gross Elasticity)', statusId: 'statusElastisitas' },
+        paramMelanin: { param: 'Melanin Index', statusId: 'statusMelanin' },
+        paramCollagen: { param: 'Collagen Density', statusId: 'statusCollagen' }
+    };
+    Object.entries(paramMap).forEach(([inputId, cfg]) => {
+        const input = document.getElementById(inputId);
+        input.addEventListener('input', () => {
+            const val = parseFloat(input.value);
+            const statusEl = document.getElementById(cfg.statusId);
+            if (isNaN(val) || !input.value) { statusEl.textContent = ''; statusEl.className = 'param-status'; return; }
+            const ref = skinParamsDB.find(p => p.parameter === cfg.param);
+            if (!ref) { statusEl.textContent = '?'; statusEl.className = 'param-status'; return; }
+            const status = interpretParam(val, ref);
+            statusEl.textContent = status.label;
+            statusEl.className = 'param-status ' + status.cls;
+        });
+    });
+}
+
+function interpretParam(val, ref) {
+    // Parse "Normal" field to get range, e.g. "45-70" or "4.5-5.5" or "0.60-0.80"
+    const normalMatch = ref.normal.match(/([\d.]+)[^\d]+([\d.]+)/);
+    if (!normalMatch) return { label: '?', cls: '' };
+    const low = parseFloat(normalMatch[1]);
+    const high = parseFloat(normalMatch[2]);
+    // Special case for TEWL and Irritancy where higher = worse
+    const invertedParams = ['TEWL', 'pH Kulit'];
+    if (val < low) return { label: 'Rendah', cls: 'rendah' };
+    if (val > high) return { label: 'Tinggi', cls: 'tinggi' };
+    return { label: 'Normal', cls: 'normal' };
+}
+
+// INGREDIENT PREVIEW
+function previewIngredients() {
+    const raw = document.getElementById('ingredientInput').value;
+    const names = raw.split(/,|\n/).map(s => s.trim()).filter(Boolean);
+    const preview = document.getElementById('ingPreview');
+    if (names.length === 0) { preview.innerHTML = '<p style="color:var(--gray);font-size:0.85rem">Masukkan ingredient list terlebih dahulu</p>'; return; }
+    let html = '<h3 style="margin-bottom:0.5rem">Ditemukan ' + names.length + ' ingredient:</h3>';
+    names.forEach(name => {
+        const match = findIngredient(name);
+        if (match) {
+            const badge = match.category === 'Superstar' ? 'superstar' : match.category === 'Goodie' ? 'goodie' : 'unknown';
+            html += `<div class="ing-match"><span class="ing-badge ${badge}">${match.category}</span> <strong>${match.name}</strong></div>`;
+        } else {
+            html += `<div class="ing-match"><span class="ing-badge unknown">?</span> ${name}</div>`;
+        }
+    });
+    preview.innerHTML = html;
+}
+
+function findIngredient(name) {
+    const n = name.toLowerCase().trim();
+    return ingredientsDB.find(ing =>
+        ing.name.toLowerCase() === n ||
+        ing.name.toLowerCase().includes(n) ||
+        n.includes(ing.name.toLowerCase().split(' ')[0]) ||
+        ing.slug === n.replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+    );
+}
+
+// ANALYSIS ENGINE
+function analyze() {
+    const client = collectClientData();
+    const raw = document.getElementById('ingredientInput').value;
+    const ingNames = raw.split(/,|\n/).map(s => s.trim()).filter(Boolean);
+    if (ingNames.length === 0) { alert('Masukkan ingredient list produk terlebih dahulu'); return; }
+
+    const matched = [];
+    const unknown = [];
+    ingNames.forEach(name => {
+        const m = findIngredient(name);
+        if (m) matched.push(m);
+        else unknown.push(name);
+    });
+
+    const positiveIngs = [];
+    const warningIngs = [];
+    const interactions = [];
+    let totalScore = 7; // start neutral
+
+    // Map client masalah to ingredient matching terms
+    const masalahToIngredient = {
+        'Jerawat Aktif': 'Acne', 'Komedo': 'Komedo', 'Flek/Hiperpigmentasi': 'Hiperpigmentasi',
+        'Dehidrasi': 'Dehidrasi', 'Skin Barrier Rusak': 'Barrier Rusak', 'Rosacea': 'Rosacea',
+        'Bekas Jerawat (PIH)': 'Hiperpigmentasi', 'Garis Halus': 'Aging', 'Pori Besar': 'Berminyak',
+        'Kulit Kusam': 'Kulit Kusam'
+    };
+    const clientConditions = client.masalahKulit.map(m => masalahToIngredient[m] || m);
+
+    // Determine client hindari conditions
+    const clientHindari = [];
+    if (client.hormonal === 'Hamil') clientHindari.push('Hamil');
+    if (client.hormonal === 'Menyusui') clientHindari.push('Menyusui');
+    if (client.jenisKulit === 'Sensitif') clientHindari.push('Sensitif');
+    if (client.masalahKulit.includes('Rosacea')) clientHindari.push('Rosacea');
+    if (client.masalahKulit.includes('Skin Barrier Rusak')) clientHindari.push('Barrier Rusak');
+    if (parseInt(client.usia) < 12) clientHindari.push('Anak <12th');
+
+    matched.forEach(ing => {
+        // Check positive matches
+        const positives = (ing.cocokUntuk || []).filter(c => clientConditions.includes(c));
+        if (positives.length > 0) {
+            positiveIngs.push({ name: ing.name, reasons: positives, category: ing.category });
+            totalScore += 0.3 * positives.length;
+        }
+
+        // Check warnings
+        const warnings = (ing.hindariJika || []).filter(h => clientHindari.includes(h));
+        if (warnings.length > 0) {
+            warningIngs.push({ name: ing.name, reasons: warnings, interaksi: ing.interaksi });
+            totalScore -= 1.5 * warnings.length;
+        }
+
+        // Check photosensitivity
+        if (ing.photosensitivity && client.paparanMatahari === 'Tinggi (outdoor)') {
+            warningIngs.push({ name: ing.name, reasons: ['Photosensitivity + paparan matahari tinggi'], interaksi: 'Wajib pakai sunscreen SPF50+ dan reapply' });
+            totalScore -= 0.5;
+        }
+
+        // Check irritancy for sensitive skin
+        if (ing.irritancy && ing.irritancy >= 3 && client.jenisKulit === 'Sensitif') {
+            warningIngs.push({ name: ing.name, reasons: ['Irritancy tinggi (' + ing.irritancy + '/5) untuk kulit sensitif'] });
+            totalScore -= 0.5;
+        }
+
+        // Check interactions between ingredients
+        if (ing.interaksi) {
+            matched.forEach(other => {
+                if (other.name !== ing.name && ing.interaksi.toLowerCase().includes(other.name.toLowerCase().split(' ')[0])) {
+                    const key = [ing.name, other.name].sort().join(' + ');
+                    if (!interactions.find(i => i.pair === key)) {
+                        interactions.push({ pair: key, note: ing.interaksi });
+                    }
+                }
+            });
+        }
+    });
+
+    // Comedogenicity check
+    const highComedo = matched.filter(i => i.comedogenicity && i.comedogenicity >= 3);
+    if (highComedo.length > 0) {
+        highComedo.forEach(i => {
+            warningIngs.push({ name: i.name, reasons: ['Comedogenicity tinggi (' + i.comedogenicity + '/5)'] });
+        });
+        totalScore -= 0.5 * highComedo.length;
+    }
+
+    // Clamp score
+    totalScore = Math.max(1, Math.min(10, Math.round(totalScore * 10) / 10));
+
+    // Determine verdict
+    let verdict, verdictClass;
+    if (totalScore >= 8.5) { verdict = 'Sangat Cocok'; verdictClass = 'verdict-sangat-cocok'; }
+    else if (totalScore >= 7) { verdict = 'Cocok'; verdictClass = 'verdict-cocok'; }
+    else if (totalScore >= 5) { verdict = 'Netral'; verdictClass = 'verdict-netral'; }
+    else if (totalScore >= 3) { verdict = 'Kurang Cocok'; verdictClass = 'verdict-kurang-cocok'; }
+    else { verdict = 'Tidak Cocok'; verdictClass = 'verdict-tidak-cocok'; }
+
+    // Interpret skin parameters
+    const skinParamResults = interpretAllParams(client);
+
+    // Generate lifestyle notes
+    const lifestyleNotes = generateLifestyleNotes(client);
+
+    // Render results
+    renderResults({ client, matched, unknown, positiveIngs, warningIngs, interactions, totalScore, verdict, verdictClass, skinParamResults, lifestyleNotes });
+}
+
+function collectClientData() {
+    return {
+        nama: document.getElementById('nama').value,
+        usia: document.getElementById('usia').value,
+        gender: document.getElementById('gender').value,
+        jenisKulit: document.getElementById('jenisKulit').value,
+        fitzpatrick: document.getElementById('fitzpatrick').value,
+        hormonal: document.getElementById('hormonal').value,
+        masalahKulit: getSelectedChips('masalahChips'),
+        alergi: document.getElementById('alergi').value,
+        obat: document.getElementById('obat').value,
+        tidur: document.getElementById('tidur').value,
+        stress: document.getElementById('stress').value,
+        olahraga: document.getElementById('olahraga').value,
+        paparanMatahari: document.getElementById('matahari').value,
+        diet: getSelectedChips('dietChips'),
+        merokok: document.getElementById('merokok').checked,
+        sebum: document.getElementById('paramSebum').value,
+        moisture: document.getElementById('paramMoisture').value,
+        tewl: document.getElementById('paramTEWL').value,
+        ph: document.getElementById('paramPH').value,
+        elastisitas: document.getElementById('paramElastisitas').value,
+        melanin: document.getElementById('paramMelanin').value,
+        collagen: document.getElementById('paramCollagen').value,
+        namaProduk: document.getElementById('namaProduk').value
+    };
+}
+
+function interpretAllParams(client) {
+    const results = [];
+    const paramMap = [
+        { key: 'sebum', param: 'Sebum Level' },
+        { key: 'moisture', param: 'Moisture / Hidrasi' },
+        { key: 'tewl', param: 'TEWL (Trans-Epidermal Water Loss)' },
+        { key: 'ph', param: 'pH Kulit' },
+        { key: 'elastisitas', param: 'Elastisitas (R2 - Gross Elasticity)' },
+        { key: 'melanin', param: 'Melanin Index' },
+        { key: 'collagen', param: 'Collagen Density' }
+    ];
+    paramMap.forEach(({ key, param }) => {
+        const val = parseFloat(client[key]);
+        if (isNaN(val)) return;
+        const ref = skinParamsDB.find(p => p.parameter === param);
+        if (!ref) return;
+        const status = interpretParam(val, ref);
+        results.push({ param: ref.parameter, value: val, satuan: ref.satuan, status: status.label,
+            interpretation: status.label === 'Rendah' ? ref.interpretasiRendah : status.label === 'Tinggi' ? ref.interpretasiTinggi : 'Dalam range normal',
+            rekomendasi: status.label !== 'Normal' ? ref.rekomendasi : '' });
+    });
+    return results;
+}
+
+function generateLifestyleNotes(client) {
+    const notes = [];
+    if (client.tidur === '<5 jam' || client.tidur === '5-6 jam') notes.push('Kurang tidur mempengaruhi regenerasi kulit dan meningkatkan kortisol (memperburuk acne & mempercepat aging)');
+    if (client.stress === 'Tinggi') notes.push('Stress tinggi meningkatkan kortisol yang bisa trigger breakout, memperlambat healing, dan merusak barrier');
+    if (client.diet.includes('Tinggi Gula')) notes.push('Diet tinggi gula meningkatkan glikasi kolagen (mempercepat aging) dan dapat trigger acne');
+    if (client.diet.includes('Tinggi Dairy')) notes.push('Dairy (terutama susu skim) berkorelasi dengan peningkatan acne karena pengaruh hormonal');
+    if (client.diet.includes('Kurang Air')) notes.push('Kurang asupan air bisa menyebabkan dehidrasi kulit dari dalam');
+    if (client.merokok) notes.push('Merokok mempercepat degradasi kolagen, memperlambat healing, dan menyebabkan kulit kusam');
+    if (client.olahraga === 'Tidak Pernah') notes.push('Olahraga meningkatkan sirkulasi darah ke kulit, membantu delivery nutrisi dan detoksifikasi');
+    if (client.paparanMatahari === 'Tinggi (outdoor)') notes.push('Paparan UV tinggi adalah penyebab utama photoaging, hiperpigmentasi, dan kerusakan kolagen');
+    return notes;
+}
+
+function renderResults(data) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('results').style.display = 'block';
+    window.scrollTo(0, 0);
+
+    const scoreColor = data.totalScore >= 7 ? '#10B981' : data.totalScore >= 5 ? '#F59E0B' : '#EF4444';
+
+    // Header
+    document.getElementById('resultHeader').innerHTML = `
+        <p style="font-size:0.85rem;color:var(--gray)">Evaluasi untuk <strong>${data.client.nama || 'Klien'}</strong> &mdash; ${data.client.namaProduk || 'Produk'}</p>
+        <div class="score-big" style="color:${scoreColor}">${data.totalScore}</div>
+        <p style="font-size:0.8rem;color:var(--gray)">dari 10</p>
+        <div class="verdict-badge ${data.verdictClass}">${data.verdict}</div>
+    `;
+
+    // Scores summary
+    document.getElementById('resultScores').innerHTML = `
+        <h2>Ringkasan</h2>
+        <div class="result-grid">
+            <div class="result-item"><div class="result-value" style="color:${scoreColor}">${data.totalScore}/10</div><div class="result-label">Skor Kecocokan</div></div>
+            <div class="result-item"><div class="result-value">${data.matched.length}</div><div class="result-label">Ingredient Dikenali</div></div>
+            <div class="result-item"><div class="result-value" style="color:#10B981">${data.positiveIngs.length}</div><div class="result-label">Positif</div></div>
+            <div class="result-item"><div class="result-value" style="color:#EF4444">${data.warningIngs.length}</div><div class="result-label">Warning</div></div>
+        </div>
+        ${data.unknown.length > 0 ? '<p style="margin-top:1rem;font-size:0.8rem;color:var(--gray)">' + data.unknown.length + ' ingredient tidak dikenali: ' + data.unknown.map(u => '<span class="tag-neutral">' + u + '</span>').join(' ') + '</p>' : ''}
+    `;
+
+    // Positive ingredients
+    if (data.positiveIngs.length > 0) {
+        const el = document.getElementById('resultPositive');
+        el.style.display = 'block';
+        el.innerHTML = '<h2>Ingredient Positif</h2>' + data.positiveIngs.map(i =>
+            `<div class="alert-box alert-good"><strong>${i.name}</strong> (${i.category}) &mdash; cocok untuk: ${i.reasons.join(', ')}</div>`
+        ).join('');
+    }
+
+    // Warnings
+    if (data.warningIngs.length > 0) {
+        const el = document.getElementById('resultWarnings');
+        el.style.display = 'block';
+        el.innerHTML = '<h2>Ingredient Bermasalah</h2>' + data.warningIngs.map(i =>
+            `<div class="alert-box alert-danger"><strong>${i.name}</strong> &mdash; ${i.reasons.join(', ')}${i.interaksi ? '<br><em>' + i.interaksi + '</em>' : ''}</div>`
+        ).join('');
+    }
+
+    // Interactions
+    if (data.interactions.length > 0) {
+        const el = document.getElementById('resultInteractions');
+        el.style.display = 'block';
+        el.innerHTML = '<h2>Interaksi Terdeteksi</h2>' + data.interactions.map(i =>
+            `<div class="alert-box alert-warn"><strong>${i.pair}</strong><br>${i.note}</div>`
+        ).join('');
+    }
+
+    // Skin parameters
+    if (data.skinParamResults.length > 0) {
+        const el = document.getElementById('resultSkinParams');
+        el.style.display = 'block';
+        el.innerHTML = '<h2>Interpretasi Skin Parameters</h2>' + data.skinParamResults.map(p => {
+            const cls = p.status === 'Normal' ? 'alert-good' : p.status === 'Rendah' ? 'alert-info' : 'alert-warn';
+            return `<div class="alert-box ${cls}"><strong>${p.param}</strong>: ${p.value} ${p.satuan} &mdash; <strong>${p.status}</strong><br>${p.interpretation}${p.rekomendasi ? '<br><em>Rekomendasi: ' + p.rekomendasi + '</em>' : ''}</div>`;
+        }).join('');
+    }
+
+    // Lifestyle
+    if (data.lifestyleNotes.length > 0) {
+        const el = document.getElementById('resultLifestyle');
+        el.style.display = 'block';
+        el.innerHTML = '<h2>Catatan Lifestyle</h2><ul class="rec-list">' +
+            data.lifestyleNotes.map(n => '<li>' + n + '</li>').join('') + '</ul>';
+    }
+
+    // Recommendations
+    const recs = [];
+    if (data.warningIngs.length > 0) recs.push('Pertimbangkan untuk menghindari produk ini atau konsultasi dengan dermatologis sebelum pemakaian');
+    if (data.warningIngs.some(w => w.reasons.some(r => r.includes('Photosensitivity')))) recs.push('Wajib menggunakan sunscreen SPF 50+ PA++++ saat menggunakan produk ini');
+    if (data.interactions.length > 0) recs.push('Ada interaksi antar ingredient — pertimbangkan untuk memisahkan waktu pemakaian (AM/PM)');
+    if (data.positiveIngs.length > 0 && data.warningIngs.length === 0) recs.push('Produk ini memiliki ingredient yang cocok untuk kondisi kulit klien');
+    if (data.unknown.length > data.matched.length) recs.push('Banyak ingredient tidak dikenali — pertimbangkan untuk riset lebih lanjut atau pilih produk dengan ingredient yang lebih well-known');
+
+    if (recs.length > 0) {
+        const el = document.getElementById('resultRecommendations');
+        el.style.display = 'block';
+        el.innerHTML = '<h2>Rekomendasi</h2><ul class="rec-list">' +
+            recs.map(r => '<li>' + r + '</li>').join('') + '</ul>';
+    }
+}
+
+function resetForm() {
+    document.getElementById('results').style.display = 'none';
+    ['resultPositive','resultWarnings','resultInteractions','resultSkinParams','resultLifestyle','resultRecommendations'].forEach(id => document.getElementById(id).style.display = 'none');
+    goStep(1);
+}
+</script>
+</body>
+</html>

@@ -106,27 +106,45 @@ function categoryColor(cat) {
   return map[cat] || "#6B7280";
 }
 
-async function fetchAllIngredients() {
+const SKIN_PARAMS_DB_ID = "48877954-537a-4dc2-a5ae-c8a107a9fe1f";
+
+async function fetchAllPages(dbId) {
   const pages = [];
   let cursor;
-
   do {
     const response = await notion.databases.query({
-      database_id: DATABASE_ID,
+      database_id: dbId,
       start_cursor: cursor,
       page_size: 100,
     });
     pages.push(...response.results);
     cursor = response.has_more ? response.next_cursor : undefined;
   } while (cursor);
-
   return pages;
+}
+
+async function fetchSkinParams() {
+  console.log("Fetching skin parameters reference...");
+  const pages = await fetchAllPages(SKIN_PARAMS_DB_ID);
+  return pages.map((page) => ({
+    parameter: getTextProp(page, "Parameter"),
+    alatUkur: getTextProp(page, "Alat Ukur"),
+    satuan: getTextProp(page, "Satuan"),
+    rendah: getTextProp(page, "Rendah"),
+    normal: getTextProp(page, "Normal"),
+    tinggi: getTextProp(page, "Tinggi"),
+    interpretasiRendah: getTextProp(page, "Interpretasi Rendah"),
+    interpretasiTinggi: getTextProp(page, "Interpretasi Tinggi"),
+    faktor: getTextProp(page, "Faktor yang Mempengaruhi"),
+    rekomendasi: getTextProp(page, "Rekomendasi Jika Abnormal"),
+    catatan: getTextProp(page, "Catatan"),
+  })).filter(p => p.parameter);
 }
 
 async function main() {
   console.log("Fetching ingredients from Notion...");
 
-  const pages = await fetchAllIngredients();
+  const pages = await fetchAllPages(DATABASE_ID);
   console.log(`Found ${pages.length} ingredients`);
 
   const ingredients = pages
@@ -165,12 +183,15 @@ async function main() {
     })
     .filter(Boolean)
     .sort((a, b) => {
-      // Sort: Superstar first, then Goodie, then Regular
       const order = { Superstar: 0, Goodie: 1, Regular: 2 };
       const diff = (order[a.category] ?? 3) - (order[b.category] ?? 3);
       if (diff !== 0) return diff;
       return a.name.localeCompare(b.name);
     });
+
+  // Fetch skin parameters reference
+  const skinParams = await fetchSkinParams();
+  console.log(`Found ${skinParams.length} skin parameters`);
 
   // Ensure data directory exists
   const dataDir = path.join(__dirname, "..", "data");
@@ -178,9 +199,11 @@ async function main() {
     fs.mkdirSync(dataDir, { recursive: true });
   }
 
-  const outPath = path.join(dataDir, "ingredients.json");
-  fs.writeFileSync(outPath, JSON.stringify(ingredients, null, 2));
-  console.log(`Wrote ${ingredients.length} ingredients to ${outPath}`);
+  fs.writeFileSync(path.join(dataDir, "ingredients.json"), JSON.stringify(ingredients, null, 2));
+  console.log(`Wrote ${ingredients.length} ingredients`);
+
+  fs.writeFileSync(path.join(dataDir, "skin-params.json"), JSON.stringify(skinParams, null, 2));
+  console.log(`Wrote ${skinParams.length} skin parameters`);
 }
 
 main().catch((err) => {
