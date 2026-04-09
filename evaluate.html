@@ -121,6 +121,14 @@
         footer { text-align: center; padding: 2rem 1.5rem; color: var(--gray); font-size: 0.8rem; }
         footer a { color: var(--coral); text-decoration: none; }
 
+        .sp-card { background: #F8FAFC; border-radius: 12px; padding: 1rem; margin-bottom: 0.6rem; border-left: 4px solid var(--green); position: relative; }
+        .sp-card .sp-type { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--green); }
+        .sp-card .sp-name { font-size: 0.9rem; font-weight: 600; margin: 0.15rem 0; }
+        .sp-card .sp-detail { font-size: 0.75rem; color: var(--gray); }
+        .sp-card .sp-ings { font-size: 0.7rem; color: var(--gray); margin-top: 0.3rem; font-style: italic; }
+        .sp-card .sp-remove { position: absolute; top: 8px; right: 10px; background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1.1rem; }
+        .sp-card .sp-remove:hover { color: var(--coral); }
+
         @media (max-width: 480px) {
             header h1 { font-size: 1.4rem; }
             .form-row { grid-template-columns: 1fr; }
@@ -261,45 +269,87 @@
 
     <!-- STEP 3: PRODUK -->
     <div class="step" id="step3">
-        <div class="step-label">Langkah 3/3 &mdash; Produk Skincare</div>
+        <div class="step-label">Langkah 3/3 &mdash; Produk Skincare Klien</div>
 
-        <div class="section">
-            <h2>Cari Produk dari Edu Library</h2>
-            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.8rem">Pilih produk yang sudah ada di database, atau input manual di bawah</p>
-            <div class="form-row full">
-                <div class="form-group" style="position:relative">
-                    <label>Cari Produk</label>
-                    <input type="text" id="productSearch" placeholder="Ketik nama produk atau brand..." autocomplete="off">
-                    <div id="productDropdown" style="display:none;position:absolute;top:100%;left:0;right:0;background:white;border:2px solid var(--green);border-top:none;border-radius:0 0 12px 12px;max-height:250px;overflow-y:auto;z-index:10;box-shadow:0 8px 20px rgba(0,0,0,0.1)"></div>
-                </div>
-            </div>
-            <div id="selectedProduct" style="display:none;margin-top:0.5rem;padding:0.8rem 1rem;background:#F0FDF4;border:2px solid var(--green);border-radius:12px;font-size:0.85rem">
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                    <div><strong id="selectedName"></strong><br><span style="font-size:0.75rem;color:var(--gray)" id="selectedMeta"></span></div>
-                    <button onclick="clearSelectedProduct()" style="background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.2rem;padding:0.2rem 0.5rem">&times;</button>
-                </div>
-            </div>
+        <!-- SAVED PRODUCTS LIST -->
+        <div class="section" id="savedProductsSection" style="display:none">
+            <h2>Produk yang Sudah Ditambahkan</h2>
+            <div id="savedProductsList"></div>
         </div>
 
-        <div class="section">
-            <h2>Ingredient List Produk</h2>
-            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.8rem">Otomatis terisi jika pilih dari library, atau paste manual</p>
+        <!-- ADD PRODUCT FORM -->
+        <div class="section" id="addProductForm">
+            <h2>Tambah Produk Klien</h2>
+            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.8rem">Cari dari Edu Library atau input manual</p>
+
+            <div class="form-row">
+                <div class="form-group"><label>Jenis Produk</label>
+                    <select id="jenisProduk">
+                        <option value="">Pilih jenis...</option>
+                        <option>Cleanser</option>
+                        <option>Toner</option>
+                        <option>Serum</option>
+                        <option>Moisturizer</option>
+                        <option>Sunscreen</option>
+                        <option>Exfoliator</option>
+                        <option>Eye Cream</option>
+                        <option>Mask</option>
+                        <option>Lip Care</option>
+                        <option>Cleansing Balm/Oil</option>
+                        <option>Treatment</option>
+                        <option>Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Lama Penggunaan</label>
+                    <select id="lamaPakai">
+                        <option value="">Pilih...</option>
+                        <option>&lt; 1 minggu</option>
+                        <option>1-4 minggu</option>
+                        <option>1-3 bulan</option>
+                        <option>3-6 bulan</option>
+                        <option>6-12 bulan</option>
+                        <option>&gt; 1 tahun</option>
+                        <option>Baru mau pakai</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SEARCH FROM LIBRARY -->
+            <div class="form-group" style="position:relative;margin-bottom:0.8rem">
+                <label>Cari dari Edu Library</label>
+                <input type="text" id="productSearch" placeholder="Ketik nama produk atau brand..." autocomplete="off">
+                <div id="productDropdown" style="display:none;position:absolute;top:100%;left:0;right:0;background:white;border:2px solid var(--green);border-top:none;border-radius:0 0 12px 12px;max-height:250px;overflow-y:auto;z-index:10;box-shadow:0 8px 20px rgba(0,0,0,0.1)"></div>
+            </div>
+            <div id="selectedProduct" style="display:none;margin-bottom:0.8rem;padding:0.6rem 1rem;background:#F0FDF4;border:2px solid var(--green);border-radius:12px;font-size:0.8rem">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div><strong id="selectedName"></strong><br><span style="font-size:0.7rem;color:var(--gray)" id="selectedMeta"></span></div>
+                    <button onclick="clearSelectedProduct()" style="background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.2rem">&times;</button>
+                </div>
+            </div>
+
+            <!-- MANUAL INPUT -->
             <div class="form-row full">
                 <div class="form-group"><label>Nama Produk</label><input type="text" id="namaProduk" placeholder="Contoh: CeraVe Moisturizing Cream"></div>
             </div>
             <div class="form-row full">
                 <div class="form-group">
                     <label>Ingredient List</label>
-                    <textarea id="ingredientInput" rows="6" placeholder="Contoh: Water, Glycerin, Niacinamide, Cetearyl Alcohol, Dimethicone, Tocopheryl Acetate..."></textarea>
+                    <textarea id="ingredientInput" rows="4" placeholder="Paste ingredient list (pisahkan koma)..."></textarea>
                 </div>
             </div>
+            <div class="form-row full">
+                <div class="form-group"><label>Keterangan</label><input type="text" id="keteranganProduk" placeholder="Contoh: dipakai malam hari, 2 tetes..."></div>
+            </div>
+
             <button class="btn btn-secondary" onclick="previewIngredients()" style="margin-top:0.5rem">Preview Ingredients</button>
             <div id="ingPreview" class="ing-preview"></div>
+
+            <button class="btn btn-primary" onclick="addProductToList()" style="width:100%;margin-top:1rem">+ Tambah Produk</button>
         </div>
 
         <div class="btn-row">
             <button class="btn btn-secondary" onclick="goStep(2)">&larr; Kembali</button>
-            <button class="btn btn-analyze" onclick="analyze()">Analisa Kecocokan Produk</button>
+            <button class="btn btn-analyze" onclick="analyze()">Analisa Semua Produk</button>
         </div>
     </div>
 
@@ -460,9 +510,28 @@ function findIngredient(name) {
 // ANALYSIS ENGINE
 function analyze() {
     const client = collectClientData();
-    const raw = document.getElementById('ingredientInput').value;
-    const ingNames = raw.split(/,|\n/).map(s => s.trim()).filter(Boolean);
-    if (ingNames.length === 0) { alert('Masukkan ingredient list produk terlebih dahulu'); return; }
+
+    // Collect all ingredients from saved products + current form
+    let allIngNames = [];
+    let productNames = [];
+    clientProducts.forEach(p => {
+        if (p.ingredients) {
+            allIngNames.push(...p.ingredients.split(/,|\n/).map(s => s.trim()).filter(Boolean));
+            productNames.push(p.nama);
+        }
+    });
+    // Also include current form if filled
+    const currentRaw = document.getElementById('ingredientInput').value.trim();
+    const currentName = document.getElementById('namaProduk').value.trim();
+    if (currentRaw) {
+        allIngNames.push(...currentRaw.split(/,|\n/).map(s => s.trim()).filter(Boolean));
+        if (currentName) productNames.push(currentName);
+    }
+
+    const ingNames = [...new Set(allIngNames)]; // deduplicate
+    if (ingNames.length === 0) { alert('Tambahkan minimal 1 produk dengan ingredient list'); return; }
+    client.namaProduk = productNames.join(' + ') || 'Produk Klien';
+    client.productCount = clientProducts.length + (currentRaw ? 1 : 0);
 
     const matched = [];
     const unknown = [];
@@ -726,7 +795,9 @@ function renderResults(data) {
 function resetForm() {
     document.getElementById('results').style.display = 'none';
     ['resultPositive','resultWarnings','resultInteractions','resultSkinParams','resultLifestyle','resultRecommendations'].forEach(id => document.getElementById(id).style.display = 'none');
-    clearSelectedProduct();
+    clientProducts.length = 0;
+    renderSavedProducts();
+    resetAddForm();
     goStep(1);
 }
 
@@ -782,22 +853,14 @@ function setupProductSearch() {
 function selectProduct(slug) {
     const product = productsDB.find(p => p.slug === slug);
     if (!product) return;
-
-    // Show selected product
     document.getElementById('selectedProduct').style.display = 'block';
     document.getElementById('selectedName').textContent = product.name;
     document.getElementById('selectedMeta').textContent = (product.brand || '') + (product.ingredientCount ? ' | ' + product.ingredientCount + ' ingredients' : '');
-
-    // Fill product name
     document.getElementById('namaProduk').value = product.name;
-
-    // Fill ingredient list from key ingredients
     if (product.keyIngredients) {
         document.getElementById('ingredientInput').value = product.keyIngredients;
         previewIngredients();
     }
-
-    // Clear search
     document.getElementById('productSearch').value = '';
     document.getElementById('productDropdown').style.display = 'none';
 }
@@ -806,6 +869,56 @@ function clearSelectedProduct() {
     document.getElementById('selectedProduct').style.display = 'none';
     document.getElementById('selectedName').textContent = '';
     document.getElementById('selectedMeta').textContent = '';
+}
+
+// CLIENT PRODUCTS LIST
+const clientProducts = [];
+
+function addProductToList() {
+    const nama = document.getElementById('namaProduk').value.trim();
+    const jenis = document.getElementById('jenisProduk').value;
+    const lama = document.getElementById('lamaPakai').value;
+    const ings = document.getElementById('ingredientInput').value.trim();
+    const ket = document.getElementById('keteranganProduk').value.trim();
+
+    if (!nama) { alert('Masukkan nama produk'); return; }
+
+    clientProducts.push({ nama, jenis, lama, ingredients: ings, keterangan: ket, id: Date.now() });
+    renderSavedProducts();
+    resetAddForm();
+}
+
+function removeProduct(id) {
+    const idx = clientProducts.findIndex(p => p.id === id);
+    if (idx !== -1) clientProducts.splice(idx, 1);
+    renderSavedProducts();
+}
+
+function renderSavedProducts() {
+    const section = document.getElementById('savedProductsSection');
+    const list = document.getElementById('savedProductsList');
+    if (clientProducts.length === 0) { section.style.display = 'none'; return; }
+    section.style.display = 'block';
+    list.innerHTML = clientProducts.map(p => {
+        const shortIngs = p.ingredients ? (p.ingredients.length > 80 ? p.ingredients.substring(0, 80) + '...' : p.ingredients) : '';
+        return '<div class="sp-card">' +
+            '<button class="sp-remove" onclick="removeProduct(' + p.id + ')">&times;</button>' +
+            '<div class="sp-type">' + (p.jenis || 'Produk') + '</div>' +
+            '<div class="sp-name">' + p.nama + '</div>' +
+            '<div class="sp-detail">' + [p.lama, p.keterangan].filter(Boolean).join(' &middot; ') + '</div>' +
+            (shortIngs ? '<div class="sp-ings">' + shortIngs + '</div>' : '') +
+            '</div>';
+    }).join('');
+}
+
+function resetAddForm() {
+    document.getElementById('namaProduk').value = '';
+    document.getElementById('jenisProduk').value = '';
+    document.getElementById('lamaPakai').value = '';
+    document.getElementById('ingredientInput').value = '';
+    document.getElementById('keteranganProduk').value = '';
+    document.getElementById('ingPreview').innerHTML = '';
+    clearSelectedProduct();
 }
 </script>
 </body>
