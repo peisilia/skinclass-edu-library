@@ -176,8 +176,6 @@ function renderProducts(list) {
                         <div class="share-menu" id="share-menu-${p.slug}">
                             <button class="share-option" onclick="event.stopPropagation();copyLink('${p.slug}')"><span class="so-icon">&#128203;</span>Salin Link</button>
                             <a class="share-option" onclick="event.stopPropagation();shareWA('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="so-icon">&#128172;</span>WhatsApp</a>
-                            <a class="share-option" onclick="event.stopPropagation();shareTelegram('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="so-icon">&#9992;</span>Telegram</a>
-                            <a class="share-option" onclick="event.stopPropagation();shareTwitter('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="so-icon">&#120143;</span>Twitter / X</a>
                         </div>
                     </button>
                     <div class="product-arrow">&#9660;</div>
@@ -312,19 +310,6 @@ function shareWA(slug, name) {
     closeShareMenus();
 }
 
-function shareTelegram(slug, name) {
-    const url = getProductUrl(slug);
-    const text = 'Cek bedah ingredient ' + name + ' di SkinClassForYou!';
-    window.open('https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(text), '_blank');
-    closeShareMenus();
-}
-
-function shareTwitter(slug, name) {
-    const url = getProductUrl(slug);
-    const text = 'Bedah ingredient ' + name + ' by @skinclassforyou';
-    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
-    closeShareMenus();
-}
 
 function closeShareMenus() {
     document.querySelectorAll('.share-menu.show').forEach(m => m.classList.remove('show'));
