@@ -6,6 +6,7 @@
     <title>Bedah Produk | SkinClassForYou</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
             --blue: #9CAEF0; --blue-dark: #7B91D9; --cream: #FFF8EB;
@@ -55,6 +56,12 @@
         .share-option { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1rem; font-size: 0.8rem; color: var(--dark); cursor: pointer; text-decoration: none; border: none; background: none; width: 100%; font-family: 'Poppins', sans-serif; }
         .share-option:hover { background: #F0F4FF; }
         .share-option .so-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .share-option.downloading { opacity: 0.5; pointer-events: none; }
+        .share-bar { display: flex; gap: 0.5rem; padding: 1rem 0 0.5rem; flex-wrap: wrap; }
+        .share-bar-btn { display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: 50px; border: 1.5px solid #E5E7EB; background: white; font-family: 'Poppins', sans-serif; font-size: 0.75rem; font-weight: 500; color: var(--dark); cursor: pointer; transition: all 0.2s; }
+        .share-bar-btn:hover { border-color: var(--blue); background: #F0F4FF; }
+        .share-bar-btn .sb-icon { font-size: 0.95rem; }
+        .share-bar-btn.downloading { opacity: 0.5; pointer-events: none; }
         .product-arrow { font-size: 1.2rem; color: var(--gray); transition: transform 0.3s; flex-shrink: 0; }
         .product-header.open .product-arrow { transform: rotate(180deg); color: var(--coral); }
         .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--dark); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; font-size: 0.85rem; z-index: 999; opacity: 0; transition: all 0.3s; pointer-events: none; }
@@ -176,6 +183,7 @@ function renderProducts(list) {
                         <div class="share-menu" id="share-menu-${p.slug}">
                             <button class="share-option" onclick="event.stopPropagation();copyLink('${p.slug}')"><span class="so-icon">&#128203;</span>Salin Link</button>
                             <a class="share-option" onclick="event.stopPropagation();shareWA('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="so-icon">&#128172;</span>WhatsApp</a>
+                            <button class="share-option" onclick="event.stopPropagation();downloadCard('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="so-icon">&#128228;</span>Download Gambar</button>
                         </div>
                     </button>
                     <div class="product-arrow">&#9660;</div>
@@ -184,6 +192,11 @@ function renderProducts(list) {
             <div class="product-body" id="body-${p.slug}">
                 <div class="artifact-wrapper" id="artifact-${p.slug}">
                     <div class="loading" style="padding:1rem">Memuat analisa...</div>
+                </div>
+                <div class="share-bar" id="sharebar-${p.slug}" style="display:none">
+                    <button class="share-bar-btn" onclick="copyLink('${p.slug}')"><span class="sb-icon">&#128203;</span>Salin Link</button>
+                    <button class="share-bar-btn" onclick="shareWA('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="sb-icon">&#128172;</span>WhatsApp</button>
+                    <button class="share-bar-btn" onclick="downloadCard('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="sb-icon">&#128228;</span>Download</button>
                 </div>
             </div>
         </div>`;
@@ -217,6 +230,7 @@ async function toggleProduct(slug) {
     const artifactEl = document.getElementById('artifact-' + slug);
     if (artifactCache[slug] !== undefined) {
         artifactEl.innerHTML = artifactCache[slug];
+        showShareBar(slug);
         return;
     }
 
@@ -227,16 +241,18 @@ async function toggleProduct(slug) {
             const html = await res.text();
             artifactCache[slug] = html;
             artifactEl.innerHTML = html;
+            showShareBar(slug);
         } else {
-            // No artifact — show basic product info
             const product = products.find(p => p.slug === slug);
             artifactCache[slug] = renderBasicInfo(product);
             artifactEl.innerHTML = artifactCache[slug];
+            showShareBar(slug);
         }
     } catch {
         const product = products.find(p => p.slug === slug);
         artifactCache[slug] = renderBasicInfo(product);
         artifactEl.innerHTML = artifactCache[slug];
+        showShareBar(slug);
     }
 }
 
@@ -310,6 +326,47 @@ function shareWA(slug, name) {
     closeShareMenus();
 }
 
+
+function showShareBar(slug) {
+    const bar = document.getElementById('sharebar-' + slug);
+    if (bar) bar.style.display = 'flex';
+}
+
+async function downloadCard(slug, name) {
+    closeShareMenus();
+    const artifactEl = document.getElementById('artifact-' + slug);
+    if (!artifactEl || !artifactEl.innerHTML.trim()) {
+        showToast('Buka produk dulu untuk download');
+        // Auto-open the product first
+        await toggleProduct(slug);
+    }
+
+    showToast('Menyiapkan gambar...');
+
+    // Find all cards inside the artifact
+    const cards = artifactEl.querySelectorAll('.sk-card, .artifact-content');
+    const target = cards.length ? artifactEl.querySelector('.artifact-content') || artifactEl : artifactEl;
+
+    try {
+        const canvas = await html2canvas(target, {
+            scale: 2,
+            backgroundColor: '#FFF8EB',
+            useCORS: true,
+            logging: false,
+            width: target.scrollWidth,
+            height: target.scrollHeight
+        });
+
+        const link = document.createElement('a');
+        link.download = slug + '-flash-card.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        showToast('Download berhasil!');
+    } catch (err) {
+        console.error('Download error:', err);
+        showToast('Gagal download, coba lagi');
+    }
+}
 
 function closeShareMenus() {
     document.querySelectorAll('.share-menu.show').forEach(m => m.classList.remove('show'));
