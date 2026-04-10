@@ -1,0 +1,110 @@
+<div class="artifact-content" style="font-family:'Poppins',sans-serif;color:#2A2A3D;">
+<style scoped>
+.cv-card{border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(24,120,184,0.1);margin-bottom:16px;transition:transform 0.3s,box-shadow 0.3s;}.cv-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(24,120,184,0.18);}
+.cv-num{position:absolute;top:16px;right:20px;font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;opacity:0.08;}.cv-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:10px;}.cv-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;line-height:1.35;margin-bottom:12px;}.cv-body{font-size:12px;line-height:1.7;color:#6B6B80;}.cv-body strong{color:#2A2A3D;}
+
+.cv-overview{background:linear-gradient(155deg,#4098C8 0%,#1878B8 40%,#0A3860 70%,#041828 100%);color:#fff;}
+.cv-overview .cv-label{background:rgba(255,255,255,0.2);color:#fff;}.cv-overview .cv-body{color:rgba(255,255,255,0.85);}.cv-overview .cv-body strong{color:#fff;}
+.cv-brand{font-size:11px;font-weight:700;color:#80C8E8;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
+.cv-pname{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.2;}
+.cv-type{display:inline-block;background:#FFF8EB;color:#0A3860;font-size:9px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
+.cv-stat{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap;}.cv-sbox{flex:1;min-width:60px;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 5px;text-align:center;}.cv-snum{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#80C8E8;}.cv-slabel{font-size:7px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.cv-badges{display:flex;gap:3px;flex-wrap:wrap;margin-top:12px;}.cv-badge{font-size:7px;font-weight:600;padding:3px 6px;border-radius:14px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}.cv-hl{background:#D2D25A;color:#2A2A3D;font-weight:700;}
+
+.cv-deep{background:#fff;border:2px solid #1878B8;}.cv-deep .cv-label{background:#1878B8;color:#fff;}
+.cer-box{margin-top:12px;padding:14px;border-radius:14px;background:#E8F4FF;border:2.5px solid #1878B8;}
+.cb-title{font-size:11px;font-weight:700;color:#0A3860;margin-bottom:8px;}
+.cb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
+.cg{border-radius:10px;padding:10px 5px;text-align:center;background:#fff;transition:transform 0.2s;}.cg:hover{transform:scale(1.02);}
+.cg-name{font-size:8px;font-weight:700;line-height:1.1;margin-bottom:2px;}.cg-desc{font-size:5.5px;color:#6B6B80;line-height:1.2;}
+.cg-tag{display:inline-block;font-size:4px;font-weight:700;padding:1px 3px;border-radius:2px;margin-bottom:2px;}.tg-s{background:#D2D25A;color:#2A2A3D;}.tg-g{background:#C5D0F5;color:#5A72C0;}
+.mve-box{margin-top:12px;padding:12px;border-radius:12px;background:#F0F8FF;border:1.5px solid #80C8E8;}
+.mve-title{font-size:10px;font-weight:700;color:#1878B8;margin-bottom:4px;}.mve-desc{font-size:8px;color:#6B6B80;line-height:1.5;}.mve-desc strong{color:#2A2A3D;}
+.sp-row{display:flex;gap:3px;flex-wrap:wrap;margin-top:10px;}.sp{font-size:6px;padding:3px 5px;border-radius:6px;background:#E8F4FF;color:#0A3860;}
+
+.cv-verdict{background:#2A2A3D;color:#fff;}.cv-verdict .cv-label{background:#1878B8;color:#fff;}.cv-verdict .cv-title{color:#80C8E8;}
+.vp{margin-top:14px;display:flex;flex-direction:column;gap:7px;}.vr{display:flex;align-items:flex-start;gap:10px;}.vi{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}.vi-p{background:#D2D25A;color:#2A2A3D;}.vi-n{background:#FF7D59;color:#fff;}.vt{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.5;}.vt strong{color:#fff;}
+.stt{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}.stg{font-size:10px;font-weight:500;padding:5px 12px;border-radius:16px;background:rgba(128,200,232,0.15);color:#80C8E8;}
+@media(max-width:440px){.cb-grid{grid-template-columns:1fr 1fr;}}
+</style>
+
+<!-- CARD 01: OVERVIEW -->
+<div class="cv-card cv-overview">
+<div class="cv-num">01</div>
+<span class="cv-label">Product Overview</span>
+<div class="cv-brand">CeraVe</div>
+<div class="cv-pname">Hydrating Facial Cleanser</div>
+<span class="cv-type">Non-Foaming Lotion Cleanser &middot; MVE Technology &middot; Barrier-Friendly</span>
+<p class="cv-body"><strong>CeraVe = THE dermatologist-recommended brand</strong> (L'Or&eacute;al Group). Cleanser ini <strong>non-foaming</strong> &mdash; lotion texture yang membersihkan TANPA stripping barrier. <strong>3 essential ceramides</strong> (NP + AP + EOP) + <strong>Hyaluronic Acid</strong> + <strong>Cholesterol</strong> + <strong>Phytosphingosine</strong> = FULL barrier lipid complex di sebuah CLEANSER. <strong>23 bahan. 1 Superstar, 6 Goodies, 0 Icky. Fragrance-free!</strong></p>
+<div class="cv-stat">
+<div class="cv-sbox"><div class="cv-snum">3</div><div class="cv-slabel">Ceramides</div></div>
+<div class="cv-sbox"><div class="cv-snum">1</div><div class="cv-slabel">Superstar</div></div>
+<div class="cv-sbox"><div class="cv-snum">6</div><div class="cv-slabel">Goodies</div></div>
+<div class="cv-sbox"><div class="cv-snum">0</div><div class="cv-slabel">Ickies!</div></div>
+<div class="cv-sbox"><div class="cv-snum">23</div><div class="cv-slabel">Total<br>Bahan</div></div>
+</div>
+<div class="cv-badges">
+<span class="cv-badge cv-hl">3 Essential Ceramides!</span>
+<span class="cv-badge cv-hl">Hyaluronic Acid</span>
+<span class="cv-badge cv-hl">Cholesterol + Phytosphingosine</span>
+<span class="cv-badge">&#10003; 0 Icky!</span>
+<span class="cv-badge">&#10003; Fragrance-Free</span>
+<span class="cv-badge">&#10003; Alcohol-Free</span>
+</div>
+</div>
+
+<!-- CARD 02: KEY INGREDIENTS -->
+<div class="cv-card cv-deep">
+<div class="cv-num">02</div>
+<span class="cv-label">Key Ingredients &mdash; Barrier Lipid Complex</span>
+<div class="cv-title">3 Ceramides + Cholesterol + Phytosphingosine = Full Barrier Repair in a Cleanser</div>
+
+<div class="cer-box">
+<div class="cb-title">&#128737; CeraVe's Signature Barrier Lipid Complex</div>
+<div class="cb-grid">
+<div class="cg"><span class="cg-tag tg-g">Goodie</span><div class="cg-name">Ceramide NP #5</div><div class="cg-desc">Ceramide 3. Barrier lipid. 50% of skin's lipid matrix</div></div>
+<div class="cg"><span class="cg-tag tg-g">Goodie</span><div class="cg-name">Ceramide AP #6</div><div class="cg-desc">Ceramide 6-II. Barrier repair + mild exfoliation</div></div>
+<div class="cg"><span class="cg-tag tg-g">Goodie</span><div class="cg-name">Ceramide EOP #7</div><div class="cg-desc">Ceramide 1. Links other lipids. Essential for barrier integrity</div></div>
+<div class="cg"><span class="cg-tag tg-g">Goodie</span><div class="cg-name">Cholesterol #9</div><div class="cg-desc">25% of skin lipids. irr:0 com:0. Stabilizes ceramide structure</div></div>
+<div class="cg"><span class="cg-tag tg-g">Goodie</span><div class="cg-name">Phytosphingosine #19</div><div class="cg-desc">Ceramide precursor + anti-acne + antimicrobial. Cell-communicating</div></div>
+<div class="cg"><span class="cg-tag tg-g">Goodie</span><div class="cg-name">Hyaluronic Acid #8</div><div class="cg-desc">1000x water binding. Skin-identical humectant. Hydration boost</div></div>
+</div>
+</div>
+
+<div class="mve-box">
+<div class="mve-title">&#9733; Glycerin #2 &mdash; SUPERSTAR</div>
+<div class="mve-desc"><strong>Posisi #2 = konsentrasi TINGGI.</strong> Skin-identical humectant. 50+ tahun proven. Menarik air ke stratum corneum. Anti-irritation buffer. irr:0 com:0. Di cleanser = memastikan kulit tidak terasa kering setelah bilas.</div>
+</div>
+
+<div class="mve-box" style="border-color:#D2D25A;">
+<div class="mve-title" style="color:#886020;">&#128300; MVE Delivery Technology</div>
+<div class="mve-desc">CeraVe's patented <strong>MultiVesicular Emulsion</strong> = ceramides di-encapsulate dalam concentric lipid layers. Release GRADUAL selama berjam-jam. Bahkan di cleanser yang dibilas, MVE meninggalkan thin film ceramide di kulit. <strong>"Cleanse without taking, leave behind what skin needs."</strong></div>
+</div>
+
+<div class="sp-row">
+<span class="sp">Behentrimonium Methosulfate #3 &mdash; Gentle cationic surfactant (bukan sulfate!)</span>
+<span class="sp">Sodium Lauroyl Lactylate #16 &mdash; Mild amino acid-based emulsifier</span>
+<span class="sp">Cetearyl Alcohol #4 &mdash; Fatty alcohol emollient (bukan drying alcohol)</span>
+<span class="sp">Methylparaben + Propylparaben #20-21 &mdash; Classic preservatives (safe at cosmetic levels)</span>
+</div>
+</div>
+
+<!-- CARD 03: VERDICT -->
+<div class="cv-card cv-verdict">
+<div class="cv-num">03</div>
+<span class="cv-label">Verdict</span>
+<div class="cv-title">Kesimpulan Ingredients</div>
+<div class="vp">
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>FULL barrier lipid complex di CLEANSER = CeraVe's signature genius.</strong> 3 Ceramides + Cholesterol + Phytosphingosine = same lipids yang menyusun skin barrier. Kebanyakan cleanser STRIP barrier. CeraVe REPLENISH sambil cleanse.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>Glycerin #2 = konsentrasi tinggi + HA #8 = dual hydration.</strong> Glycerin (humectant proven) + Hyaluronic Acid (1000x water binding) = kulit tetap terhidrasi setelah cleanse. Non-foaming = tidak ada harsh surfactant.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>0 Icky, fragrance-free, alcohol-free = truly gentle.</strong> Bandingkan SkinCeuticals Triple Lipid = 5 Icky. CeraVe = 0 Icky. Clean, simple, effective. The gold standard drugstore cleanser.</div></div>
+<div class="vr"><div class="vi vi-p">&#10003;</div><div class="vt"><strong>23 bahan = lean, focused formula.</strong> Setiap bahan punya purpose. Tidak ada botanical filler, tidak ada marketing ingredients. Function-first formulation.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Mengandung parabens (Methylparaben + Propylparaben).</strong> FDA/EU approved, safe at cosmetic levels. Tapi beberapa konsumen menghindari. Jika concern, CeraVe punya versi paraben-free di beberapa market.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Ceramides di posisi #5-7 di CLEANSER yang dibilas = kontak singkat.</strong> MVE technology membantu leave-behind, tapi realistically ceramide delivery dari rinse-off product &lt; leave-on cream. Ini SUPPORT, bukan replacement untuk moisturizer.</div></div>
+<div class="vr"><div class="vi vi-n">!</div><div class="vt"><strong>Non-foaming = beberapa orang merasa "kurang bersih."</strong> Ini psychological, bukan fungsional. Foam ≠ clean. Tapi jika kamu butuh deep cleanse (heavy makeup/sunscreen), double cleanse dengan oil cleanser dulu.</div></div>
+</div>
+<div class="stt">
+<span class="stg">All Skin Types</span><span class="stg">Sensitive Skin</span><span class="stg">Dry Skin</span><span class="stg">Barrier Repair</span><span class="stg">Daily Use AM &amp; PM</span><span class="stg">Dermatologist Recommended</span><span class="stg">Budget-Friendly</span>
+</div>
+</div>
+</div>
