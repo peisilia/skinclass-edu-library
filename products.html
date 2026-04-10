@@ -46,8 +46,19 @@
         .product-name { font-family: 'Libre Baskerville', serif; font-size: 1rem; font-weight: 700; }
         .product-meta { font-size: 0.75rem; color: var(--gray); margin-top: 0.3rem; }
         .product-meta .highlight-pill { display: inline-block; font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 8px; background: #F0F4FF; color: var(--blue-dark); margin-right: 0.2rem; }
-        .product-arrow { font-size: 1.2rem; color: var(--gray); transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+        .product-actions { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; margin-left: 1rem; }
+        .share-btn { width: 32px; height: 32px; border: none; background: #F0F4FF; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--blue-dark); transition: all 0.2s; position: relative; }
+        .share-btn:hover { background: var(--blue); color: white; transform: scale(1.1); }
+        .share-menu { position: absolute; top: 40px; right: 0; background: white; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); padding: 0.5rem 0; min-width: 180px; z-index: 50; display: none; }
+        .share-menu.show { display: block; animation: fadeIn 0.15s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .share-option { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1rem; font-size: 0.8rem; color: var(--dark); cursor: pointer; text-decoration: none; border: none; background: none; width: 100%; font-family: 'Poppins', sans-serif; }
+        .share-option:hover { background: #F0F4FF; }
+        .share-option .so-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .product-arrow { font-size: 1.2rem; color: var(--gray); transition: transform 0.3s; flex-shrink: 0; }
         .product-header.open .product-arrow { transform: rotate(180deg); color: var(--coral); }
+        .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--dark); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; font-size: 0.85rem; z-index: 999; opacity: 0; transition: all 0.3s; pointer-events: none; }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         .product-body {
             display: none; background: white; border-radius: 0 0 16px 16px;
@@ -104,6 +115,7 @@
     </div>
 </div>
 
+<div class="toast" id="toast"></div>
 <footer>
     <p>SkinClassForYou Edu Library &copy; 2026 | by <a href="https://lynk.id/peisilia" target="_blank">Ci Pei</a></p>
     <p style="margin-top:0.5rem">@sharing.ingredientsskincare</p>
@@ -121,6 +133,15 @@ fetch('data/products.json')
     .then(data => {
         products = data;
         renderProducts(products);
+        // Auto-open product from URL param
+        const targetSlug = new URLSearchParams(window.location.search).get('product');
+        if (targetSlug) {
+            toggleProduct(targetSlug);
+            setTimeout(() => {
+                const el = document.querySelector(`[data-slug="${targetSlug}"]`);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        }
     })
     .catch(() => {
         document.getElementById('productList').innerHTML = '<div class="loading" style="color:var(--coral)">Gagal memuat data produk.</div>';
@@ -150,7 +171,17 @@ function renderProducts(list) {
                     <div class="product-name">${p.name}</div>
                     ${meta ? '<div class="product-meta">' + meta + '</div>' : ''}
                 </div>
-                <div class="product-arrow">&#9660;</div>
+                <div class="product-actions">
+                    <button class="share-btn" onclick="event.stopPropagation();toggleShareMenu('${p.slug}')" title="Share produk">&#128279;
+                        <div class="share-menu" id="share-menu-${p.slug}">
+                            <button class="share-option" onclick="event.stopPropagation();copyLink('${p.slug}')"><span class="so-icon">&#128203;</span>Salin Link</button>
+                            <a class="share-option" onclick="event.stopPropagation();shareWA('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="so-icon">&#128172;</span>WhatsApp</a>
+                            <a class="share-option" onclick="event.stopPropagation();shareTelegram('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="so-icon">&#9992;</span>Telegram</a>
+                            <a class="share-option" onclick="event.stopPropagation();shareTwitter('${p.slug}','${p.name.replace(/'/g,"\\'")}')"><span class="so-icon">&#120143;</span>Twitter / X</a>
+                        </div>
+                    </button>
+                    <div class="product-arrow">&#9660;</div>
+                </div>
             </div>
             <div class="product-body" id="body-${p.slug}">
                 <div class="artifact-wrapper" id="artifact-${p.slug}">
@@ -172,10 +203,17 @@ async function toggleProduct(slug) {
         h.closest('.product-item').querySelector('.product-body').classList.remove('open');
     });
 
-    if (isOpen) return; // Was open, now closed
+    if (isOpen) {
+        // Was open, now closed — clear URL param
+        history.replaceState(null, '', window.location.pathname);
+        return;
+    }
 
     header.classList.add('open');
     body.classList.add('open');
+
+    // Update URL with current product
+    history.replaceState(null, '', '?product=' + slug);
 
     // Load artifact
     const artifactEl = document.getElementById('artifact-' + slug);
@@ -238,6 +276,70 @@ function renderBasicInfo(p) {
     html += '<div class="no-artifact" style="margin-top:1rem;padding:1rem"><div class="no-artifact-icon">&#127793;</div>Analisa flash cards belum tersedia untuk produk ini.<br>Hubungi <a href="https://lynk.id/peisilia" target="_blank" style="color:var(--coral)">Ci Pei</a> untuk request bedah ingredient.</div>';
     html += '</div>';
     return html;
+}
+
+function getProductUrl(slug) {
+    return window.location.origin + window.location.pathname + '?product=' + slug;
+}
+
+function toggleShareMenu(slug) {
+    // Close all other menus first
+    document.querySelectorAll('.share-menu.show').forEach(m => m.classList.remove('show'));
+    const menu = document.getElementById('share-menu-' + slug);
+    menu.classList.toggle('show');
+}
+
+function copyLink(slug) {
+    const url = getProductUrl(slug);
+    navigator.clipboard.writeText(url).then(() => {
+        showToast('Link disalin!');
+    }).catch(() => {
+        const input = document.createElement('input');
+        input.value = url;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        showToast('Link disalin!');
+    });
+    closeShareMenus();
+}
+
+function shareWA(slug, name) {
+    const url = getProductUrl(slug);
+    const text = 'Cek bedah ingredient ' + name + ' di SkinClassForYou!\n' + url;
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    closeShareMenus();
+}
+
+function shareTelegram(slug, name) {
+    const url = getProductUrl(slug);
+    const text = 'Cek bedah ingredient ' + name + ' di SkinClassForYou!';
+    window.open('https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(text), '_blank');
+    closeShareMenus();
+}
+
+function shareTwitter(slug, name) {
+    const url = getProductUrl(slug);
+    const text = 'Bedah ingredient ' + name + ' by @skinclassforyou';
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
+    closeShareMenus();
+}
+
+function closeShareMenus() {
+    document.querySelectorAll('.share-menu.show').forEach(m => m.classList.remove('show'));
+}
+
+// Close share menus when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.share-btn')) closeShareMenus();
+});
+
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
 // Search
